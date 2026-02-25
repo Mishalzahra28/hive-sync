@@ -39,6 +39,8 @@ Read these documents in order. This file provides a brief overview and links to 
 - Code style, linting, and formatting
 - Naming, file placement, and imports
   - [docs/foundation/conventions.md](./foundation/conventions.md)
+- Centralized routing (`paths` object)
+  - [docs/foundation/routing.md](./foundation/routing.md)
 
 ### 5) UI system
 
