@@ -6,6 +6,8 @@ Read these documents in order. This file provides a brief overview and links to 
 
 - Overview (this file)
 - Repository `README.md` for stack summary and quick start
+- Canonical agent implementation standard:
+  - [`.cursor/skills/boilerplate-project-standards/SKILL.md`](../.cursor/skills/boilerplate-project-standards/SKILL.md)
 
 ### 2) Prerequisites
 

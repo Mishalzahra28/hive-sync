@@ -7,6 +7,11 @@ alwaysApply: true
 
 Use this rule as the highest-priority project convention when external skills conflict with local docs.
 
+## Canonical local skill
+
+- Treat `.cursor/skills/boilerplate-project-standards/SKILL.md` as the canonical implementation skill for this repository.
+- Apply it for all coding tasks in this repo before relying on external generic skills.
+
 ## Source of truth
 
 - Prefer local docs under `docs/` and existing code patterns over generic remote skill defaults.
