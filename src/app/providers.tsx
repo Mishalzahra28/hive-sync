@@ -3,7 +3,6 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { useMemo } from 'react';
 
-import { PostHogProvider } from '@/components/posthog/posthog-provider';
 import { TooltipProvider } from '@/components/ui/tooltip';
 
 type AppProviderProps = {
@@ -15,9 +14,7 @@ export default function AppProviders({ children }: AppProviderProps) {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <PostHogProvider>
-        <TooltipProvider>{children}</TooltipProvider>
-      </PostHogProvider>
+      <TooltipProvider>{children}</TooltipProvider>
       <ReactQueryDevtools />
     </QueryClientProvider>
   );

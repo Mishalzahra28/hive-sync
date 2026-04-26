@@ -20,7 +20,6 @@ Read these documents in order. This file provides a brief overview and links to 
     - next-safe-action
     - Tailwind CSS, Radix UI, shadcn UI
     - Supabase (auth, database, storage)
-    - Optional: PostHog analytics
 - Tools & local setup
   - [docs/prerequisites/tools.md](./prerequisites/tools.md)
     - Node.js, pnpm
@@ -83,7 +82,7 @@ Read these documents in order. This file provides a brief overview and links to 
 
 - Deployment checklist and environments
   - [docs/operations/deployment.md](./operations/deployment.md) 🚨 TBD
-- Analytics and telemetry (PostHog)
+- Analytics and telemetry
   - [docs/operations/analytics.md](./operations/analytics.md) 🚨 TBD
 - FAQ and troubleshooting
   - [docs/reference/faq.md](./reference/faq.md) 🚨 TBD

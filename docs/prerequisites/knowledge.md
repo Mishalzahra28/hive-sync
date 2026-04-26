@@ -50,7 +50,3 @@ Understand these concepts before contributing; skim official docs as needed.
 
   - Know: register/Controller, validation, resolver integration (e.g., Zod), form state.
   - Why: performant, flexible forms with minimal rerenders.
-
-- Optional: PostHog analytics — https://posthog.com/docs
-  - Know: identifying users, capturing events, pageviews.
-  - Why: product analytics and feedback loops.
