@@ -5,8 +5,8 @@ import { env } from '@/env';
 export const appConfig = {
   title: 'Next.js App',
   description:
-    'A modern Next.js application with Supabase, React Query, and TypeScript',
-  keywords: 'next.js, supabase, react-query, typescript, boilerplate',
+    'A modern Next.js application with React Query and TypeScript',
+  keywords: 'next.js, react-query, typescript, boilerplate',
   logo: '/logo/main.png',
   defaultLocale: 'en-US',
   defaultCurrency: 'USD',
@@ -50,7 +50,6 @@ export default function getMetadata(): Metadata {
     },
     keywords: [
       'next.js',
-      'supabase',
       'react-query',
       'typescript',
       'boilerplate',

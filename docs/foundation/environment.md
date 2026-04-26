@@ -18,40 +18,21 @@ Current schema highlights:
 
 - Server
 
-  - `SUPABASE_SERVICE_ROLE_KEY: z.string()`
+  - (none by default; add server-only secrets here as needed)
 
 - Client
-  - `NEXT_PUBLIC_SUPABASE_URL: z.string().url()`
-  - `NEXT_PUBLIC_SUPABASE_ANON_KEY: z.string()`
-  - `NEXT_PUBLIC_POSTHOG_KEY: z.string().optional()`
-  - `NEXT_PUBLIC_POSTHOG_HOST: z.string().optional()`
   - `NEXT_PUBLIC_APP_URL: z.string()`
   - `NEXT_PUBLIC_APP_NAME: z.string()`
 
 Place your values in `.env.local` (never commit secrets). Example:
 
 ```env
-SUPABASE_SERVICE_ROLE_KEY="<service-role-key>"
-NEXT_PUBLIC_SUPABASE_URL="https://<project-id>.supabase.co"
-NEXT_PUBLIC_SUPABASE_ANON_KEY="<anon-key>"
-# Optional PostHog
-NEXT_PUBLIC_POSTHOG_KEY="<posthog-public-key>"
-NEXT_PUBLIC_POSTHOG_HOST="https://us.i.posthog.com"
 # App metadata
 NEXT_PUBLIC_APP_URL="https://app.example.com"
 NEXT_PUBLIC_APP_NAME="Example App"
 ```
 
 ### Why these variables exist
-
-- Supabase
-
-  - `SUPABASE_SERVICE_ROLE_KEY` (server): used for privileged server tasks (never expose to client).
-  - `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_ANON_KEY` (client): browser SDK connectivity.
-
-- PostHog
-
-  - `NEXT_PUBLIC_POSTHOG_KEY` and `NEXT_PUBLIC_POSTHOG_HOST` are optional. Analytics will only be initialized if these are present. Without them, analytics features remain disabled.
 
 - App URL
 

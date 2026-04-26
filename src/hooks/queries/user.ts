@@ -1,32 +1,16 @@
-import { User } from '@supabase/supabase-js';
-import { useQuery, useQueryClient } from '@tanstack/react-query';
-import { useEffect } from 'react';
+import { useQuery } from '@tanstack/react-query';
 
-import { supabase } from '@/lib/supabase/client';
+import { getBrowserUser } from '@/lib/auth/browser-user';
 
 import { QueryKeys } from '@/constants/query-keys';
 
+import type { AuthUser } from '@/types/auth-user';
+
 export const useUser = () => {
-  const queryClient = useQueryClient();
-  const queryData = useQuery<User | null>({
+  return useQuery<AuthUser | null>({
     queryKey: [QueryKeys.USER],
-    queryFn: async () => {
-      const {
-        data: { user },
-      } = await supabase.auth.getUser();
-      return user;
-    },
+    queryFn: getBrowserUser,
     staleTime: Infinity,
     refetchOnWindowFocus: false,
   });
-
-  useEffect(() => {
-    const { data } = supabase.auth.onAuthStateChange((_event, session) => {
-      queryClient.setQueryData([QueryKeys.USER], session?.user ?? null);
-    });
-
-    return () => data.subscription.unsubscribe();
-  }, []);
-
-  return queryData;
 };

@@ -1,7 +1,8 @@
-import { User } from '@supabase/supabase-js';
 import { z, ZodError, ZodSchema } from 'zod';
 
-import { createSupabaseBrowserClient } from '../supabase/client';
+import { getBrowserUser } from '@/lib/auth/browser-user';
+
+import type { AuthUser } from '@/types/auth-user';
 
 /** Custom user types that can be used to restrict access to queries */
 type UserType = 'your-custom-user-type' | 'another-custom-user-type';
@@ -9,10 +10,9 @@ type UserType = 'your-custom-user-type' | 'another-custom-user-type';
 /** Extracts the inferred type from a Zod schema, or undefined if no schema is provided */
 type SchemaType<T> = T extends ZodSchema ? z.infer<T> : undefined;
 
-/** Context object passed to query handlers containing user, supabase client, and validated parameters */
+/** Context object passed to query handlers containing user and validated parameters */
 type QueryFunctionContext<T extends ZodSchema | undefined> = {
-  user: User;
-  supabase: ReturnType<typeof createSupabaseBrowserClient>;
+  user: AuthUser;
   params: SchemaType<T>;
 };
 
@@ -45,15 +45,15 @@ export function authQuery<T extends ZodSchema | undefined, R>(
   options: QueryOptions<T> = {},
 ) {
   return async (params?: SchemaType<T>): Promise<R> => {
-    const supabase = createSupabaseBrowserClient();
-    const { data, error } = await supabase.auth.getUser();
-    if (error || !data.user) {
+    const user = await getBrowserUser();
+    if (!user) {
       throw new Error('Unauthorized');
     }
-    const user = data.user;
     if (
       options.userType &&
-      !options.userType.includes(user.user_metadata.user_type)
+      !options.userType.includes(
+        user.user_metadata?.user_type as UserType,
+      )
     ) {
       throw new Error(
         `You must be a ${options.userType.join(' or ')} to access this data`,
@@ -71,6 +71,6 @@ export function authQuery<T extends ZodSchema | undefined, R>(
       }
     }
 
-    return handler({ user, supabase, params: params as SchemaType<T> });
+    return handler({ user, params: params as SchemaType<T> });
   };
 }
