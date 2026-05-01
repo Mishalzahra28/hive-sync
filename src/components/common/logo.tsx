@@ -36,7 +36,7 @@ const Logo = ({
       ) : (
         <Link href='/' className={cn(linkStyles)}>
           <Image
-            src={appConfig.logo}
+            src="/logo.png"
             alt='Logo'
             height={width * heightMultiplier}
             width={width}

@@ -1,9 +1,10 @@
 "use client";
 
 import { motion } from "motion/react";
-import Image from "next/image";
 import React, { useEffect,useState } from "react";
 
+import Logo from "@/components/common/logo";
+import { paths } from "@/constants/paths";
 import { cn } from "@/lib/utils";
 
 import { AppleGlassNav } from "./AppleGlassNav";
@@ -12,7 +13,7 @@ const NAV_LINKS = [
     { name: "Product", href: "#" },
     { name: "Solutions", href: "#" },
     { name: "Pricing", href: "#" },
-    { name: "Company", href: "#" },
+    { name: "Careers", href: paths.careers },
 ];
 
 export const Navbar = () => {
@@ -46,13 +47,7 @@ export const Navbar = () => {
                     animate={{ opacity: 1, x: 0 }}
                     className="hidden lg:flex items-center"
                 >
-                    <Image
-                        src="/logo.png"
-                        alt="Hive Sync"
-                        width={100}
-                        height={30}
-                        className="h-8 w-auto object-contain"
-                    />
+                    <Logo />
                 </motion.div>
 
                 {/* The Apple Glass Nav Component */}

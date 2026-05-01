@@ -1,6 +1,8 @@
 import { Linkedin, Twitter } from 'lucide-react'
 import Link from 'next/link'
 
+import { paths } from '@/constants/paths'
+
 // Tape SVG — fill updated to DESIGN.md gray-800 (#1E293B) for dark tape look
 const tape = (
   <svg xmlns="http://www.w3.org/2000/svg" width="95" height="80" viewBox="0 0 95 80" fill="none">
@@ -80,7 +82,7 @@ export const Footer = () => {
                   { label: 'About Us', href: '#about' },
                   { label: 'Our Process', href: '#process' },
                   { label: 'Portfolio', href: '#portfolio' },
-                  { label: 'Careers', href: '#', soon: true },
+                  { label: 'Careers', href: paths.careers },
                   { label: 'Blog', href: '#', soon: true },
                   { label: 'Contact Us', href: '#contact' },
                 ].map(({ label, href, soon }) => (

@@ -1,3 +1,4 @@
+declare module '*.css';
 import type { Metadata } from 'next';
 import { Inter, Syne, Urbanist } from 'next/font/google';
 import { Toaster } from 'sonner';
