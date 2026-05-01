@@ -1,14 +1,12 @@
-declare module '*.css';
 import type { Metadata } from 'next';
 import { Inter, Syne, Urbanist } from 'next/font/google';
 import { Toaster } from 'sonner';
 
-import './globals.css';
-
 import { Footer } from '@/components/layout/footer';
 import { Navbar } from '@/components/layout/navbar';
-
 import getMetadata from '@/config/app';
+
+import './globals.css';
 
 import AppProviders from './providers';
 
