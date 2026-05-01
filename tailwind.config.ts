@@ -20,21 +20,22 @@ export default {
           DEFAULT: 'hsl(var(--popover))',
           foreground: 'hsl(var(--popover-foreground))',
         },
+        // Brand system colors — single source of truth
         primary: {
-          DEFAULT: 'hsl(var(--primary))',
+          DEFAULT: '#3B82F6', // Blue
           foreground: 'hsl(var(--primary-foreground))',
         },
+        accent: {
+          DEFAULT: '#6366F1', // Mid Blue-Purple
+          foreground: 'hsl(var(--accent-foreground))',
+        },
         secondary: {
-          DEFAULT: 'hsl(var(--secondary))',
+          DEFAULT: '#8B5CF6', // Purple
           foreground: 'hsl(var(--secondary-foreground))',
         },
         muted: {
           DEFAULT: 'hsl(var(--muted))',
           foreground: 'hsl(var(--muted-foreground))',
-        },
-        accent: {
-          DEFAULT: 'hsl(var(--accent))',
-          foreground: 'hsl(var(--accent-foreground))',
         },
         destructive: {
           DEFAULT: 'hsl(var(--destructive))',
