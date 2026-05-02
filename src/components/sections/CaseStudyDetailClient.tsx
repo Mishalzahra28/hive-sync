@@ -59,17 +59,17 @@ export default function CaseStudyDetailClient({ slug }: { slug: string }) {
 
   if (!study) {
     return (
-      <div className="min-h-screen bg-[#020617] flex items-center justify-center text-white">
+      <div className="min-h-screen bg-background flex items-center justify-center text-foreground">
         <div className="text-center">
           <h1 className="text-4xl font-bold mb-4">Project Not Found</h1>
-          <Link href="/" className="text-blue-500 hover:underline">Return Home</Link>
+          <Link href="/" className="text-primary hover:underline">Return Home</Link>
         </div>
       </div>
     )
   }
 
   return (
-    <main className="bg-[#020617] min-h-screen text-[#F1F5F9] pb-24">
+    <main className="bg-background min-h-screen text-foreground pb-24">
       {/* Hero Section */}
       <section className="relative h-[80vh] min-h-[600px] w-full overflow-hidden">
         <Image 
@@ -79,7 +79,8 @@ export default function CaseStudyDetailClient({ slug }: { slug: string }) {
           className="object-cover"
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-[#020617]/60 to-[#020617]" />
+        {/* Soft fade so hero text reads on busy images and blends into the page below */}
+        <div className="absolute inset-0 bg-gradient-to-b from-foreground/30 via-foreground/40 to-background" />
         
         <div className="absolute inset-0 flex flex-col justify-end pb-20">
           <div className="mx-auto max-w-7xl px-6 w-full">
@@ -88,19 +89,19 @@ export default function CaseStudyDetailClient({ slug }: { slug: string }) {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
-              <Link 
+              <Link
                 href="/#work"
-                className="inline-flex items-center gap-2 text-white/60 hover:text-white mb-8 transition-colors group"
+                className="inline-flex items-center gap-2 text-white/80 hover:text-white mb-8 transition-colors group"
               >
                 <ArrowLeft className="size-4 group-hover:-translate-x-1 transition-transform" />
                 <span className="text-sm font-bold uppercase tracking-widest">Back to Work</span>
               </Link>
-              
+
               <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8">
                 <div className="max-w-3xl">
                   <div className="flex items-center gap-3 mb-6">
-                    <div className="size-8 rounded-lg bg-white p-1.5 flex items-center justify-center">
-                      <Image 
+                    <div className="size-8 rounded-lg bg-white p-1.5 flex items-center justify-center border border-white/40">
+                      <Image
                         src={study.accent === "#FFBC0D" ? "https://upload.wikimedia.org/wikipedia/commons/3/36/McDonald%27s_Golden_Arches.svg" : "https://upload.wikimedia.org/wikipedia/commons/5/5c/Subway_2016_logo.svg"}
                         alt={study.client}
                         width={24}
@@ -108,16 +109,16 @@ export default function CaseStudyDetailClient({ slug }: { slug: string }) {
                         className="object-contain"
                       />
                     </div>
-                    <span className="text-xl font-bold tracking-tight text-white/80">{study.client}</span>
+                    <span className="text-xl font-bold tracking-tight text-white">{study.client}</span>
                   </div>
-                  <h1 className="text-5xl md:text-7xl font-bold tracking-tight leading-[1.1] mb-8">
+                  <h1 className="text-5xl md:text-7xl font-bold tracking-tight leading-[1.1] mb-8 text-white drop-shadow-lg">
                     {study.title}
                   </h1>
                 </div>
-                
+
                 <div className="hidden lg:block">
-                   <div className="p-1 px-4 rounded-full border border-white/10 bg-white/5 backdrop-blur-xl mb-10">
-                      <span className="text-[10px] font-black uppercase tracking-[0.2em] text-white/60">Success Story</span>
+                   <div className="p-1 px-4 rounded-full border border-white/40 bg-white/15 backdrop-blur-xl mb-10">
+                      <span className="text-[10px] font-black uppercase tracking-[0.2em] text-white">Success Story</span>
                    </div>
                 </div>
               </div>
@@ -137,28 +138,28 @@ export default function CaseStudyDetailClient({ slug }: { slug: string }) {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="prose prose-invert prose-lg max-w-none"
+                className="prose prose-lg max-w-none"
               >
-                <p className="text-2xl text-[#94A3B8] leading-relaxed font-medium">
+                <p className="text-2xl text-muted-foreground leading-relaxed font-medium">
                   {study.description}
                 </p>
-                
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mt-16 pt-16 border-t border-white/5">
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mt-16 pt-16 border-t border-border">
                   <div>
-                    <div className="flex items-center gap-3 mb-6 text-white">
+                    <div className="flex items-center gap-3 mb-6 text-foreground">
                       <Target className="size-6" style={{ color: study.accent }} />
                       <h3 className="text-2xl font-bold m-0">The Challenge</h3>
                     </div>
-                    <p className="text-[#94A3B8] leading-relaxed">
+                    <p className="text-muted-foreground leading-relaxed">
                       {study.challenge}
                     </p>
                   </div>
                   <div>
-                    <div className="flex items-center gap-3 mb-6 text-white">
+                    <div className="flex items-center gap-3 mb-6 text-foreground">
                       <Zap className="size-6" style={{ color: study.accent }} />
                       <h3 className="text-2xl font-bold m-0">The Hive Solution</h3>
                     </div>
-                    <p className="text-[#94A3B8] leading-relaxed">
+                    <p className="text-muted-foreground leading-relaxed">
                       {study.solution}
                     </p>
                   </div>
@@ -171,13 +172,13 @@ export default function CaseStudyDetailClient({ slug }: { slug: string }) {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
               >
-                <h3 className="text-3xl font-bold mb-10">Success Metrics</h3>
+                <h3 className="text-3xl font-bold mb-10 text-foreground">Success Metrics</h3>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
                   {study.results.map((res, i) => (
-                    <div key={i} className="p-8 rounded-[32px] bg-white/[0.03] border border-white/10 backdrop-blur-xl">
+                    <div key={i} className="p-8 rounded-[32px] bg-card border border-border shadow-sm hover:shadow-md transition-shadow">
                       <res.icon className="size-8 mb-6" style={{ color: study.accent }} />
-                      <div className="text-4xl font-bold text-white mb-2">{res.value}</div>
-                      <div className="text-sm font-bold uppercase tracking-widest text-white/40">{res.label}</div>
+                      <div className="text-4xl font-bold text-foreground mb-2">{res.value}</div>
+                      <div className="text-sm font-bold uppercase tracking-widest text-muted-foreground">{res.label}</div>
                     </div>
                   ))}
                 </div>
@@ -190,49 +191,49 @@ export default function CaseStudyDetailClient({ slug }: { slug: string }) {
                 initial={{ opacity: 0, x: 20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                className="p-10 rounded-[48px] bg-white/[0.03] backdrop-blur-3xl border border-white/10"
+                className="p-10 rounded-[48px] bg-card border border-border shadow-sm"
               >
-                <h4 className="text-lg font-bold mb-8 text-white">Project Details</h4>
+                <h4 className="text-lg font-bold mb-8 text-foreground">Project Details</h4>
                 <div className="space-y-8">
                   <div>
-                    <span className="block text-[10px] font-black uppercase tracking-widest text-white/30 mb-2">Technologies</span>
+                    <span className="block text-[10px] font-black uppercase tracking-widest text-muted-foreground mb-2">Technologies</span>
                     <div className="flex flex-wrap gap-2">
                       {study.techStack.map(tech => (
-                        <span key={tech} className="px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs font-bold text-white/80">{tech}</span>
+                        <span key={tech} className="px-3 py-1.5 rounded-full bg-muted border border-border text-xs font-bold text-foreground/80">{tech}</span>
                       ))}
                     </div>
                   </div>
-                  <div className="pt-8 border-t border-white/5">
-                    <span className="block text-[10px] font-black uppercase tracking-widest text-white/30 mb-6">Key Deliverables</span>
+                  <div className="pt-8 border-t border-border">
+                    <span className="block text-[10px] font-black uppercase tracking-widest text-muted-foreground mb-6">Key Deliverables</span>
                     <ul className="space-y-4">
                       {study.metrics.map((m, i) => (
                         <li key={i} className="flex items-start gap-3">
-                          <CheckCircle2 className="size-4 text-white/40 mt-0.5 shrink-0" />
-                          <span className="text-sm text-white/60">{m}</span>
+                          <CheckCircle2 className="size-4 text-primary mt-0.5 shrink-0" />
+                          <span className="text-sm text-muted-foreground">{m}</span>
                         </li>
                       ))}
                     </ul>
                   </div>
                 </div>
 
-                <button className="w-full mt-12 py-5 rounded-2xl bg-white text-black font-black text-sm uppercase tracking-widest hover:scale-105 transition-transform">
-                  Let's Work Together
-                </button>
+                <Link
+                  href="/get-started"
+                  className="block w-full mt-12 py-5 rounded-2xl bg-primary text-primary-foreground font-black text-sm uppercase tracking-widest text-center hover:bg-primary/90 transition-colors"
+                >
+                  Let&apos;s Work Together
+                </Link>
               </motion.div>
 
               {/* Small Banner */}
-              <div className="p-8 rounded-[40px] bg-gradient-to-br from-blue-600 to-indigo-600 overflow-hidden relative group cursor-pointer">
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity">
-                  <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] scale-150" />
-                </div>
+              <Link href="/get-started" className="block p-8 rounded-[40px] bg-gradient-to-br from-primary to-secondary overflow-hidden relative group cursor-pointer shadow-md hover:shadow-lg transition-shadow">
                 <div className="relative z-10">
-                  <h4 className="text-xl font-bold text-white mb-2">Scale Your Vision</h4>
-                  <p className="text-white/70 text-sm mb-6 leading-relaxed">Ready to build your next breakthrough platform?</p>
-                  <div className="size-10 rounded-full bg-white flex items-center justify-center">
-                    <ChevronRight className="size-5 text-blue-600" />
+                  <h4 className="text-xl font-bold text-primary-foreground mb-2">Scale Your Vision</h4>
+                  <p className="text-primary-foreground/80 text-sm mb-6 leading-relaxed">Ready to build your next breakthrough platform?</p>
+                  <div className="size-10 rounded-full bg-background flex items-center justify-center">
+                    <ChevronRight className="size-5 text-primary" />
                   </div>
                 </div>
-              </div>
+              </Link>
             </aside>
 
           </div>
@@ -240,14 +241,14 @@ export default function CaseStudyDetailClient({ slug }: { slug: string }) {
       </section>
 
       {/* Next Project Footer */}
-      <section className="mt-32 pt-24 border-t border-white/5">
+      <section className="mt-32 pt-24 border-t border-border">
         <div className="mx-auto max-w-7xl px-6 text-center">
-          <span className="text-[10px] font-black uppercase tracking-[0.3em] text-white/30 mb-8 block">Up Next</span>
+          <span className="text-[10px] font-black uppercase tracking-[0.3em] text-muted-foreground mb-8 block">Up Next</span>
           <Link href={slug === 'mcdonalds' ? '/work/subway' : '/work/mcdonalds'} className="group">
-             <h2 className="text-5xl md:text-8xl font-bold tracking-tight text-white/40 group-hover:text-white transition-colors duration-500">
+             <h2 className="text-5xl md:text-8xl font-bold tracking-tight text-foreground/30 group-hover:text-foreground transition-colors duration-500">
                {slug === 'mcdonalds' ? 'Subway' : "McDonald's"}
              </h2>
-             <div className="mt-8 inline-flex items-center gap-3 text-blue-500 font-bold group-hover:translate-x-2 transition-transform">
+             <div className="mt-8 inline-flex items-center gap-3 text-primary font-bold group-hover:translate-x-2 transition-transform">
                View Case Study <ArrowLeft className="size-5 rotate-180" />
              </div>
           </Link>

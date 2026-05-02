@@ -83,9 +83,9 @@ function Field({
 }) {
   return (
     <div className="flex flex-col gap-1.5">
-      <label className="text-[13px] text-[#94A3B8]">
+      <label className="text-[13px] text-muted-foreground">
         {label}
-        {required && <span className="text-[#3B82F6] ml-0.5">*</span>}
+        {required && <span className="text-primary ml-0.5">*</span>}
       </label>
       {children}
       <AnimatePresence>
@@ -106,7 +106,7 @@ function Field({
 }
 
 const inputClass =
-  "h-auto w-full rounded-2xl border-[#1E293B] bg-white/[0.03] px-4 py-3 text-sm text-[#F1F5F9] placeholder:text-[#334155] focus-visible:border-[#3B82F6]/60 focus-visible:bg-white/[0.05] focus-visible:ring-0 focus-visible:ring-offset-0 transition-all duration-300"
+  "h-auto w-full rounded-2xl border-border bg-white/[0.03] px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/60 focus-visible:border-primary/60 focus-visible:bg-white/[0.05] focus-visible:ring-0 focus-visible:ring-offset-0 transition-all duration-300"
 
 
 function SinglePillGroup({
@@ -148,8 +148,8 @@ function SinglePillGroup({
             className={cn(
               "px-4 py-2 rounded-full text-[13px] border transition-all duration-150",
               value === opt
-                ? "bg-[#F1F5F9] text-[#020617] border-[#F1F5F9]"
-                : "bg-transparent text-[#94A3B8] border-[#1E293B] hover:border-[#3B82F6]/40 hover:text-[#F1F5F9]"
+                ? "bg-primary text-primary-foreground border-primary"
+                : "bg-transparent text-muted-foreground border-border hover:border-primary/40 hover:text-foreground"
             )}
           >
             {opt}
@@ -158,7 +158,7 @@ function SinglePillGroup({
         <button
           type="button"
           onClick={() => setShowInput(true)}
-          className="flex items-center gap-1.5 px-4 py-2 rounded-full text-[13px] text-[#475569] border border-dashed border-[#1E293B] hover:border-[#3B82F6]/40 hover:text-[#94A3B8] transition-all"
+          className="flex items-center gap-1.5 px-4 py-2 rounded-full text-[13px] text-muted-foreground border border-dashed border-border hover:border-primary/40 hover:text-muted-foreground transition-all"
         >
           <Plus className="w-3.5 h-3.5" />
           {addLabel}
@@ -184,7 +184,7 @@ function SinglePillGroup({
             <button
               type="button"
               onClick={handleAdd}
-              className="px-3 py-2 rounded-full text-[12px] border border-[#1E293B] text-[#94A3B8] hover:border-[#3B82F6]/40 hover:text-[#F1F5F9] transition-all"
+              className="px-3 py-2 rounded-full text-[12px] border border-border text-muted-foreground hover:border-primary/40 hover:text-foreground transition-all"
             >
               Add
             </button>
@@ -193,7 +193,7 @@ function SinglePillGroup({
               onClick={() => { setShowInput(false); setInputVal("") }}
               className="w-7 h-7 rounded-full bg-white/5 hover:bg-red-500/20 flex items-center justify-center transition-colors"
             >
-              <X className="w-3.5 h-3.5 text-[#94A3B8]" />
+              <X className="w-3.5 h-3.5 text-muted-foreground" />
             </button>
           </motion.div>
         )}
@@ -262,8 +262,8 @@ function MultiPillGroup({
             className={cn(
               "px-4 py-2 rounded-full text-[13px] border transition-all duration-150",
               value.includes(opt)
-                ? "bg-[#F1F5F9] text-[#020617] border-[#F1F5F9]"
-                : "bg-transparent text-[#94A3B8] border-[#1E293B] hover:border-[#3B82F6]/40 hover:text-[#F1F5F9]"
+                ? "bg-primary text-primary-foreground border-primary"
+                : "bg-transparent text-muted-foreground border-border hover:border-primary/40 hover:text-foreground"
             )}
           >
             {opt}
@@ -272,7 +272,7 @@ function MultiPillGroup({
         <button
           type="button"
           onClick={() => setShowInput(true)}
-          className="flex items-center gap-1.5 px-4 py-2 rounded-full text-[13px] text-[#475569] border border-dashed border-[#1E293B] hover:border-[#3B82F6]/40 hover:text-[#94A3B8] transition-all"
+          className="flex items-center gap-1.5 px-4 py-2 rounded-full text-[13px] text-muted-foreground border border-dashed border-border hover:border-primary/40 hover:text-muted-foreground transition-all"
         >
           <Plus className="w-3.5 h-3.5" />
           {addLabel}
@@ -298,7 +298,7 @@ function MultiPillGroup({
             <button
               type="button"
               onClick={handleAdd}
-              className="px-3 py-2 rounded-full text-[12px] border border-[#1E293B] text-[#94A3B8] hover:border-[#3B82F6]/40 hover:text-[#F1F5F9] transition-all"
+              className="px-3 py-2 rounded-full text-[12px] border border-border text-muted-foreground hover:border-primary/40 hover:text-foreground transition-all"
             >
               Add
             </button>
@@ -307,7 +307,7 @@ function MultiPillGroup({
               onClick={() => { setShowInput(false); setInputVal("") }}
               className="w-7 h-7 rounded-full bg-white/5 hover:bg-red-500/20 flex items-center justify-center transition-colors"
             >
-              <X className="w-3.5 h-3.5 text-[#94A3B8]" />
+              <X className="w-3.5 h-3.5 text-muted-foreground" />
             </button>
           </motion.div>
         )}
@@ -333,7 +333,7 @@ function MultiPillGroup({
 
 function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
-    <p className="text-[13px] text-[#94A3B8] mb-3">{children}</p>
+    <p className="text-[13px] text-muted-foreground mb-3">{children}</p>
   )
 }
 
@@ -398,28 +398,7 @@ export function SalesIntakeForm({
   const busy = isSubmitting
 
   return (
-    <div className="flex min-h-screen flex-col bg-[#020617] text-[#F1F5F9]">
-      {/* Header */}
-      <div className="border-b border-[#0F172A] px-6 py-5 md:px-12 flex items-end justify-between">
-        <div>
-          <p className="text-[11px] uppercase tracking-widest font-bold text-[#475569] mb-1">
-            Sales Intake
-          </p>
-          <h1 className="text-2xl font-bold text-[#F1F5F9] tracking-tight">
-            Let's scope your engagement
-          </h1>
-        </div>
-        {onBack && (
-          <button
-            type="button"
-            onClick={onBack}
-            className="text-[11px] uppercase tracking-widest font-bold text-[#475569] border border-[#1E293B] rounded-full px-4 py-2 hover:border-[#3B82F6]/40 hover:text-[#94A3B8] transition-all"
-          >
-            Back to pricing
-          </button>
-        )}
-      </div>
-
+    <div className="flex min-h-screen flex-col bg-background text-foreground pt-24 md:pt-28">
       <AnimatePresence mode="wait">
         {state?.success ? (
           <motion.div
@@ -429,12 +408,12 @@ export function SalesIntakeForm({
             className="flex flex-1 items-center justify-center px-6 text-center"
           >
             <div className="flex flex-col items-center gap-5">
-              <div className="w-16 h-16 rounded-full bg-[#3B82F6]/10 border border-[#3B82F6]/30 flex items-center justify-center">
-                <CheckCircle2 className="w-8 h-8 text-[#3B82F6]" />
+              <div className="w-16 h-16 rounded-full bg-primary/10 border border-primary/30 flex items-center justify-center">
+                <CheckCircle2 className="w-8 h-8 text-primary" />
               </div>
               <div>
-                <p className="text-xl font-bold text-[#F1F5F9] mb-1">{state.message}</p>
-                <p className="text-sm text-[#64748B]">
+                <p className="text-xl font-bold text-foreground mb-1">{state.message}</p>
+                <p className="text-sm text-muted-foreground">
                   We review every inquiry personally and aim to respond within 24 hours.
                 </p>
               </div>
@@ -448,6 +427,25 @@ export function SalesIntakeForm({
             animate={{ opacity: 1 }}
             className="w-full px-6 md:px-12 py-10 flex flex-col gap-8 max-w-7xl mx-auto"
           >
+            {/* Heading */}
+            <div className="flex flex-col gap-3">
+              {onBack && (
+                <button
+                  type="button"
+                  onClick={onBack}
+                  className="self-start text-[11px] uppercase tracking-widest font-bold text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  ← Back to pricing
+                </button>
+              )}
+             
+              <h1 className="text-3xl md:text-4xl font-bold text-foreground tracking-tight">
+                Let&apos;s scope your engagement
+              </h1>
+              <p className="text-muted-foreground max-w-2xl">
+                Tell us about your project and we&apos;ll get back to you with a tailored plan.
+              </p>
+            </div>
 
             {/* Name + Email */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
@@ -571,7 +569,7 @@ export function SalesIntakeForm({
                             className={cn(
                               inputClass,
                               "flex items-center justify-between text-left",
-                              !selected && "text-[#334155]",
+                              !selected && "text-muted-foreground/60",
                             )}
                           >
                             {selected ? format(selected, "PPP") : "Pick a date"}
@@ -621,7 +619,7 @@ export function SalesIntakeForm({
               type="submit"
               disabled={busy}
               isLoading={busy}
-              className="w-full py-4 rounded-2xl bg-[#F1F5F9] hover:bg-white text-[#020617] font-bold text-sm uppercase tracking-widest transition-all duration-300 active:scale-[0.98] disabled:opacity-60 disabled:cursor-not-allowed"
+              className="w-full py-4 rounded-2xl bg-primary hover:bg-primary/90 text-primary-foreground font-bold text-sm uppercase tracking-widest transition-all duration-300 active:scale-[0.98] disabled:opacity-60 disabled:cursor-not-allowed"
             >
               Submit inquiry
             </Button>

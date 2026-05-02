@@ -30,7 +30,7 @@ export const AppleGlassNav = ({ items, className }: NavProps) => {
     const pathname = usePathname();
 
     return (
-        <nav className={cn("flex p-1.5 gap-2 bg-[#0F172A]/40 backdrop-blur-xl border border-[#1E293B] rounded-full shadow-lg ring-1 ring-[#020617]/50", className)}>
+        <nav className={cn("flex p-1.5 gap-2 bg-white/70 backdrop-blur-xl border border-border rounded-full shadow-lg ring-1 ring-foreground/5", className)}>
             {items.map((item) => {
                 const active = isActiveHref(pathname, item.href);
                 return (
@@ -39,13 +39,13 @@ export const AppleGlassNav = ({ items, className }: NavProps) => {
                         href={item.href}
                         className={cn(
                             "relative px-4 py-1.5 text-sm font-medium transition-colors duration-300",
-                            active ? "text-[#F1F5F9]" : "text-[#94A3B8] hover:text-[#F1F5F9]"
+                            active ? "text-primary-foreground" : "text-muted-foreground hover:text-foreground"
                         )}
                     >
                         {active && (
                             <motion.div
                                 layoutId="glass-active"
-                                className="absolute inset-0 bg-[#3B82F6] shadow-sm rounded-full backdrop-blur-md"
+                                className="absolute inset-0 bg-primary shadow-sm rounded-full backdrop-blur-md"
                                 transition={{ type: "spring", bounce: 0.3, duration: 0.6 }}
                             />
                         )}

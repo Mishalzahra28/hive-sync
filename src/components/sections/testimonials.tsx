@@ -151,10 +151,10 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
     <div
       onClick={() => handleMove(position)}
       className={cn(
-        "absolute left-1/2 top-1/2 cursor-pointer border-[1px] p-8 transition-all duration-500 ease-in-out",
+        "absolute left-1/2 top-1/2 cursor-pointer border p-8 transition-all duration-500 ease-in-out",
         isCenter
-          ? "z-10 bg-[#3B82F6] text-[#020617] border-[#3B82F6]"
-          : "z-0 bg-[#0F172A] text-[#F1F5F9] border-[#1E293B] hover:border-[#3B82F6]/50"
+          ? "z-10 bg-primary text-primary-foreground border-primary"
+          : "z-0 bg-card text-card-foreground border-border shadow-md hover:border-primary/50"
       )}
       style={{
         width: cardSize,
@@ -193,13 +193,13 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
       />
       <h3 className={cn(
         "text-base sm:text-xl font-medium",
-        isCenter ? "text-[#020617]" : "text-[#F1F5F9]"
+        isCenter ? "text-primary-foreground" : "text-foreground"
       )}>
         &ldquo;{testimonial.testimonial}&rdquo;
       </h3>
       <p className={cn(
         "absolute bottom-8 left-8 right-8 mt-2 text-sm italic",
-        isCenter ? "text-[#020617]/80" : "text-[#94A3B8]"
+        isCenter ? "text-primary-foreground/90" : "text-muted-foreground"
       )}>
         — {testimonial.by}
       </p>
@@ -240,23 +240,23 @@ export const Testimonials: React.FC = () => {
   }, []);
 
   return (
-    <section className="py-16 bg-[#020617]" id="testimonials">
+    <section className="py-16 bg-background" id="testimonials">
       {/* Section header */}
       <div className="mx-auto max-w-5xl px-6 mb-4 text-center">
-        <p className="text-xs font-semibold uppercase tracking-widest text-[#94A3B8] mb-3">
+        <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-3">
           Client Stories
         </p>
-        <h2 className="text-3xl font-bold tracking-tight text-[#F1F5F9] sm:text-4xl">
+        <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
           Trusted by teams that ship
         </h2>
-        <p className="mt-3 text-base text-[#94A3B8] max-w-xl mx-auto">
+        <p className="mt-3 text-base text-muted-foreground max-w-xl mx-auto">
           Don&apos;t take our word for it — here&apos;s what our clients say about working with HiveSync.
         </p>
       </div>
 
       {/* Stagger carousel */}
       <div
-        className="relative w-full overflow-hidden bg-[#0F172A]/30"
+        className="relative w-full overflow-hidden"
         style={{ height: 600 }}
       >
         {testimonialsList.map((testimonial, index) => {
@@ -280,8 +280,8 @@ export const Testimonials: React.FC = () => {
             onClick={() => handleMove(-1)}
             className={cn(
               "flex h-14 w-14 items-center justify-center text-2xl transition-colors",
-              "bg-[#0F172A] border-[1px] border-[#1E293B] text-[#F1F5F9] hover:bg-[#3B82F6] hover:text-[#020617]",
-              "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3B82F6] focus-visible:ring-offset-2"
+              "bg-card border border-border text-foreground hover:bg-primary hover:text-primary-foreground",
+              "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
             )}
             aria-label="Previous testimonial"
           >
@@ -291,8 +291,8 @@ export const Testimonials: React.FC = () => {
             onClick={() => handleMove(1)}
             className={cn(
               "flex h-14 w-14 items-center justify-center text-2xl transition-colors",
-              "bg-[#0F172A] border-[1px] border-[#1E293B] text-[#F1F5F9] hover:bg-[#3B82F6] hover:text-[#020617]",
-              "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3B82F6] focus-visible:ring-offset-2"
+              "bg-card border border-border text-foreground hover:bg-primary hover:text-primary-foreground",
+              "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
             )}
             aria-label="Next testimonial"
           >

@@ -28,18 +28,15 @@ export const Hero = () => {
           <div className="absolute top-[20%] right-[10%] w-[40%] h-[40%] rounded-full bg-[#6366F1] blur-[100px] animate-pulse delay-1000" />
         </div>
 
-        {/* White Grid Pattern */}
+        {/* Grid Pattern */}
         <GridPattern
           width={60}
           height={60}
           x={-1}
           y={-1}
           strokeDasharray="4 4"
-          className="opacity-[0.15] [mask-image:radial-gradient(ellipse_at_center,white,transparent)] stroke-white fill-white"
+          className="opacity-[0.15] [mask-image:radial-gradient(ellipse_at_center,white,transparent)] stroke-foreground/40 fill-foreground/20"
         />
-
-        {/* Subtle dark overlay for readability */}
-        <div className="absolute inset-0 bg-[#020617]/40" />
       </div>
 
       {/* Content */}
@@ -104,17 +101,17 @@ export const Hero = () => {
 
           <a
             href="#pricing"
-            className="flex justify-center gap-4 items-center shadow-xl text-sm bg-white/5 backdrop-blur-md font-semibold isolation-auto border-white/10 before:absolute before:w-full before:transition-all before:duration-700 before:hover:w-full before:-left-full before:hover:left-0 before:rounded-full before:bg-blue-600 hover:text-white before:-z-10 before:aspect-square before:hover:scale-150 before:hover:duration-700 relative z-10 px-7 h-11 overflow-hidden border border-white/10 rounded-full group transition-all"
+            className="flex justify-center gap-4 items-center text-sm bg-foreground/5 backdrop-blur-md font-semibold text-foreground hover:text-primary-foreground isolation-auto before:absolute before:w-full before:transition-all before:duration-700 before:-left-full before:hover:left-0 before:rounded-full before:bg-primary before:-z-10 before:aspect-square before:hover:scale-150 before:hover:duration-700 relative z-10 px-7 h-11 overflow-hidden border border-border hover:border-primary rounded-full group transition-all shadow-sm"
           >
             Explore Options
             <svg
-              className="w-5 h-5 justify-end group-hover:rotate-90 group-hover:bg-white text-white ease-linear duration-300 rounded-full border border-white/20 group-hover:border-none p-1 rotate-45"
+              className="w-5 h-5 justify-end group-hover:rotate-90 ease-linear duration-300 rounded-full border border-border group-hover:border-primary-foreground p-1 rotate-45 transition-all"
               viewBox="0 0 16 19"
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
                 d="M7 18C7 18.5523 7.44772 19 8 19C8.55228 19 9 18.5523 9 18H7ZM8.70711 0.292893C8.31658 -0.0976311 7.68342 -0.0976311 7.29289 0.292893L0.928932 6.65685C0.538408 7.04738 0.538408 7.68054 0.928932 8.07107C1.31946 8.46159 1.95262 8.46159 2.34315 8.07107L8 2.41421L13.6569 8.07107C14.0474 8.46159 14.6805 8.46159 15.0711 8.07107C15.4616 7.68054 15.4616 7.04738 15.0711 6.65685L8.70711 0.292893ZM9 18L9 1H7L7 18H9Z"
-                className="fill-white group-hover:fill-blue-600 transition-colors"
+                className="fill-foreground group-hover:fill-primary-foreground transition-colors"
               ></path>
             </svg>
           </a>
@@ -131,8 +128,8 @@ export const Hero = () => {
             {/* Animated Border Gradient */}
             <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 via-white/10 to-blue-500/20 opacity-50 group-hover:opacity-100 transition-opacity" />
 
-            <div className="relative flex items-center gap-8 px-8 py-4 rounded-full bg-[#020617]/40 backdrop-blur-3xl border border-white/5 shadow-2xl overflow-hidden max-w-[90vw] sm:max-w-3xl">
-              <span className="text-[10px] font-black uppercase tracking-[0.3em] text-white/30 whitespace-nowrap border-r border-white/10 pr-8">Stacks</span>
+            <div className="relative flex items-center gap-8 px-8 py-4 rounded-full bg-card/80 backdrop-blur-3xl border border-border shadow-2xl overflow-hidden max-w-[90vw] sm:max-w-3xl">
+              <span className="text-[10px] font-black uppercase tracking-[0.3em] text-muted-foreground whitespace-nowrap border-r border-border pr-8">Stacks</span>
 
               <Marquee className="[--duration:40s] [--gap:3rem]" pauseOnHover>
                 {[
@@ -149,13 +146,13 @@ export const Hero = () => {
                   { name: "Framer Motion", slug: "framer" },
                   { name: "Redis", slug: "redis" }
                 ].map((logo) => (
-                  <div key={logo.slug} className="flex items-center px-4 grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-500 cursor-pointer group/logo">
+                  <div key={logo.slug} className="flex items-center px-4 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-500 cursor-pointer group/logo">
                     <Image
-                      src={`https://cdn.simpleicons.org/${logo.slug}/white`}
+                      src={`https://cdn.simpleicons.org/${logo.slug}`}
                       alt={logo.name}
                       width={24}
                       height={24}
-                      className="h-6 w-auto object-contain brightness-0 invert"
+                      className="h-6 w-auto object-contain"
                       unoptimized
                     />
                   </div>

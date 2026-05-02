@@ -4,36 +4,35 @@
 
 @layer base {
   :root {
-    /* Set dark mode as default per DESIGN.md landing page aesthetic */
-    --background: 224 71% 4%;        /* gray-950 #020617 */
-    --foreground: 210 40% 96%;       /* gray-100 #F1F5F9 */
+    --background: 0 0% 100%;          /* white #FFFFFF */
+    --foreground: 222 47% 11%;        /* slate-900 #0F172A */
 
-    --card: 222 47% 11%;             /* gray-900 #0F172A */
-    --card-foreground: 210 40% 96%;
+    --card: 0 0% 100%;                /* white */
+    --card-foreground: 222 47% 11%;
 
-    --popover: 222 47% 11%;
-    --popover-foreground: 210 40% 96%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
 
-    --primary: 217 91% 60%;          /* blue-500 #3B82F6 */
-    --primary-foreground: 224 71% 4%;
+    --primary: 217 91% 60%;           /* blue-500 #3B82F6 */
+    --primary-foreground: 0 0% 100%;  /* white on blue */
 
-    --secondary: 217 33% 17%;        /* gray-800 #1E293B */
-    --secondary-foreground: 210 40% 96%;
+    --secondary: 210 40% 96%;         /* slate-100 #F1F5F9 */
+    --secondary-foreground: 222 47% 11%;
 
-    --muted: 217 33% 17%;
-    --muted-foreground: 215 20% 65%; /* gray-400 #94A3B8 */
+    --muted: 210 40% 96%;             /* slate-100 */
+    --muted-foreground: 215 16% 47%;  /* slate-500 #64748B */
 
-    --accent: 217 33% 17%;
-    --accent-foreground: 210 40% 96%;
+    --accent: 210 40% 96%;            /* slate-100 */
+    --accent-foreground: 222 47% 11%;
 
-    --destructive: 0 62% 30%;
-    --destructive-foreground: 0 0% 98%;
+    --destructive: 0 84% 60%;         /* red-500 */
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 217 33% 17%;           /* gray-800 */
-    --input: 217 33% 17%;
+    --border: 214 32% 91%;            /* slate-200 #E2E8F0 */
+    --input: 214 32% 91%;
     --ring: 217 91% 60%;
 
-    /* Data viz — categorical per DESIGN.md §1.6 */
+    /* Data viz — categorical */
     --chart-1: 217 91% 60%;
     --chart-2: 258 90% 66%;
     --chart-3: 160 84% 39%;

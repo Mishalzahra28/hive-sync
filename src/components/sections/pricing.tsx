@@ -124,11 +124,11 @@ export const Pricing = () => {
   const [contractLength, setContractLength] = useState(12)
 
   return (
-    <section className="relative overflow-hidden py-24 bg-[#020617]" id="pricing">
+    <section className="relative overflow-hidden py-24 bg-background" id="pricing">
       {/* Background Glows */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full pointer-events-none overflow-hidden">
-        <div className="absolute -top-[10%] left-[10%] w-[50%] h-[50%] rounded-full bg-[#3B82F6]/10 blur-[120px]" />
-        <div className="absolute top-[30%] -right-[10%] w-[50%] h-[50%] rounded-full bg-[#8B5CF6]/10 blur-[120px]" />
+        <div className="absolute -top-[10%] left-[10%] w-[50%] h-[50%] rounded-full bg-primary/10 blur-[120px]" />
+        <div className="absolute top-[30%] -right-[10%] w-[50%] h-[50%] rounded-full bg-secondary/10 blur-[120px]" />
       </div>
 
       <div className="relative z-10 mx-auto max-w-7xl px-6">
@@ -139,18 +139,18 @@ export const Pricing = () => {
           viewport={{ once: true }}
         >
           <div className="max-w-2xl">
-            <div className="inline-flex items-center gap-2 mb-6 px-3 py-1.5 rounded-full border border-[#3B82F6]/20 bg-[#3B82F6]/5">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#3B82F6] animate-pulse" />
-              <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#3B82F6]">Pricing</p>
+            <div className="inline-flex items-center gap-2 mb-6 px-3 py-1.5 rounded-full border border-primary/20 bg-primary/5">
+              <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
+              <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-primary">Pricing</p>
             </div>
 
-            <h2 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-[64px] leading-[1.1] text-[#F1F5F9] max-w-xl">
-              Transparent Pricing, Zero <span className="text-[#3B82F6]">Surprises.</span>
+            <h2 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-[64px] leading-[1.1] text-foreground max-w-xl">
+              Transparent Pricing, Zero <span className="text-primary">Surprises.</span>
             </h2>
           </div>
 
           <div className="lg:max-w-sm">
-            <p className="text-[17px] text-[#94A3B8] leading-relaxed">
+            <p className="text-[17px] text-muted-foreground leading-relaxed">
               Two ways to work with Hive Sync: dedicated team outsourcing for ongoing velocity, or fixed-scope engagements for projects that demand clear milestones.
             </p>
           </div>
@@ -164,42 +164,42 @@ export const Pricing = () => {
           viewport={{ once: true }}
           transition={{ delay: 0.1 }}
         >
-          <h3 className={cn("text-xl md:text-2xl font-medium text-[#F1F5F9] mb-6", urbanist.className)}>
+          <h3 className={cn("text-xl md:text-2xl font-medium text-foreground mb-6", urbanist.className)}>
             How do you want to work?
           </h3>
           
-          <div className="relative inline-flex p-1 rounded-full bg-[#1E293B]/40 border border-[#1E293B] backdrop-blur-md">
+          <div className="relative inline-flex p-1 rounded-full bg-muted/40 border border-border backdrop-blur-md">
             <button
               onClick={() => setWorkType('resource')}
               className={cn(
                 "relative z-10 px-6 py-2.5 rounded-full text-sm font-bold transition-colors duration-300",
-                workType === 'resource' ? "text-[#020617]" : "text-[#94A3B8] hover:text-[#F1F5F9]"
+                workType === 'resource' ? "text-primary-foreground" : "text-muted-foreground hover:text-foreground"
               )}
             >
               {workType === 'resource' && (
                 <motion.div
                   layoutId="work-type-pill"
-                  className="absolute inset-0 bg-[#F1F5F9] rounded-full -z-10 shadow-lg"
+                  className="absolute inset-0 bg-primary rounded-full shadow-lg"
                   transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                 />
               )}
-              I need a resource
+              <span className="relative z-10">I need a resource</span>
             </button>
             <button
               onClick={() => setWorkType('project')}
               className={cn(
                 "relative z-10 px-6 py-2.5 rounded-full text-sm font-bold transition-colors duration-300",
-                workType === 'project' ? "text-[#020617]" : "text-[#94A3B8] hover:text-[#F1F5F9]"
+                workType === 'project' ? "text-primary-foreground" : "text-muted-foreground hover:text-foreground"
               )}
             >
               {workType === 'project' && (
                 <motion.div
                   layoutId="work-type-pill"
-                  className="absolute inset-0 bg-[#F1F5F9] rounded-full -z-10 shadow-lg"
+                  className="absolute inset-0 bg-primary rounded-full shadow-lg"
                   transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                 />
               )}
-              I have a project
+              <span className="relative z-10">I have a project</span>
             </button>
           </div>
         </motion.div>
@@ -222,38 +222,31 @@ export const Pricing = () => {
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1, duration: 0.5 }}
                   className={cn(
-                    "group relative flex flex-col p-8 md:p-10 rounded-[56px] transition-all duration-700 overflow-hidden",
+                    "group relative flex flex-col p-8 md:p-10 rounded-[56px] transition-all duration-700 overflow-hidden shadow-xl",
                     tier.name === 'Custom Project'
-                      ? "bg-white text-black"
-                      : "bg-[#0A0F1E]/40 backdrop-blur-3xl border border-white/10 hover:border-white/20 shadow-[0_40px_80px_-15px_rgba(0,0,0,0.5)]"
+                      ? "bg-primary/10 border border-primary/30 hover:border-primary/50 backdrop-blur-sm"
+                      : "bg-card border border-border hover:border-primary/40 hover:shadow-2xl"
                   )}
                 >
-                  {/* Premium Shine Sweep Effect */}
-                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-1000 pointer-events-none">
-                    <div className="absolute inset-[-100%] bg-gradient-to-tr from-transparent via-white/[0.03] to-transparent rotate-45 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1500 ease-in-out" />
-                  </div>
-
                   {/* Dynamic Accent Glow */}
-                  {tier.name !== 'Custom Project' && (
-                    <div 
-                      className="absolute -top-32 -right-32 size-80 rounded-full blur-[100px] opacity-20 group-hover:opacity-40 transition-opacity duration-700" 
-                      style={{ backgroundColor: tier.accent }}
-                    />
-                  )}
+                  <div
+                    className="absolute -top-32 -right-32 size-80 rounded-full blur-[100px] opacity-10 group-hover:opacity-25 transition-opacity duration-700"
+                    style={{ backgroundColor: tier.accent }}
+                  />
 
                   <div className="relative z-10 mb-10">
-                    <h3 className={cn("text-3xl font-bold tracking-tight mb-3", urbanist.className, tier.name === 'Custom Project' ? "text-black" : "text-white")}>
+                    <h3 className={cn("text-3xl font-bold tracking-tight mb-3 text-foreground", urbanist.className)}>
                       {tier.name}
                     </h3>
 
                     <div className={cn(
                       "inline-flex px-4 py-1.5 rounded-full text-[11px] font-black uppercase tracking-[0.15em] mb-8",
-                      tier.name === 'Custom Project' ? "bg-black/5 text-black" : "bg-white/5 text-white/40"
+                      tier.name === 'Custom Project' ? "bg-primary/20 text-primary" : "bg-muted text-muted-foreground"
                     )}>
                       {tier.price}
                     </div>
 
-                    <p className={cn("text-base leading-relaxed", tier.name === 'Custom Project' ? "text-black/60" : "text-white/40")}>
+                    <p className="text-base leading-relaxed text-muted-foreground">
                       {tier.description}
                     </p>
                   </div>
@@ -262,24 +255,21 @@ export const Pricing = () => {
                     {tier.features.map((feat) => (
                       <div key={feat} className="flex items-start gap-4">
                         <div className={cn(
-                          "size-5 rounded-full flex items-center justify-center mt-0.5 flex-shrink-0",
-                          tier.name === 'Custom Project' ? "bg-black/10" : "bg-white/5 border border-white/10"
+                          "size-5 rounded-full flex items-center justify-center mt-0.5 flex-shrink-0 border",
+                          tier.name === 'Custom Project'
+                            ? "bg-card border-primary/30"
+                            : "bg-primary/10 border-primary/20"
                         )}>
-                          <Check className={cn("size-3", tier.name === 'Custom Project' ? "text-black" : "text-white")} strokeWidth={4} />
+                          <Check className="size-3 text-primary" strokeWidth={4} />
                         </div>
-                        <span className={cn("text-[15px] font-medium transition-colors duration-300", tier.name === 'Custom Project' ? "text-black/80" : "text-white/60 group-hover:text-white/90")}>{feat}</span>
+                        <span className="text-[15px] font-medium text-foreground/80">{feat}</span>
                       </div>
                     ))}
                   </div>
 
                   <Link
                     href={`${paths.getStarted}?tier=${encodeURIComponent(tier.name)}`}
-                    className={cn(
-                      "relative z-10 w-full py-5 rounded-[24px] font-black text-sm tracking-widest uppercase transition-all duration-300 active:scale-[0.97] text-center",
-                      tier.name === 'Custom Project'
-                        ? "bg-black text-white hover:bg-black/90 shadow-[0_20px_40px_rgba(0,0,0,0.2)]"
-                        : "bg-white text-black hover:bg-white/90 shadow-[0_20px_40px_rgba(255,255,255,0.1)] hover:shadow-[0_20px_50px_rgba(255,255,255,0.15)]"
-                    )}
+                    className="relative z-10 w-full py-5 rounded-[24px] font-black text-sm tracking-widest uppercase transition-all duration-300 active:scale-[0.97] text-center shadow-lg bg-primary text-primary-foreground hover:bg-primary/90"
                   >
                     {tier.cta}
                   </Link>
@@ -299,9 +289,9 @@ export const Pricing = () => {
                 {/* Left Column: Process Timeline */}
                 <div className="relative">
                   <div className="sticky top-24">
-                    <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-[#3B82F6]/5 border border-[#3B82F6]/10 mb-10">
-                      <span className="size-1.5 rounded-full bg-[#3B82F6] animate-pulse" />
-                      <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#3B82F6]">How it works</span>
+                    <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-primary/5 border border-primary/10 mb-10">
+                      <span className="size-1.5 rounded-full bg-primary animate-pulse" />
+                      <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-primary">How it works</span>
                     </div>
 
                     <div className="flex flex-col gap-12 relative">
@@ -316,17 +306,17 @@ export const Pricing = () => {
                           transition={{ delay: index * 0.1 }}
                           className="flex gap-6 items-start group relative z-10"
                         >
-                          <div className="size-14 rounded-2xl bg-[#0F172A] border border-[#1E293B] flex items-center justify-center flex-shrink-0 group-hover:border-[#3B82F6]/50 transition-colors shadow-2xl">
-                            <step.icon className="size-6 text-[#3B82F6]" />
-                            <div className="absolute -bottom-2 -right-2 size-6 rounded-full bg-[#1E293B] border border-[#3B82F6]/20 flex items-center justify-center text-[10px] font-bold text-[#3B82F6]">
+                          <div className="size-14 rounded-2xl bg-card border border-border flex items-center justify-center flex-shrink-0 group-hover:border-primary/50 transition-colors shadow-2xl">
+                            <step.icon className="size-6 text-primary" />
+                            <div className="absolute -bottom-2 -right-2 size-6 rounded-full bg-muted border border-primary/20 flex items-center justify-center text-[10px] font-bold text-primary">
                               0{index + 1}
                             </div>
                           </div>
                           <div>
-                            <h4 className={cn("text-lg font-bold text-[#F1F5F9] mb-2", urbanist.className)}>
+                            <h4 className={cn("text-lg font-bold text-foreground mb-2", urbanist.className)}>
                               {step.title}
                             </h4>
-                            <p className="text-[#94A3B8] text-sm leading-relaxed">
+                            <p className="text-muted-foreground text-sm leading-relaxed">
                               {step.description}
                             </p>
                           </div>
@@ -340,7 +330,7 @@ export const Pricing = () => {
                 <div className="flex flex-col gap-12">
                   {/* Selection Controls (iPhone Glass Effect) */}
                   <div className="flex flex-col items-center lg:items-start">
-                    <div className="p-2 rounded-[28px] bg-white/[0.02] backdrop-blur-2xl border border-white/10 flex flex-wrap gap-2 shadow-[0_20px_50px_rgba(0,0,0,0.2)]">
+                    <div className="p-2 rounded-[28px] bg-card border border-border flex flex-wrap gap-2 shadow-lg">
                       {contractLengths.map((len) => (
                         <button
                           key={len.value}
@@ -348,25 +338,25 @@ export const Pricing = () => {
                           className={cn(
                             "relative px-8 py-4 rounded-[22px] text-[15px] font-bold transition-all duration-500",
                             contractLength === len.value
-                              ? "text-white"
-                              : "text-white/30 hover:text-white/60 hover:bg-white/[0.02]"
+                              ? "text-primary-foreground"
+                              : "text-muted-foreground hover:text-foreground hover:bg-foreground/[0.03]"
                           )}
                         >
                           {contractLength === len.value && (
                             <motion.div
                               layoutId="contract-pill"
-                              className="absolute inset-0 bg-white/[0.08] border border-white/20 backdrop-blur-md rounded-[22px] -z-10 shadow-[0_10px_20px_rgba(0,0,0,0.2)]"
+                              className="absolute inset-0 bg-primary rounded-[22px] shadow-md"
                               transition={{ type: "spring", bounce: 0.1, duration: 0.6 }}
                             />
                           )}
                           <span className="relative z-10">{len.label}</span>
-                          
+
                           {len.popular && (
                             <span className={cn(
-                              "absolute -top-4 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full text-[8px] font-black uppercase tracking-[0.1em] shadow-2xl border transition-all duration-500 whitespace-nowrap",
-                              contractLength === len.value 
-                                ? "bg-white text-[#3B82F6] border-white shadow-blue-500/20" 
-                                : "bg-[#1E293B] text-white/70 border-white/10"
+                              "absolute -top-4 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full text-[8px] font-black uppercase tracking-[0.1em] shadow border transition-all duration-500 whitespace-nowrap",
+                              contractLength === len.value
+                                ? "bg-primary text-primary-foreground border-primary"
+                                : "bg-muted text-muted-foreground border-border"
                             )}>
                               Best Value
                             </span>
@@ -374,7 +364,7 @@ export const Pricing = () => {
                         </button>
                       ))}
                     </div>
-                    <p className="mt-5 text-[13px] text-white/40 font-medium px-4">
+                    <p className="mt-5 text-[13px] text-muted-foreground font-medium px-4">
                       Rates scale dynamically with your commitment level.
                     </p>
                   </div>
@@ -382,23 +372,23 @@ export const Pricing = () => {
                   {/* Resource Cards (Glass Effect) */}
                   <div className="grid grid-cols-1 xl:grid-cols-2 gap-8">
                     {/* Developer Card */}
-                    <motion.div 
+                    <motion.div
                       whileHover={{ y: -8, scale: 1.01 }}
-                      className="group relative p-10 rounded-[56px] bg-white/[0.03] backdrop-blur-3xl border border-white/10 hover:border-white/20 transition-all duration-500 overflow-hidden shadow-[0_30px_60px_rgba(0,0,0,0.25)]"
+                      className="group relative p-10 rounded-[56px] bg-card border border-border hover:border-primary/40 transition-all duration-500 overflow-hidden shadow-xl"
                     >
-                      <div className="absolute -top-24 -right-24 size-64 bg-blue-500/10 rounded-full blur-[80px] group-hover:bg-blue-500/20 transition-colors duration-700" />
-                      
+                      <div className="absolute -top-24 -right-24 size-64 bg-primary/10 rounded-full blur-[80px] group-hover:bg-primary/20 transition-colors duration-700" />
+
                       <div className="flex justify-between items-start mb-12 relative z-10">
                         <div className="max-w-[200px]">
-                          <h3 className={cn("text-3xl font-bold text-white tracking-tight", urbanist.className)}>Full-Stack Developer</h3>
-                          <p className="text-[11px] text-white/40 mt-2 leading-relaxed">
+                          <h3 className={cn("text-3xl font-bold text-foreground tracking-tight", urbanist.className)}>Full-Stack Developer</h3>
+                          <p className="text-[11px] text-muted-foreground mt-2 leading-relaxed">
                             Unlock developer discounts by contract length. Rate updates automatically.
                           </p>
                         </div>
                         <div className="text-right">
-                          <div className={cn("text-5xl font-bold text-white", syneTactile.className)}>
+                          <div className={cn("text-5xl font-bold text-foreground", syneTactile.className)}>
                             ${contractLength === 3 ? 38 : contractLength === 6 ? 35 : contractLength === 12 ? 31 : 28}
-                            <span className="text-lg text-white/40 ml-1 font-sans">/hr</span>
+                            <span className="text-lg text-muted-foreground ml-1 font-sans">/hr</span>
                           </div>
                         </div>
                       </div>
@@ -412,37 +402,40 @@ export const Pricing = () => {
                           'Senior technical expertise'
                         ].map((feat) => (
                           <div key={feat} className="flex items-center gap-4">
-                            <div className="size-6 rounded-full bg-blue-400/10 flex items-center justify-center flex-shrink-0 border border-blue-400/20">
-                              <Check className="size-3.5 text-blue-400" strokeWidth={3} />
+                            <div className="size-6 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 border border-primary/20">
+                              <Check className="size-3.5 text-primary" strokeWidth={3} />
                             </div>
-                            <span className="text-white/60 text-sm font-medium group-hover:text-white/90 transition-colors">{feat}</span>
+                            <span className="text-foreground/80 text-sm font-medium">{feat}</span>
                           </div>
                         ))}
                       </div>
 
-                      <button className="w-full py-5 rounded-[24px] bg-white text-black font-black text-sm transition-all hover:bg-white/90 active:scale-[0.97] relative z-10 shadow-[0_15px_30px_rgba(255,255,255,0.1)]">
+                      <Link
+                        href={`${paths.getStarted}?tier=${encodeURIComponent('Full-Stack Developer')}`}
+                        className="block w-full py-5 rounded-[24px] bg-primary text-primary-foreground font-black text-sm text-center transition-all hover:bg-primary/90 active:scale-[0.97] relative z-10 shadow-lg"
+                      >
                         Hire Developer Resource
-                      </button>
+                      </Link>
                     </motion.div>
 
                     {/* Designer Card */}
-                    <motion.div 
+                    <motion.div
                       whileHover={{ y: -8, scale: 1.01 }}
-                      className="group relative p-10 rounded-[56px] bg-white/[0.03] backdrop-blur-3xl border border-white/10 hover:border-white/20 transition-all duration-500 overflow-hidden shadow-[0_30px_60px_rgba(0,0,0,0.25)]"
+                      className="group relative p-10 rounded-[56px] bg-card border border-border hover:border-primary/40 transition-all duration-500 overflow-hidden shadow-xl"
                     >
-                      <div className="absolute -top-24 -right-24 size-64 bg-purple-500/10 rounded-full blur-[80px] group-hover:bg-purple-500/20 transition-colors duration-700" />
+                      <div className="absolute -top-24 -right-24 size-64 bg-secondary/10 rounded-full blur-[80px] group-hover:bg-secondary/20 transition-colors duration-700" />
 
                       <div className="flex justify-between items-start mb-12 relative z-10">
                         <div className="max-w-[200px]">
-                          <h3 className={cn("text-3xl font-bold text-white tracking-tight", urbanist.className)}>Product Designer</h3>
-                          <p className="text-[11px] text-white/40 mt-2 leading-relaxed">
+                          <h3 className={cn("text-3xl font-bold text-foreground tracking-tight", urbanist.className)}>Product Designer</h3>
+                          <p className="text-[11px] text-muted-foreground mt-2 leading-relaxed">
                             Unlock designer discounts by contract length. Rate updates automatically.
                           </p>
                         </div>
                         <div className="text-right">
-                          <div className={cn("text-5xl font-bold text-white", syneTactile.className)}>
+                          <div className={cn("text-5xl font-bold text-foreground", syneTactile.className)}>
                             ${contractLength === 3 ? 30 : contractLength === 6 ? 27 : contractLength === 12 ? 24 : 21}
-                            <span className="text-lg text-white/40 ml-1 font-sans">/hr</span>
+                            <span className="text-lg text-muted-foreground ml-1 font-sans">/hr</span>
                           </div>
                         </div>
                       </div>
@@ -456,17 +449,20 @@ export const Pricing = () => {
                           'Systems-thinking approach'
                         ].map((feat) => (
                           <div key={feat} className="flex items-center gap-4">
-                            <div className="size-6 rounded-full bg-purple-400/10 flex items-center justify-center flex-shrink-0 border border-purple-400/20">
-                              <Check className="size-3.5 text-purple-400" strokeWidth={3} />
+                            <div className="size-6 rounded-full bg-secondary/10 flex items-center justify-center flex-shrink-0 border border-secondary/20">
+                              <Check className="size-3.5 text-secondary" strokeWidth={3} />
                             </div>
-                            <span className="text-white/60 text-sm font-medium group-hover:text-white/90 transition-colors">{feat}</span>
+                            <span className="text-foreground/80 text-sm font-medium">{feat}</span>
                           </div>
                         ))}
                       </div>
 
-                      <button className="w-full py-5 rounded-[24px] bg-gradient-to-r from-purple-500 to-blue-500 text-white font-black text-sm transition-all hover:opacity-90 active:scale-[0.97] relative z-10 shadow-[0_15px_30px_rgba(139,92,246,0.2)]">
+                      <Link
+                        href={`${paths.getStarted}?tier=${encodeURIComponent('Product Designer')}`}
+                        className="block w-full py-5 rounded-[24px] bg-gradient-to-r from-secondary to-primary text-primary-foreground font-black text-sm text-center transition-all hover:opacity-90 active:scale-[0.97] relative z-10 shadow-lg"
+                      >
                         Hire Designer Resource
-                      </button>
+                      </Link>
                     </motion.div>
                   </div>
                 </div>

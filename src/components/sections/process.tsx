@@ -132,7 +132,7 @@ const DesktopCard: React.FC<{ step: Step; index: number }> = ({ step, index: _in
       </div>
 
       <div
-        className="relative rounded-[42px] border-[1px] border-[#1E293B] px-8 pt-12 pb-10 overflow-hidden bg-[#0F172A] shadow-2xl"
+        className="relative rounded-[42px] border border-border px-8 pt-12 pb-10 overflow-hidden bg-card shadow-2xl"
       >
         <div className="relative mb-4 inline-flex h-[93px] items-center">
           <span
@@ -143,10 +143,10 @@ const DesktopCard: React.FC<{ step: Step; index: number }> = ({ step, index: _in
           </span>
         </div>
 
-        <h3 className={cn("mb-4 text-[40px] font-semibold leading-[48px] tracking-tight text-[#F1F5F9]", urbanist.className)}>
+        <h3 className={cn("mb-4 text-[40px] font-semibold leading-[48px] tracking-tight text-foreground", urbanist.className)}>
           {step.title}
         </h3>
-        <p className="text-[20px] leading-[28px] font-normal text-[#94A3B8]">
+        <p className="text-[20px] leading-[28px] font-normal text-muted-foreground">
           {step.description}
         </p>
       </div>
@@ -156,7 +156,7 @@ const DesktopCard: React.FC<{ step: Step; index: number }> = ({ step, index: _in
 
 export const Process = () => {
   return (
-    <section className="relative overflow-hidden py-24 bg-[#020617]" id="process">
+    <section className="relative overflow-hidden py-24 bg-background" id="process">
       {/* Immersive Background Gradients - Scattered across the full section */}
       <div className="absolute top-0 left-0 w-[800px] h-[600px] bg-[#3B82F6]/15 blur-[150px] rounded-full pointer-events-none -translate-x-1/2 -translate-y-1/2" />
       <div className="absolute bottom-0 right-0 w-[800px] h-[600px] bg-[#6366F1]/15 blur-[150px] rounded-full pointer-events-none translate-x-1/2 translate-y-1/2" />
@@ -170,7 +170,7 @@ export const Process = () => {
         y={-1}
         strokeDasharray="4 4"
         className={cn(
-          "[mask-image:radial-gradient(1500px_circle_at_center,white,transparent)] opacity-60 stroke-white/20",
+          "[mask-image:radial-gradient(1500px_circle_at_center,white,transparent)] opacity-60 stroke-foreground/15",
         )}
       />
       <div className="relative z-10 mx-auto max-w-5xl px-6">
@@ -180,16 +180,16 @@ export const Process = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <div className="inline-flex items-center gap-2 mb-4 px-3 py-1.5 rounded-full border border-[#3B82F6]/20 bg-[#3B82F6]/5">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#3B82F6] animate-pulse" />
-            <p className="text-[11px] font-semibold uppercase tracking-widest text-[#3B82F6]">How We Work</p>
+          <div className="inline-flex items-center gap-2 mb-4 px-3 py-1.5 rounded-full border border-primary/20 bg-primary/5">
+            <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
+            <p className="text-[11px] font-semibold uppercase tracking-widest text-primary">How We Work</p>
           </div>
 
-          <h2 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-[56px] leading-tight text-[#F1F5F9]">
-            The simple <span className="text-[#3B82F6]">process.</span>
+          <h2 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-[56px] leading-tight text-foreground">
+            The simple <span className="text-primary">process.</span>
           </h2>
 
-          <p className="mt-4 text-[15px] text-[#94A3B8] max-w-lg mx-auto">
+          <p className="mt-4 text-[15px] text-muted-foreground max-w-lg mx-auto">
             Five clear steps from first conversation to successful launch — and beyond.
           </p>
         </motion.div>
@@ -265,7 +265,7 @@ export const Process = () => {
                     viewport={{ once: true }}
                     transition={{ duration: 0.45 }}
                   >
-                    <div className="relative rounded-[32px] border-[1px] border-[#1E293B] p-6 overflow-hidden bg-[#0F172A] shadow-2xl">
+                    <div className="relative rounded-[32px] border border-border p-6 overflow-hidden bg-card shadow-2xl">
                       <div className="relative mb-2 inline-flex h-[60px] items-center">
                         <span
                           className={cn("text-4xl relative z-10", syneTactile.className)}
@@ -275,10 +275,10 @@ export const Process = () => {
                         </span>
                       </div>
 
-                      <h3 className={cn("mb-2 text-2xl font-semibold leading-tight text-[#F1F5F9]", urbanist.className)}>
+                      <h3 className={cn("mb-2 text-2xl font-semibold leading-tight text-foreground", urbanist.className)}>
                         {step.title}
                       </h3>
-                      <p className="text-[16px] leading-[22px] font-normal text-[#94A3B8]">
+                      <p className="text-[16px] leading-[22px] font-normal text-muted-foreground">
                         {step.description}
                       </p>
                     </div>

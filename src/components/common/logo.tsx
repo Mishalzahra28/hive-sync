@@ -1,10 +1,9 @@
 'use client';
+
 import Image from 'next/image';
 import Link from 'next/link';
 
 import { cn } from '@/lib/utils';
-
-import { appConfig } from '@/config/app';
 
 type Props = {
   className?: string;
@@ -23,25 +22,27 @@ const Logo = ({
 }: Props) => {
   const heightMultiplier = 9 / 16;
 
+  const img = (
+    <Image
+      src="/logo.png"
+      alt="Hive Sync"
+      height={width * heightMultiplier}
+      width={width}
+      priority
+      className={cn(
+        'h-9 w-auto object-contain drop-shadow-[0_2px_6px_rgba(15,23,42,0.35)]',
+        className,
+      )}
+    />
+  );
+
   return (
-    <div className={cn('flex h-fit w-fit justify-center', containerStyles)}>
+    <div className={cn('flex h-fit w-fit items-center', containerStyles)}>
       {unlinked ? (
-        <Image
-          src={appConfig.logo}
-          alt='Logo'
-          height={width * heightMultiplier}
-          width={width}
-          className={cn(className)}
-        />
+        img
       ) : (
-        <Link href='/' className={cn(linkStyles)}>
-          <Image
-            src="/logo.png"
-            alt='Logo'
-            height={width * heightMultiplier}
-            width={width}
-            className={cn(className)}
-          />
+        <Link href="/" className={cn(linkStyles)}>
+          {img}
         </Link>
       )}
     </div>

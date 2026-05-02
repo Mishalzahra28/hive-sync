@@ -35,7 +35,7 @@ const caseStudies = [
 
 export const CaseStudies = () => {
   return (
-    <section className="py-24 bg-[#020617]" id="work">
+    <section className="py-24 bg-background" id="work">
       <div className="mx-auto max-w-7xl px-6">
         <motion.div
           className="mb-16 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-10"
@@ -44,18 +44,18 @@ export const CaseStudies = () => {
           viewport={{ once: true }}
         >
           <div className="max-w-2xl">
-            <div className="inline-flex items-center gap-2 mb-6 px-3 py-1.5 rounded-full border border-white/10 bg-white/5">
-              <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
-              <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-white">Work</p>
+            <div className="inline-flex items-center gap-2 mb-6 px-3 py-1.5 rounded-full border border-primary/20 bg-primary/5">
+              <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
+              <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-primary">Work</p>
             </div>
 
-            <h2 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-[64px] leading-[1.1] text-[#F1F5F9] max-w-xl">
+            <h2 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-[64px] leading-[1.1] text-foreground max-w-xl">
               Client Results.
             </h2>
           </div>
 
           <div className="lg:max-w-sm">
-            <p className="text-[17px] text-[#94A3B8] leading-relaxed">
+            <p className="text-[17px] text-muted-foreground leading-relaxed">
               Real outcomes for Fortune 500 teams, universities, and high-growth startups that trusted us to deliver.
             </p>
           </div>
@@ -81,40 +81,35 @@ export const CaseStudies = () => {
                   />
                 </div>
 
-                {/* Bottom Gradient Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-80 transition-opacity group-hover:opacity-100" />
+                {/* Soft fade so the light info bar reads on busy images */}
+                <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-background/60 to-transparent pointer-events-none" />
 
-                {/* Glass Info Bar */}
-                <div className="absolute bottom-6 left-6 right-6 p-6 rounded-[32px] bg-black/20 backdrop-blur-xl border border-white/10 flex items-center justify-between transition-all duration-500 group-hover:bg-white/5 group-hover:border-white/20 shadow-2xl">
+                {/* Light Glass Info Bar */}
+                <div className="absolute bottom-6 left-6 right-6 p-6 rounded-[32px] bg-card/40 backdrop-blur-2xl border border-white/40 flex items-center justify-between transition-all duration-500 group-hover:bg-card/60 group-hover:border-white/60 shadow-xl">
                   <div className="flex items-center gap-5">
-                    <div className="size-12 rounded-xl bg-white flex items-center justify-center p-2 shadow-inner overflow-hidden">
-                      <Image 
-                        src={study.logo} 
-                        alt={study.client} 
+                    <div className="size-12 rounded-xl bg-background flex items-center justify-center p-2 shadow-inner overflow-hidden border border-border">
+                      <Image
+                        src={study.logo}
+                        alt={study.client}
                         width={48}
                         height={48}
-                        className="w-full h-full object-contain grayscale-0" 
+                        className="w-full h-full object-contain grayscale-0"
                         unoptimized
                       />
                     </div>
                     <div>
-                      <h3 className={cn("text-xl font-bold text-white", urbanist.className)}>
+                      <h3 className={cn("text-xl font-bold text-foreground", urbanist.className)}>
                         {study.client}
                       </h3>
-                      <p className="text-white/50 text-sm font-medium">
+                      <p className="text-muted-foreground text-sm font-medium">
                         {study.project}
                       </p>
                     </div>
                   </div>
 
-                  <div className="size-12 rounded-2xl bg-blue-600 flex items-center justify-center text-white transition-all duration-500 group-hover:scale-110 shadow-[0_0_20px_rgba(37,99,235,0.3)] group-hover:shadow-[0_0_30px_rgba(37,99,235,0.5)]">
+                  <div className="size-12 rounded-2xl bg-primary flex items-center justify-center text-primary-foreground transition-all duration-500 group-hover:scale-110 shadow-md group-hover:shadow-lg">
                     <LinkIcon className="size-5" />
                   </div>
-                </div>
-
-                {/* Hover Light Sweep */}
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-1000 pointer-events-none">
-                  <div className="absolute inset-[-100%] bg-gradient-to-tr from-transparent via-white/[0.05] to-transparent rotate-45 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1500 ease-in-out" />
                 </div>
               </motion.div>
             </Link>
