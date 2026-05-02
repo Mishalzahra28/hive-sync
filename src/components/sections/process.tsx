@@ -6,6 +6,8 @@ import { motion } from 'motion/react'
 import { Syne_Tactile, Urbanist } from 'next/font/google'
 import React from 'react'
 
+import { GridPattern } from '@/components/ui/grid-pattern'
+
 import { cn } from '@/lib/utils'
 
 const syneTactile = Syne_Tactile({
@@ -154,7 +156,23 @@ const DesktopCard: React.FC<{ step: Step; index: number }> = ({ step, index: _in
 
 export const Process = () => {
   return (
-    <section className="relative overflow-hidden py-24 bg-[#020617]">
+    <section className="relative overflow-hidden py-24 bg-[#020617]" id="process">
+      {/* Immersive Background Gradients - Scattered across the full section */}
+      <div className="absolute top-0 left-0 w-[800px] h-[600px] bg-[#3B82F6]/15 blur-[150px] rounded-full pointer-events-none -translate-x-1/2 -translate-y-1/2" />
+      <div className="absolute bottom-0 right-0 w-[800px] h-[600px] bg-[#6366F1]/15 blur-[150px] rounded-full pointer-events-none translate-x-1/2 translate-y-1/2" />
+      <div className="absolute top-1/2 right-[-10%] w-[600px] h-[600px] bg-[#3B82F6]/10 blur-[130px] rounded-full pointer-events-none" />
+      <div className="absolute bottom-1/4 left-[-5%] w-[500px] h-[500px] bg-[#6366F1]/10 blur-[120px] rounded-full pointer-events-none" />
+      
+      <GridPattern
+        width={120}
+        height={120}
+        x={-1}
+        y={-1}
+        strokeDasharray="4 4"
+        className={cn(
+          "[mask-image:radial-gradient(1500px_circle_at_center,white,transparent)] opacity-60 stroke-white/20",
+        )}
+      />
       <div className="relative z-10 mx-auto max-w-5xl px-6">
         <motion.div
           className="mb-20 text-center"
@@ -270,24 +288,6 @@ export const Process = () => {
             )
           })}
         </div>
-
-        {/* ── CTA ── */}
-        <motion.div
-          className="mt-20 text-center"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-        >
-          <a
-            href="#contact"
-            className="inline-flex items-center gap-2 rounded-full px-8 py-3.5 text-sm font-semibold text-[#020617] bg-[#3B82F6] transition-all hover:scale-105 active:scale-[0.97] shadow-[0_0_20px_rgba(59,130,246,0.3)]"
-          >
-            Start Your Project
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </a>
-        </motion.div>
       </div>
     </section>
   )

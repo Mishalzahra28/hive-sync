@@ -1,5 +1,7 @@
+import { CaseStudies } from '@/components/sections/case-studies';
 import GrowthBanner from '@/components/sections/growth-banner';
 import { Hero } from '@/components/sections/hero';
+import { Pricing } from '@/components/sections/pricing';
 import { Process } from '@/components/sections/process';
 import Projects from '@/components/sections/projects';
 import { Services } from '@/components/sections/services';
@@ -14,6 +16,8 @@ export default function Home() {
       <GrowthBanner />
       <Services />
       <Process />
+      <CaseStudies />
+      <Pricing />
       <Testimonials />
 
     </>

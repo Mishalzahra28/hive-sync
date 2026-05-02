@@ -1,15 +1,19 @@
 "use client"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { motion, AnimatePresence } from "motion/react"
-import { CheckCircle2, Upload, X, FileText, AlertCircle } from "lucide-react"
+import { AlertCircle,CheckCircle2, FileText, Upload, X } from "lucide-react"
+import { AnimatePresence,motion } from "motion/react"
 import React, { useRef, useState } from "react"
 import { useForm } from "react-hook-form"
 import { toast } from "sonner"
-import { cn } from "@/lib/utils"
+
 import { submitCareerApplication } from "@/actions/careers"
+
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
+
+import { cn } from "@/lib/utils"
+
 import { careerFormSchema, CareerFormValues } from "@/schema/careers"
 
 function Field({

@@ -240,7 +240,7 @@ export const Testimonials: React.FC = () => {
   }, []);
 
   return (
-    <section className="py-16 bg-[#020617]">
+    <section className="py-16 bg-[#020617]" id="testimonials">
       {/* Section header */}
       <div className="mx-auto max-w-5xl px-6 mb-4 text-center">
         <p className="text-xs font-semibold uppercase tracking-widest text-[#94A3B8] mb-3">

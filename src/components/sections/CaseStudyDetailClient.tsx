@@ -1,0 +1,258 @@
+"use client"
+
+import { ArrowLeft, CheckCircle2, ChevronRight, Target, Zap } from 'lucide-react'
+import { motion } from 'motion/react'
+import Image from 'next/image'
+import Link from 'next/link'
+import React from 'react'
+
+const caseStudiesData = {
+  'mcdonalds': {
+    client: "McDonald's",
+    title: "Global Compliance & Data Management System",
+    description: "Developing a robust, real-time compliance tracking system for 38,000+ global locations, ensuring data integrity and regulatory adherence across multiple jurisdictions.",
+    heroImage: "/case-mcd.png",
+    accent: "#FFBC0D",
+    challenge: "McDonald's faced significant hurdles in synchronizing compliance data across thousands of international franchises. Manual reporting led to delays, inconsistencies, and potential regulatory risks.",
+    solution: "Hive Sync engineered a custom, distributed ledger-based management system. We implemented real-time data ingestion pipelines and a glassmorphic executive dashboard for instant oversight.",
+    results: [
+      { label: "Reporting Speed", value: "95%", icon: Zap },
+      { label: "Data Accuracy", value: "99.9%", icon: CheckCircle2 },
+      { label: "Global Reach", value: "120+", icon: Globe },
+    ],
+    techStack: ["Next.js", "ClickHouse", "GraphQL", "AWS Lambda", "Terraform"],
+    metrics: [
+      "Real-time monitoring across 38k+ locations",
+      "Automated regulatory reporting for 120+ countries",
+      "Centralized data warehouse with sub-second querying",
+      "Custom mobile app for franchise managers"
+    ]
+  },
+  'subway': {
+    client: "Subway",
+    title: "Next-Gen CRM & Franchise Management Portal",
+    description: "Reimagining the franchise experience with a data-driven CRM that streamlines operations, boosts loyalty, and provides deep insights into store performance.",
+    heroImage: "/case-subway.png",
+    accent: "#008B2B",
+    challenge: "Fragmented legacy systems made it difficult for Subway headquarters to communicate with franchise owners and track customer loyalty trends effectively.",
+    solution: "We built a unified, cloud-native portal that integrates CRM, supply chain tracking, and performance analytics into a single, high-fidelity experience.",
+    results: [
+      { label: "Franchise Adoption", value: "88%", icon: Zap },
+      { label: "Efficiency Gain", value: "45%", icon: CheckCircle2 },
+      { label: "Customer Loyalty", value: "+30%", icon: Globe },
+    ],
+    techStack: ["React", "Node.js", "PostgreSQL", "Redis", "Docker"],
+    metrics: [
+      "Unified portal for 20k+ franchise owners",
+      "Integrated loyalty program with real-time rewards",
+      "AI-driven inventory forecasting",
+      "Cross-platform support (Desktop, Tablet, Mobile)"
+    ]
+  }
+}
+
+// Fixed missing Globe icon from the original code
+import { Globe } from 'lucide-react'
+
+export default function CaseStudyDetailClient({ slug }: { slug: string }) {
+  const study = caseStudiesData[slug as keyof typeof caseStudiesData]
+
+  if (!study) {
+    return (
+      <div className="min-h-screen bg-[#020617] flex items-center justify-center text-white">
+        <div className="text-center">
+          <h1 className="text-4xl font-bold mb-4">Project Not Found</h1>
+          <Link href="/" className="text-blue-500 hover:underline">Return Home</Link>
+        </div>
+      </div>
+    )
+  }
+
+  return (
+    <main className="bg-[#020617] min-h-screen text-[#F1F5F9] pb-24">
+      {/* Hero Section */}
+      <section className="relative h-[80vh] min-h-[600px] w-full overflow-hidden">
+        <Image 
+          src={study.heroImage} 
+          alt={study.title}
+          fill
+          className="object-cover"
+          priority
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-[#020617]/60 to-[#020617]" />
+        
+        <div className="absolute inset-0 flex flex-col justify-end pb-20">
+          <div className="mx-auto max-w-7xl px-6 w-full">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+            >
+              <Link 
+                href="/#work"
+                className="inline-flex items-center gap-2 text-white/60 hover:text-white mb-8 transition-colors group"
+              >
+                <ArrowLeft className="size-4 group-hover:-translate-x-1 transition-transform" />
+                <span className="text-sm font-bold uppercase tracking-widest">Back to Work</span>
+              </Link>
+              
+              <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8">
+                <div className="max-w-3xl">
+                  <div className="flex items-center gap-3 mb-6">
+                    <div className="size-8 rounded-lg bg-white p-1.5 flex items-center justify-center">
+                      <Image 
+                        src={study.accent === "#FFBC0D" ? "https://upload.wikimedia.org/wikipedia/commons/3/36/McDonald%27s_Golden_Arches.svg" : "https://upload.wikimedia.org/wikipedia/commons/5/5c/Subway_2016_logo.svg"}
+                        alt={study.client}
+                        width={24}
+                        height={24}
+                        className="object-contain"
+                      />
+                    </div>
+                    <span className="text-xl font-bold tracking-tight text-white/80">{study.client}</span>
+                  </div>
+                  <h1 className="text-5xl md:text-7xl font-bold tracking-tight leading-[1.1] mb-8">
+                    {study.title}
+                  </h1>
+                </div>
+                
+                <div className="hidden lg:block">
+                   <div className="p-1 px-4 rounded-full border border-white/10 bg-white/5 backdrop-blur-xl mb-10">
+                      <span className="text-[10px] font-black uppercase tracking-[0.2em] text-white/60">Success Story</span>
+                   </div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Overview & Metrics */}
+      <section className="relative z-10 -mt-10">
+        <div className="mx-auto max-w-7xl px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_380px] gap-12">
+            
+            {/* Left: Content */}
+            <div className="space-y-16">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="prose prose-invert prose-lg max-w-none"
+              >
+                <p className="text-2xl text-[#94A3B8] leading-relaxed font-medium">
+                  {study.description}
+                </p>
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mt-16 pt-16 border-t border-white/5">
+                  <div>
+                    <div className="flex items-center gap-3 mb-6 text-white">
+                      <Target className="size-6" style={{ color: study.accent }} />
+                      <h3 className="text-2xl font-bold m-0">The Challenge</h3>
+                    </div>
+                    <p className="text-[#94A3B8] leading-relaxed">
+                      {study.challenge}
+                    </p>
+                  </div>
+                  <div>
+                    <div className="flex items-center gap-3 mb-6 text-white">
+                      <Zap className="size-6" style={{ color: study.accent }} />
+                      <h3 className="text-2xl font-bold m-0">The Hive Solution</h3>
+                    </div>
+                    <p className="text-[#94A3B8] leading-relaxed">
+                      {study.solution}
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* Success Metrics */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+              >
+                <h3 className="text-3xl font-bold mb-10">Success Metrics</h3>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                  {study.results.map((res, i) => (
+                    <div key={i} className="p-8 rounded-[32px] bg-white/[0.03] border border-white/10 backdrop-blur-xl">
+                      <res.icon className="size-8 mb-6" style={{ color: study.accent }} />
+                      <div className="text-4xl font-bold text-white mb-2">{res.value}</div>
+                      <div className="text-sm font-bold uppercase tracking-widest text-white/40">{res.label}</div>
+                    </div>
+                  ))}
+                </div>
+              </motion.div>
+            </div>
+
+            {/* Right: Sidebar Info */}
+            <aside className="space-y-8">
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                className="p-10 rounded-[48px] bg-white/[0.03] backdrop-blur-3xl border border-white/10"
+              >
+                <h4 className="text-lg font-bold mb-8 text-white">Project Details</h4>
+                <div className="space-y-8">
+                  <div>
+                    <span className="block text-[10px] font-black uppercase tracking-widest text-white/30 mb-2">Technologies</span>
+                    <div className="flex flex-wrap gap-2">
+                      {study.techStack.map(tech => (
+                        <span key={tech} className="px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs font-bold text-white/80">{tech}</span>
+                      ))}
+                    </div>
+                  </div>
+                  <div className="pt-8 border-t border-white/5">
+                    <span className="block text-[10px] font-black uppercase tracking-widest text-white/30 mb-6">Key Deliverables</span>
+                    <ul className="space-y-4">
+                      {study.metrics.map((m, i) => (
+                        <li key={i} className="flex items-start gap-3">
+                          <CheckCircle2 className="size-4 text-white/40 mt-0.5 shrink-0" />
+                          <span className="text-sm text-white/60">{m}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+
+                <button className="w-full mt-12 py-5 rounded-2xl bg-white text-black font-black text-sm uppercase tracking-widest hover:scale-105 transition-transform">
+                  Let's Work Together
+                </button>
+              </motion.div>
+
+              {/* Small Banner */}
+              <div className="p-8 rounded-[40px] bg-gradient-to-br from-blue-600 to-indigo-600 overflow-hidden relative group cursor-pointer">
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity">
+                  <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] scale-150" />
+                </div>
+                <div className="relative z-10">
+                  <h4 className="text-xl font-bold text-white mb-2">Scale Your Vision</h4>
+                  <p className="text-white/70 text-sm mb-6 leading-relaxed">Ready to build your next breakthrough platform?</p>
+                  <div className="size-10 rounded-full bg-white flex items-center justify-center">
+                    <ChevronRight className="size-5 text-blue-600" />
+                  </div>
+                </div>
+              </div>
+            </aside>
+
+          </div>
+        </div>
+      </section>
+
+      {/* Next Project Footer */}
+      <section className="mt-32 pt-24 border-t border-white/5">
+        <div className="mx-auto max-w-7xl px-6 text-center">
+          <span className="text-[10px] font-black uppercase tracking-[0.3em] text-white/30 mb-8 block">Up Next</span>
+          <Link href={slug === 'mcdonalds' ? '/work/subway' : '/work/mcdonalds'} className="group">
+             <h2 className="text-5xl md:text-8xl font-bold tracking-tight text-white/40 group-hover:text-white transition-colors duration-500">
+               {slug === 'mcdonalds' ? 'Subway' : "McDonald's"}
+             </h2>
+             <div className="mt-8 inline-flex items-center gap-3 text-blue-500 font-bold group-hover:translate-x-2 transition-transform">
+               View Case Study <ArrowLeft className="size-5 rotate-180" />
+             </div>
+          </Link>
+        </div>
+      </section>
+    </main>
+  )
+}

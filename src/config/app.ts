@@ -3,19 +3,19 @@ import { Metadata } from 'next';
 import { env } from '@/env';
 
 export const appConfig = {
-  title: 'Next.js App',
+  title: 'Hive Sync | Strategic IT & Cybersecurity Partner',
   description:
-    'A modern Next.js application with React Query and TypeScript',
-  keywords: 'next.js, react-query, typescript, boilerplate',
+    'Hive Sync provides expert managed IT services and cybersecurity solutions for modern businesses. Secure, efficient, and ready to grow.',
+  keywords: 'managed it services, cybersecurity, it partner, network security, cloud solutions, it support',
   logo: '/logo/main.png',
   defaultLocale: 'en-US',
   defaultCurrency: 'USD',
   defaultCountryCode: 'US',
   appUrl: env.NEXT_PUBLIC_APP_URL,
-  appName: env.NEXT_PUBLIC_APP_NAME,
+  appName: 'Hive Sync',
   emails: {
-    support: 'support@example.com',
-    sender: 'noreply@example.com',
+    support: 'support@hivesync.io',
+    sender: 'noreply@hivesync.io',
   },
 } as const;
 
@@ -25,11 +25,9 @@ export default function getMetadata(): Metadata {
     title: { template: `%s | ${appConfig.title}`, default: appConfig.title },
     description: appConfig.description,
     robots: { index: true, follow: true },
-    // icons: {
-    //   icon: '/favicon/favicon.ico',
-    //   shortcut: '/favicon/favicon-16x16.png',
-    //   apple: '/favicon/apple-touch-icon.png',
-    // },
+    icons: {
+      icon: '/favicon.svg',
+    },
     // manifest: `/favicon/site.webmanifest`,
 
     openGraph: {

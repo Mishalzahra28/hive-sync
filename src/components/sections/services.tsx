@@ -36,7 +36,7 @@ const services = [
 
 export const Services = () => {
   return (
-    <section className="bg-[#020617] py-24 px-6 md:px-12 lg:px-24">
+    <section className="bg-[#020617] py-24 px-6 md:px-12 lg:px-24" id="services">
       <div className="max-w-7xl mx-auto">
         
         {/* Header Area (Matches DESIGN.md neutrals) */}

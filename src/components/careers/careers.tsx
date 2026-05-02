@@ -1,8 +1,9 @@
 "use client"
 
-import { ChevronRight, BriefcaseBusiness, Telescope, Zap, Globe2, ArrowRight } from "lucide-react"
+import { ArrowRight,BriefcaseBusiness, ChevronRight, Globe2, Telescope, Zap } from "lucide-react"
 import { motion } from "motion/react"
 import React from "react"
+
 import { CareerForm } from "./career-form"
 
 
