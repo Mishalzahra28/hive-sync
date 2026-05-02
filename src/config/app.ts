@@ -15,8 +15,14 @@ export const appConfig = {
   appName: 'Hive Sync',
   emails: {
     support: 'support@hivesync.io',
-    sender: 'noreply@hivesync.io',
+    sender: 'onboarding@resend.dev',
   },
+  adminEmails: [
+    'yrrabdul@gmail.com',
+    'sufiyanchishty71@gmail.com',
+    'mishalzahra281@gmail.com',
+    'amna.eman.ch@gmail.com',
+  ],
 } as const;
 
 export default function getMetadata(): Metadata {
