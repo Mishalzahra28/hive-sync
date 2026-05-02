@@ -4,8 +4,10 @@ import type { LucideIcon } from 'lucide-react'
 import { Check, Cpu, MessageSquare, Monitor, Plus, Smartphone, Terminal } from 'lucide-react'
 import { AnimatePresence, motion } from 'motion/react'
 import { Syne_Tactile, Urbanist } from 'next/font/google'
+import Link from 'next/link'
 import React, { useState } from 'react'
 
+import { paths } from '@/constants/paths'
 import { cn } from '@/lib/utils'
 
 const syneTactile = Syne_Tactile({
@@ -155,7 +157,7 @@ export const Pricing = () => {
         </motion.div>
 
         {/* Selector: How do you want to work? */}
-        <motion.div 
+        <motion.div
           className="mb-16 flex flex-col items-center"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -270,14 +272,17 @@ export const Pricing = () => {
                     ))}
                   </div>
 
-                  <button className={cn(
-                    "relative z-10 w-full py-5 rounded-[24px] font-black text-sm tracking-widest uppercase transition-all duration-300 active:scale-[0.97]",
-                    tier.name === 'Custom Project'
-                      ? "bg-black text-white hover:bg-black/90 shadow-[0_20px_40px_rgba(0,0,0,0.2)]"
-                      : "bg-white text-black hover:bg-white/90 shadow-[0_20px_40px_rgba(255,255,255,0.1)] hover:shadow-[0_20px_50px_rgba(255,255,255,0.15)]"
-                  )}>
+                  <Link
+                    href={`${paths.getStarted}?tier=${encodeURIComponent(tier.name)}`}
+                    className={cn(
+                      "relative z-10 w-full py-5 rounded-[24px] font-black text-sm tracking-widest uppercase transition-all duration-300 active:scale-[0.97] text-center",
+                      tier.name === 'Custom Project'
+                        ? "bg-black text-white hover:bg-black/90 shadow-[0_20px_40px_rgba(0,0,0,0.2)]"
+                        : "bg-white text-black hover:bg-white/90 shadow-[0_20px_40px_rgba(255,255,255,0.1)] hover:shadow-[0_20px_50px_rgba(255,255,255,0.15)]"
+                    )}
+                  >
                     {tier.cta}
-                  </button>
+                  </Link>
                 </motion.div>
               ))}
             </motion.div>
