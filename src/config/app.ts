@@ -18,10 +18,10 @@ export const appConfig = {
     sender: 'onboarding@resend.dev',
   },
   adminEmails: [
-    'yrrabdul@gmail.com',
-    'sufiyanchishty71@gmail.com',
+    // 'yrrabdul@gmail.com',
+    // 'sufiyanchishty71@gmail.com',
     'mishalzahra281@gmail.com',
-    'amna.eman.ch@gmail.com',
+    // 'amna.eman.ch@gmail.com',
   ],
 } as const;
 
