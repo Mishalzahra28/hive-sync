@@ -1,6 +1,6 @@
 "use client"
 
-import { ArrowRight,BriefcaseBusiness, ChevronRight, Globe2, Telescope, Zap } from "lucide-react"
+import { ArrowRight, BriefcaseBusiness, ChevronRight, Globe2, Telescope, Zap } from "lucide-react"
 import { motion } from "motion/react"
 import React from "react"
 
@@ -85,55 +85,58 @@ export const Careers = () => {
   return (
     <main className="bg-background min-h-screen text-foreground">
       {/* ── Hero ── */}
-      <section className="py-32 px-6 md:px-12 lg:px-24 relative overflow-hidden">
+      <section className="pt-24 pb-12 md:pt-32 md:pb-10 px-5 md:px-10 relative overflow-hidden">
         {/* Background glows */}
-        <div className="absolute top-0 left-1/4 w-[600px] h-[400px] rounded-full bg-primary/5 blur-[120px] pointer-events-none" />
-        <div className="absolute bottom-0 right-1/4 w-[400px] h-[300px] rounded-full bg-accent/5 blur-[100px] pointer-events-none" />
+        <div className="absolute top-0 left-0 w-[800px] h-[600px] bg-primary/5 blur-[150px] rounded-full pointer-events-none -translate-x-1/2 -translate-y-1/2" />
+        <div className="absolute bottom-0 right-0 w-[600px] h-[400px] bg-secondary/5 blur-[120px] rounded-full pointer-events-none translate-x-1/2 translate-y-1/2" />
 
-        <div className="max-w-7xl mx-auto">
+        <div className="relative z-10 mx-auto max-w-[1500px]">
           <motion.div
+            className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-10 md:gap-16"
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            <div className="flex items-center gap-2 mb-8">
-              <span className="text-primary font-bold">/</span>
-              <span className="text-[14px] uppercase tracking-wider font-bold text-muted-foreground">
-                Join the team
-              </span>
-            </div>
+            <div className="max-w-2xl">
+              <div className="inline-flex items-center gap-2 mb-6 px-3 py-1.5 rounded-full border border-primary/20 bg-primary/5">
+                <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
+                <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-primary">Careers</p>
+              </div>
 
-            <h1 className="text-6xl md:text-8xl lg:text-[100px] font-bold leading-none tracking-tight mb-8">
-              Build what's{" "}
-              <span className="relative inline-block">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[64px] font-bold tracking-tight leading-[1.1] text-foreground font-syne mb-10">
+                Build what&apos;s{" "}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-accent to-secondary">
                   next.
                 </span>
-                {/* Underline accent */}
-                <span className="absolute -bottom-2 left-0 right-0 h-px bg-gradient-to-r from-primary/60 to-transparent" />
-              </span>
-            </h1>
+              </h1>
 
-            <div className="flex flex-col md:flex-row md:items-end gap-8 md:gap-16">
-              <p className="max-w-xl text-lg md:text-xl text-slate-500 leading-relaxed">
-                We're hiring engineers who think in systems, ship with conviction,
-                and aren't satisfied by problems that are already solved. If that
+              <div className="flex">
+                <a
+                  href="#apply"
+                  className="group relative inline-flex items-center gap-2 px-7 py-3 rounded-full bg-primary text-primary-foreground font-bold text-[13px] hover:scale-105 transition-all duration-300 shadow-[0_0_20px_rgba(59,130,246,0.15)] overflow-hidden"
+                >
+                  <div className="absolute inset-0 bg-white/10 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
+                  <span className="relative z-10 flex items-center gap-2">
+                    Apply Now <ChevronRight className="w-4 h-4" />
+                  </span>
+                </a>
+              </div>
+            </div>
+
+            <div className="lg:max-w-sm">
+              <p className="text-base md:text-[17px] text-muted-foreground leading-relaxed font-inter">
+                We&apos;re hiring engineers who think in systems, ship with conviction,
+                and aren&apos;t satisfied by problems that are already solved. If that
                 sounds like you — keep reading.
               </p>
-              <a
-                href="#apply"
-                className="flex-shrink-0 flex items-center gap-2 px-6 py-3.5 rounded-full bg-primary hover:bg-primary/90 text-white font-bold text-sm uppercase tracking-widest transition-all duration-300 active:scale-95 w-fit"
-              >
-                Apply Now <ChevronRight className="w-4 h-4" />
-              </a>
             </div>
           </motion.div>
         </div>
       </section>
 
       {/* ── Values strip ── */}
-      <section className="py-16 px-6 md:px-12 lg:px-24 border-y border-card">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
+      <section className="py-12 md:py-15 px-5 md:px-10 border-y border-card">
+        <div className="max-w-[1500px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
           {values.map((v, i) => {
             const Icon = v.icon
             return (
@@ -159,8 +162,8 @@ export const Careers = () => {
       </section>
 
       {/* ── Open Roles + Form ── */}
-      <section id="apply" className="py-24 px-6 md:px-12 lg:px-24">
-        <div className="max-w-7xl mx-auto">
+      <section id="apply" className="py-12 md:py-15 px-5 md:px-10">
+        <div className="max-w-[1500px] mx-auto">
           {/*
             `items-stretch` makes both columns adopt the tallest sibling's
             height. Each column is `flex flex-col` so `flex-1` on the card
@@ -170,13 +173,11 @@ export const Careers = () => {
 
             {/* ── Left col — Open roles ── */}
             <div className="flex flex-col">
-              <div className="flex items-center gap-2 mb-6">
-                <span className="text-primary font-bold">/</span>
-                <span className="text-[14px] uppercase tracking-wider font-bold text-muted-foreground">
-                  Open Positions
-                </span>
+              <div className="inline-flex items-center gap-2 mb-6 px-3 py-1.5 rounded-full border border-primary/20 bg-primary/5 w-fit">
+                <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
+                <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-primary">Open Positions</p>
               </div>
-              <h2 className="text-4xl md:text-5xl font-bold leading-tight tracking-tight mb-10">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight leading-[1.1] text-foreground font-syne mb-10">
                 Current<br />Openings
               </h2>
 
@@ -195,13 +196,11 @@ export const Careers = () => {
 
             {/* ── Right col — Application form ── */}
             <div className="flex flex-col">
-              <div className="flex items-center gap-2 mb-6">
-                <span className="text-primary font-bold">/</span>
-                <span className="text-[14px] uppercase tracking-wider font-bold text-muted-foreground">
-                  Get on our radar
-                </span>
+              <div className="inline-flex items-center gap-2 mb-6 px-3 py-1.5 rounded-full border border-primary/20 bg-primary/5 w-fit">
+                <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
+                <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-primary">Get on our radar</p>
               </div>
-              <h2 className="text-4xl md:text-5xl font-bold leading-tight tracking-tight mb-10">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight leading-[1.1] text-foreground font-syne mb-10">
                 Join Our<br />Workforce
               </h2>
 

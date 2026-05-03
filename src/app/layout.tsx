@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Inter, Syne, Urbanist } from 'next/font/google';
+import { Inter, Syne } from 'next/font/google';
 import { Toaster } from 'sonner';
 
 import './globals.css';
@@ -10,12 +10,6 @@ import { Navbar } from '@/components/layout/navbar';
 import getMetadata from '@/config/app';
 
 import AppProviders from './providers';
-
-const urbanist = Urbanist({
-  variable: '--font-urbanist',
-  subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700', '800', '900'],
-});
 
 const inter = Inter({
   variable: '--font-inter',
@@ -39,7 +33,7 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body
-        className={`${urbanist.variable} ${inter.variable} ${syne.variable} font-inter antialiased`}
+        className={`${inter.variable} ${syne.variable} font-inter antialiased`}
       >
         <AppProviders>
           <Toaster richColors />

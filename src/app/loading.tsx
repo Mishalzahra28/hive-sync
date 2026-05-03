@@ -1,11 +1,20 @@
 "use client"
 
-import { motion } from 'motion/react'
+import { motion, useReducedMotion } from 'motion/react'
 import React from 'react'
 
 export default function Loading() {
+  const shouldReduceMotion = useReducedMotion()
+
   return (
-    <div className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-[#020617] overflow-hidden">
+    <div 
+      role="status" 
+      aria-live="polite" 
+      aria-busy="true"
+      className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-[#020617] overflow-hidden"
+    >
+      <span className="sr-only">Loading HiveSync...</span>
+
       {/* Background Ambient Glows */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-blue-500/10 blur-[120px] rounded-full pointer-events-none" />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-purple-500/10 blur-[100px] rounded-full pointer-events-none" />
@@ -16,7 +25,7 @@ export default function Loading() {
           {/* Outer Pulsing Hexagon */}
           <motion.div
             initial={{ opacity: 0.2, scale: 0.8 }}
-            animate={{ 
+            animate={shouldReduceMotion ? { opacity: 0.2 } : { 
               opacity: [0.1, 0.3, 0.1],
               scale: [1, 1.2, 1],
               rotate: [0, 90, 180, 270, 360]
@@ -40,7 +49,7 @@ export default function Loading() {
             }}
             className="relative w-full h-full"
           >
-            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full drop-shadow-[0_0_15px_rgba(59,130,246,0.5)]">
+            <svg viewBox="0 0 100 110" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full drop-shadow-[0_0_15px_rgba(59,130,246,0.5)]">
               <defs>
                 <linearGradient id="loader_gradient" x1="0" y1="0" x2="100" y2="100" gradientUnits="userSpaceOnUse">
                   <stop stopColor="#3B82F6" />
@@ -59,8 +68,8 @@ export default function Loading() {
                 strokeWidth="2"
                 strokeLinecap="round"
                 initial={{ pathLength: 0 }}
-                animate={{ pathLength: 1 }}
-                transition={{ 
+                animate={shouldReduceMotion ? { pathLength: 1 } : { pathLength: 1 }}
+                transition={shouldReduceMotion ? { duration: 0.5 } : { 
                   duration: 2,
                   repeat: Infinity,
                   ease: "easeInOut"
@@ -83,19 +92,19 @@ export default function Loading() {
             className="flex items-center gap-2"
           >
             <span className="text-blue-500 font-black tracking-widest text-[10px] uppercase">Initializing</span>
-            <span className="flex gap-1">
+            <span className="flex gap-1" aria-hidden="true">
               <motion.span 
-                animate={{ opacity: [0, 1, 0] }}
+                animate={shouldReduceMotion ? { opacity: 1 } : { opacity: [0, 1, 0] }}
                 transition={{ duration: 1.5, repeat: Infinity, delay: 0 }}
                 className="size-1 rounded-full bg-blue-500"
               />
               <motion.span 
-                animate={{ opacity: [0, 1, 0] }}
+                animate={shouldReduceMotion ? { opacity: 1 } : { opacity: [0, 1, 0] }}
                 transition={{ duration: 1.5, repeat: Infinity, delay: 0.2 }}
                 className="size-1 rounded-full bg-blue-500"
               />
               <motion.span 
-                animate={{ opacity: [0, 1, 0] }}
+                animate={shouldReduceMotion ? { opacity: 1 } : { opacity: [0, 1, 0] }}
                 transition={{ duration: 1.5, repeat: Infinity, delay: 0.4 }}
                 className="size-1 rounded-full bg-blue-500"
               />
@@ -103,7 +112,7 @@ export default function Loading() {
           </motion.div>
           
           <motion.p
-            initial={{ opacity: 0, y: 10 }}
+            initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.8 }}
             className="text-[#94A3B8] text-xs font-medium tracking-wide"
@@ -117,7 +126,7 @@ export default function Loading() {
           <motion.div 
             initial={{ x: '-100%' }}
             animate={{ x: '100%' }}
-            transition={{ 
+            transition={shouldReduceMotion ? { duration: 3, repeat: Infinity, ease: "linear" } : { 
               duration: 1.5, 
               repeat: Infinity, 
               ease: "easeInOut" 

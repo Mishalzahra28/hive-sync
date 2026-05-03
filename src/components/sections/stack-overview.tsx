@@ -70,22 +70,22 @@ const StickyCard_HiveSync = ({
           card.bg
         )}
       >
-        <div className="flex-1 p-8 md:p-16 flex flex-col justify-center text-left">
+        <div className="flex-1 p-6 md:p-16 flex flex-col justify-center text-left">
           <div className={cn(
-            "w-12 h-12 rounded-2xl flex items-center justify-center mb-8",
+            "w-10 h-10 md:w-12 md:h-12 rounded-xl md:rounded-2xl flex items-center justify-center mb-6 md:mb-8",
             card.accent === 'blue' ? 'bg-[#3B82F6]/10 text-[#3B82F6]' : 'bg-[#8B5CF6]/10 text-[#8B5CF6]'
           )}>
-            <span className="text-xl font-bold">{i + 1}</span>
+            <span className="text-lg md:text-xl font-bold">{i + 1}</span>
           </div>
-          <h3 className="text-2xl md:text-4xl font-extrabold text-[#F1F5F9] mb-6 leading-tight">
+          <h3 className="text-xl sm:text-2xl md:text-4xl font-extrabold text-[#F1F5F9] mb-4 md:mb-6 leading-tight">
             {card.title}
           </h3>
-          <p className="text-[#94A3B8] text-sm md:text-lg leading-relaxed mb-8">
+          <p className="text-[#94A3B8] text-xs sm:text-sm md:text-lg leading-relaxed mb-6 md:mb-8">
             {card.description}
           </p>
           <div className="flex items-center gap-4">
             <button className={cn(
-              "px-8 py-4 rounded-2xl font-bold text-[#020617] shadow-lg transition-all hover:scale-105 active:scale-95",
+              "px-6 py-3 md:px-8 md:py-4 rounded-xl md:rounded-2xl font-bold text-[#020617] shadow-lg transition-all hover:scale-105 active:scale-95 text-sm md:text-base",
               card.accent === 'blue' ? 'bg-[#3B82F6]' : 'bg-[#8B5CF6]'
             )}>
               Learn More
@@ -121,7 +121,7 @@ const CompanyStackOverview = () => {
 
   return (
     <section className="bg-[#020617] relative z-20 pb-24">
-      <div className="max-w-7xl mx-auto pt-24 px-4 md:px-8 text-center">
+      <div className="max-w-[1440px] mx-auto pt-24 px-6 md:px-12 lg:px-24 text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

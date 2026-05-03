@@ -1,18 +1,11 @@
 "use client"
 
-import { Link as LinkIcon } from 'lucide-react'
+import { ArrowUpRight } from 'lucide-react'
 import { motion } from 'motion/react'
-import { Urbanist } from 'next/font/google'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 
-import { cn } from '@/lib/utils'
-
-const urbanist = Urbanist({
-  weight: ['400', '500', '600', '700', '800'],
-  subsets: ['latin'],
-})
 
 const caseStudies = [
   {
@@ -35,8 +28,8 @@ const caseStudies = [
 
 export const CaseStudies = () => {
   return (
-    <section className="py-24 bg-background" id="work">
-      <div className="mx-auto max-w-7xl px-6">
+    <section className="py-16 md:py-24 bg-background px-6 md:px-10" id="work">
+      <div className="mx-auto max-w-[1500px]">
         <motion.div
           className="mb-16 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-10"
           initial={{ opacity: 0, y: 24 }}
@@ -49,19 +42,19 @@ export const CaseStudies = () => {
               <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-primary">Work</p>
             </div>
 
-            <h2 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-[64px] leading-[1.1] text-foreground max-w-xl">
+            <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-[64px] font-bold tracking-tight leading-[1.1] text-foreground max-w-xl font-syne">
               Client Results.
             </h2>
           </div>
 
           <div className="lg:max-w-sm">
-            <p className="text-[17px] text-muted-foreground leading-relaxed">
+            <p className="text-base md:text-[17px] text-muted-foreground leading-relaxed font-inter">
               Real outcomes for Fortune 500 teams, universities, and high-growth startups that trusted us to deliver.
             </p>
           </div>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
           {caseStudies.map((study, index) => (
             <Link href={`/work/${study.slug}`} key={study.client}>
               <motion.div
@@ -69,46 +62,48 @@ export const CaseStudies = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="group relative aspect-[16/10] rounded-[40px] overflow-hidden cursor-pointer"
+                className="group relative aspect-[4/5] md:aspect-[16/10] rounded-[48px] overflow-hidden cursor-pointer shadow-2xl"
               >
                 {/* Image with Parallax-like scale */}
                 <div className="absolute inset-0 transition-transform duration-700 group-hover:scale-110">
-                  <Image 
-                    src={study.image} 
+                  <Image
+                    src={study.image}
                     alt={study.client}
                     fill
                     className="object-cover"
                   />
                 </div>
 
-                {/* Soft fade so the light info bar reads on busy images */}
-                <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-background/60 to-transparent pointer-events-none" />
+                {/* Overlay for readability - stronger on mobile */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none" />
 
-                {/* Light Glass Info Bar */}
-                <div className="absolute bottom-6 left-6 right-6 p-6 rounded-[32px] bg-card/40 backdrop-blur-2xl border border-white/40 flex items-center justify-between transition-all duration-500 group-hover:bg-card/60 group-hover:border-white/60 shadow-xl">
-                  <div className="flex items-center gap-5">
-                    <div className="size-12 rounded-xl bg-background flex items-center justify-center p-2 shadow-inner overflow-hidden border border-border">
-                      <Image
-                        src={study.logo}
-                        alt={study.client}
-                        width={48}
-                        height={48}
-                        className="w-full h-full object-contain grayscale-0"
-                        unoptimized
-                      />
+                {/* Info Section - Clean Glass Card */}
+                <div className="absolute inset-x-4 bottom-4 md:inset-x-8 md:bottom-8">
+                  <div className="relative p-4 md:p-6 rounded-[28px] md:rounded-[32px] border-2 border-primary/30 bg-black/40 backdrop-blur-xl flex items-center justify-between transition-all duration-500 group-hover:bg-black/50 group-hover:border-primary/50 shadow-2xl">
+                    <div className="flex items-center gap-3 md:gap-5 flex-1 min-w-0">
+                      <div className="size-10 md:size-14 rounded-xl md:rounded-2xl bg-white/10 backdrop-blur-md flex items-center justify-center p-2 md:p-2.5 border border-white/20 shrink-0">
+                        <Image
+                          src={study.logo}
+                          alt={study.client}
+                          width={48}
+                          height={48}
+                          className="w-full h-full object-contain brightness-0 invert"
+                          unoptimized
+                        />
+                      </div>
+                      <div className="min-w-0">
+                        <h3 className="text-lg md:text-2xl font-bold text-white truncate font-syne">
+                          {study.client}
+                        </h3>
+                        <p className="text-white/70 text-[11px] md:text-sm font-medium leading-tight line-clamp-1">
+                          {study.project}
+                        </p>
+                      </div>
                     </div>
-                    <div>
-                      <h3 className={cn("text-xl font-bold text-foreground", urbanist.className)}>
-                        {study.client}
-                      </h3>
-                      <p className="text-muted-foreground text-sm font-medium">
-                        {study.project}
-                      </p>
-                    </div>
-                  </div>
 
-                  <div className="size-12 rounded-2xl bg-primary flex items-center justify-center text-primary-foreground transition-all duration-500 group-hover:scale-110 shadow-md group-hover:shadow-lg">
-                    <LinkIcon className="size-5" />
+                    <div className="size-9 md:size-12 rounded-lg md:rounded-xl bg-primary flex items-center justify-center text-primary-foreground transition-all duration-500 group-hover:rotate-12 shadow-lg shrink-0 ml-3">
+                      <ArrowUpRight className="size-4 md:size-6" />
+                    </div>
                   </div>
                 </div>
               </motion.div>

@@ -2,6 +2,7 @@
 
 import { motion } from 'motion/react'
 import Image from 'next/image'
+import Link from 'next/link'
 import React from 'react'
 
 import DarkVeil from '../ui/DarkVeil'
@@ -10,7 +11,7 @@ import { Marquee } from '../ui/marquee'
 
 export const Hero = () => {
   return (
-    <section className="relative w-full h-screen min-h-[700px] flex items-center justify-center overflow-hidden bg-background">
+    <section className="relative w-full min-h-[650px] flex items-center justify-center overflow-hidden bg-background">
       {/* Background Animation & Patterns */}
       <div className="absolute inset-0 z-0">
         <DarkVeil
@@ -23,9 +24,9 @@ export const Hero = () => {
 
         {/* All-over Brand Gradient */}
         <div className="absolute inset-0 opacity-20 pointer-events-none">
-          <div className="absolute top-[-10%] left-[-10%] w-[60%] h-[60%] rounded-full bg-[#3B82F6] blur-[120px] animate-pulse" />
-          <div className="absolute bottom-[-10%] right-[-10%] w-[60%] h-[60%] rounded-full bg-[#8B5CF6] blur-[120px] animate-pulse delay-700" />
-          <div className="absolute top-[20%] right-[10%] w-[40%] h-[40%] rounded-full bg-[#6366F1] blur-[100px] animate-pulse delay-1000" />
+          <div className="absolute top-[-10%] left-[-10%] w-[60%] h-[60%] rounded-full bg-primary blur-[120px] animate-pulse" />
+          <div className="absolute bottom-[-10%] right-[-10%] w-[60%] h-[60%] rounded-full bg-secondary blur-[120px] animate-pulse delay-700" />
+          <div className="absolute top-[20%] right-[10%] w-[40%] h-[40%] rounded-full bg-accent blur-[100px] animate-pulse delay-1000" />
         </div>
 
         {/* Grid Pattern */}
@@ -40,23 +41,23 @@ export const Hero = () => {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
+      <div className="relative z-10 max-w-[1500px] mx-auto px-5 md:px-10 text-center">
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="text-4xl md:text-6xl lg:text-7xl font-bold text-foreground mb-8 leading-[1.1] tracking-tight"
+          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-foreground mb-8 leading-[1.1] tracking-tight"
         >
-          Strategic IT & Cybersecurity Partner for Modern Businesses
+          We Build What Matters.
         </motion.h1>
 
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-          className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-12 leading-relaxed"
+          className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-12 leading-relaxed"
         >
-          Experts in managed IT services and cybersecurity solutions that keep your business secure, efficient, and ready to grow.
+          From idea to launch, we design, build, and scale digital products for startups and growing businesses.
         </motion.p>
 
         <motion.div
@@ -66,7 +67,7 @@ export const Hero = () => {
           className="flex flex-col sm:flex-row items-center justify-center gap-4"
         >
           {/* Star Glow Strategy Button */}
-          <button className="group relative dark:bg-neutral-800 bg-neutral-200 rounded-full p-px overflow-hidden transition-all hover:scale-[1.02] active:scale-[0.98] h-11">
+          <Link href="get-started" className="group relative dark:bg-neutral-800 bg-neutral-200 rounded-full p-px overflow-hidden transition-all hover:scale-[1.02] active:scale-[0.98] h-10">
             <span className="absolute inset-0 rounded-full overflow-hidden">
               <span className="inset-0 absolute pointer-events-none select-none">
                 <span
@@ -90,18 +91,18 @@ export const Hero = () => {
             </span>
 
             <span
-              className="flex items-center justify-center gap-2 relative z-[1] dark:bg-[#020617]/90 bg-white/90 rounded-full px-7 h-full w-full backdrop-blur-xl"
+              className="flex items-center justify-center gap-2 relative z-[1] dark:bg-[#020617]/90 bg-white/90 rounded-full px-6 h-full w-full backdrop-blur-xl"
             >
 
-              <span className="bg-gradient-to-b dark:from-white dark:to-white/50 from-neutral-950 to-neutral-950/50 bg-clip-text text-sm font-bold text-transparent transition-all">
-                Book a strategy call
+              <span className="bg-gradient-to-b dark:from-white dark:to-white/50 from-neutral-950 to-neutral-950/50 bg-clip-text text-[13px] font-bold text-transparent transition-all">
+                Start A Project
               </span>
             </span>
-          </button>
+          </Link>
 
           <a
             href="#pricing"
-            className="flex justify-center gap-4 items-center text-sm bg-foreground/5 backdrop-blur-md font-semibold text-foreground hover:text-primary-foreground isolation-auto before:absolute before:w-full before:transition-all before:duration-700 before:-left-full before:hover:left-0 before:rounded-full before:bg-primary before:-z-10 before:aspect-square before:hover:scale-150 before:hover:duration-700 relative z-10 px-7 h-11 overflow-hidden border border-border hover:border-primary rounded-full group transition-all shadow-sm"
+            className="flex justify-center gap-4 items-center text-[13px] bg-foreground/5 backdrop-blur-md font-semibold text-foreground hover:text-primary-foreground isolation-auto before:absolute before:w-full before:transition-all before:duration-700 before:-left-full before:hover:left-0 before:rounded-full before:bg-primary before:-z-10 before:aspect-square before:hover:scale-150 before:hover:duration-700 relative z-10 px-6 h-10 overflow-hidden border border-border hover:border-primary rounded-full group transition-all shadow-sm"
           >
             Explore Options
             <svg
@@ -122,7 +123,7 @@ export const Hero = () => {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.6, ease: "easeOut" }}
-          className="mt-20 flex flex-col items-center"
+          className="mt-10 flex flex-col items-center"
         >
           <div className="relative group p-[1px] rounded-full overflow-hidden">
             {/* Animated Border Gradient */}
@@ -139,7 +140,7 @@ export const Hero = () => {
                   { name: "Node.js", slug: "nodedotjs" },
                   { name: "Tailwind", slug: "tailwindcss" },
                   { name: "PostgreSQL", slug: "postgresql" },
-                  { name: "AWS", slug: "amazonwebservices" },
+                  { name: "AWS", slug: "amazonaws" },
                   { name: "Python", slug: "python" },
                   { name: "Docker", slug: "docker" },
                   { name: "MongoDB", slug: "mongodb" },
@@ -148,12 +149,11 @@ export const Hero = () => {
                 ].map((logo) => (
                   <div key={logo.slug} className="flex items-center px-4 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-500 cursor-pointer group/logo">
                     <Image
-                      src={`https://cdn.simpleicons.org/${logo.slug}`}
+                      src={`/stacks/${logo.slug}.svg`}
                       alt={logo.name}
                       width={24}
                       height={24}
                       className="h-6 w-auto object-contain"
-                      unoptimized
                     />
                   </div>
                 ))}

@@ -21,11 +21,7 @@ function isActiveHref(pathname: string, href: string) {
     return pathname === href || pathname.startsWith(`${href}/`);
 }
 
-// ============================================================================
-// 3. THE "APPLE" NAV (Glassmorphism / Dynamic Island)
-// Style: Frosted Glass, Deep Blur, Pill Shape, Smooth Transitions.
-// Used by: Apple, Framer, High-end Consumer Apps.
-// ============================================================================
+
 export const AppleGlassNav = ({ items, className }: NavProps) => {
     const pathname = usePathname();
 

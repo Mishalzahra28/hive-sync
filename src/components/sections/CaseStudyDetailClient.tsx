@@ -71,7 +71,7 @@ export default function CaseStudyDetailClient({ slug }: { slug: string }) {
   return (
     <main className="bg-background min-h-screen text-foreground pb-24">
       {/* Hero Section */}
-      <section className="relative h-[80vh] min-h-[600px] w-full overflow-hidden">
+      <section className="relative h-[50vh] sm:h-[80vh] min-h-[450px] sm:min-h-[600px] w-full overflow-hidden">
         <Image 
           src={study.heroImage} 
           alt={study.title}
@@ -82,7 +82,7 @@ export default function CaseStudyDetailClient({ slug }: { slug: string }) {
         {/* Soft fade so hero text reads on busy images and blends into the page below */}
         <div className="absolute inset-0 bg-gradient-to-b from-foreground/30 via-foreground/40 to-background" />
         
-        <div className="absolute inset-0 flex flex-col justify-end pb-20">
+        <div className="absolute inset-0 flex flex-col justify-end pb-12 sm:pb-20">
           <div className="mx-auto max-w-7xl px-6 w-full">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -91,15 +91,15 @@ export default function CaseStudyDetailClient({ slug }: { slug: string }) {
             >
               <Link
                 href="/#work"
-                className="inline-flex items-center gap-2 text-white/80 hover:text-white mb-8 transition-colors group"
+                className="inline-flex items-center gap-2 text-white/80 hover:text-white mb-6 sm:mb-8 transition-colors group"
               >
                 <ArrowLeft className="size-4 group-hover:-translate-x-1 transition-transform" />
                 <span className="text-sm font-bold uppercase tracking-widest">Back to Work</span>
               </Link>
 
-              <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8">
+              <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 sm:gap-8">
                 <div className="max-w-3xl">
-                  <div className="flex items-center gap-3 mb-6">
+                  <div className="flex items-center gap-3 mb-4 sm:mb-6">
                     <div className="size-8 rounded-lg bg-white p-1.5 flex items-center justify-center border border-white/40">
                       <Image
                         src={study.accent === "#FFBC0D" ? "https://upload.wikimedia.org/wikipedia/commons/3/36/McDonald%27s_Golden_Arches.svg" : "https://upload.wikimedia.org/wikipedia/commons/5/5c/Subway_2016_logo.svg"}
@@ -109,9 +109,9 @@ export default function CaseStudyDetailClient({ slug }: { slug: string }) {
                         className="object-contain"
                       />
                     </div>
-                    <span className="text-xl font-bold tracking-tight text-white">{study.client}</span>
+                    <span className="text-lg sm:text-xl font-bold tracking-tight text-white">{study.client}</span>
                   </div>
-                  <h1 className="text-5xl md:text-7xl font-bold tracking-tight leading-[1.1] mb-8 text-white drop-shadow-lg">
+                  <h1 className="text-3xl sm:text-5xl md:text-7xl font-bold tracking-tight leading-[1.1] mb-6 sm:mb-8 text-white drop-shadow-lg">
                     {study.title}
                   </h1>
                 </div>
@@ -133,33 +133,33 @@ export default function CaseStudyDetailClient({ slug }: { slug: string }) {
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_380px] gap-12">
             
             {/* Left: Content */}
-            <div className="space-y-16">
+            <div className="space-y-12 sm:space-y-16">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 className="prose prose-lg max-w-none"
               >
-                <p className="text-2xl text-muted-foreground leading-relaxed font-medium">
+                <p className="text-lg sm:text-xl md:text-2xl text-muted-foreground leading-relaxed font-medium">
                   {study.description}
                 </p>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mt-16 pt-16 border-t border-border">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12 mt-12 sm:mt-16 pt-12 sm:pt-16 border-t border-border">
                   <div>
-                    <div className="flex items-center gap-3 mb-6 text-foreground">
-                      <Target className="size-6" style={{ color: study.accent }} />
-                      <h3 className="text-2xl font-bold m-0">The Challenge</h3>
+                    <div className="flex items-center gap-3 mb-4 sm:mb-6 text-foreground">
+                      <Target className="size-5 sm:size-6" style={{ color: study.accent }} />
+                      <h3 className="text-xl sm:text-2xl font-bold m-0">The Challenge</h3>
                     </div>
-                    <p className="text-muted-foreground leading-relaxed">
+                    <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
                       {study.challenge}
                     </p>
                   </div>
                   <div>
-                    <div className="flex items-center gap-3 mb-6 text-foreground">
-                      <Zap className="size-6" style={{ color: study.accent }} />
-                      <h3 className="text-2xl font-bold m-0">The Hive Solution</h3>
+                    <div className="flex items-center gap-3 mb-4 sm:mb-6 text-foreground">
+                      <Zap className="size-5 sm:size-6" style={{ color: study.accent }} />
+                      <h3 className="text-xl sm:text-2xl font-bold m-0">The Hive Solution</h3>
                     </div>
-                    <p className="text-muted-foreground leading-relaxed">
+                    <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
                       {study.solution}
                     </p>
                   </div>
@@ -172,13 +172,13 @@ export default function CaseStudyDetailClient({ slug }: { slug: string }) {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
               >
-                <h3 className="text-3xl font-bold mb-10 text-foreground">Success Metrics</h3>
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                <h3 className="text-2xl sm:text-3xl font-bold mb-8 sm:mb-10 text-foreground">Success Metrics</h3>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
                   {study.results.map((res, i) => (
-                    <div key={i} className="p-8 rounded-[32px] bg-card border border-border shadow-sm hover:shadow-md transition-shadow">
-                      <res.icon className="size-8 mb-6" style={{ color: study.accent }} />
-                      <div className="text-4xl font-bold text-foreground mb-2">{res.value}</div>
-                      <div className="text-sm font-bold uppercase tracking-widest text-muted-foreground">{res.label}</div>
+                    <div key={i} className="p-6 sm:p-8 rounded-[24px] sm:rounded-[32px] bg-card border border-border shadow-sm hover:shadow-md transition-shadow">
+                      <res.icon className="size-6 sm:size-8 mb-4 sm:mb-6" style={{ color: study.accent }} />
+                      <div className="text-3xl sm:text-4xl font-bold text-foreground mb-1 sm:mb-2">{res.value}</div>
+                      <div className="text-[10px] sm:text-sm font-bold uppercase tracking-widest text-muted-foreground">{res.label}</div>
                     </div>
                   ))}
                 </div>
@@ -191,25 +191,25 @@ export default function CaseStudyDetailClient({ slug }: { slug: string }) {
                 initial={{ opacity: 0, x: 20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                className="p-10 rounded-[48px] bg-card border border-border shadow-sm"
+                className="p-6 sm:p-10 rounded-[32px] sm:rounded-[48px] bg-card border border-border shadow-sm"
               >
-                <h4 className="text-lg font-bold mb-8 text-foreground">Project Details</h4>
-                <div className="space-y-8">
+                <h4 className="text-lg font-bold mb-6 sm:mb-8 text-foreground">Project Details</h4>
+                <div className="space-y-6 sm:space-y-8">
                   <div>
                     <span className="block text-[10px] font-black uppercase tracking-widest text-muted-foreground mb-2">Technologies</span>
                     <div className="flex flex-wrap gap-2">
                       {study.techStack.map(tech => (
-                        <span key={tech} className="px-3 py-1.5 rounded-full bg-muted border border-border text-xs font-bold text-foreground/80">{tech}</span>
+                        <span key={tech} className="px-3 py-1.5 rounded-full bg-muted border border-border text-[10px] sm:text-xs font-bold text-foreground/80">{tech}</span>
                       ))}
                     </div>
                   </div>
-                  <div className="pt-8 border-t border-border">
-                    <span className="block text-[10px] font-black uppercase tracking-widest text-muted-foreground mb-6">Key Deliverables</span>
-                    <ul className="space-y-4">
+                  <div className="pt-6 sm:pt-8 border-t border-border">
+                    <span className="block text-[10px] font-black uppercase tracking-widest text-muted-foreground mb-4 sm:mb-6">Key Deliverables</span>
+                    <ul className="space-y-3 sm:space-y-4">
                       {study.metrics.map((m, i) => (
                         <li key={i} className="flex items-start gap-3">
                           <CheckCircle2 className="size-4 text-primary mt-0.5 shrink-0" />
-                          <span className="text-sm text-muted-foreground">{m}</span>
+                          <span className="text-[13px] sm:text-sm text-muted-foreground leading-relaxed">{m}</span>
                         </li>
                       ))}
                     </ul>
@@ -218,19 +218,21 @@ export default function CaseStudyDetailClient({ slug }: { slug: string }) {
 
                 <Link
                   href="/get-started"
-                  className="block w-full mt-12 py-5 rounded-2xl bg-primary text-primary-foreground font-black text-sm uppercase tracking-widest text-center hover:bg-primary/90 transition-colors"
+                  className="block w-full mt-8 sm:mt-12 py-4 sm:py-5 rounded-xl sm:rounded-2xl bg-primary text-primary-foreground font-black text-xs sm:text-sm uppercase tracking-widest text-center hover:bg-primary/90 transition-colors"
                 >
                   Let&apos;s Work Together
                 </Link>
               </motion.div>
 
               {/* Small Banner */}
-              <Link href="/get-started" className="block p-8 rounded-[40px] bg-gradient-to-br from-primary to-secondary overflow-hidden relative group cursor-pointer shadow-md hover:shadow-lg transition-shadow">
-                <div className="relative z-10">
-                  <h4 className="text-xl font-bold text-primary-foreground mb-2">Scale Your Vision</h4>
-                  <p className="text-primary-foreground/80 text-sm mb-6 leading-relaxed">Ready to build your next breakthrough platform?</p>
-                  <div className="size-10 rounded-full bg-background flex items-center justify-center">
-                    <ChevronRight className="size-5 text-primary" />
+              <Link href="/get-started" className="block p-5 rounded-[24px] bg-gradient-to-br from-primary to-secondary overflow-hidden relative group cursor-pointer shadow-md hover:shadow-lg transition-shadow">
+                <div className="relative z-10 flex items-center justify-between gap-6">
+                  <div className="min-w-0">
+                    <h4 className="text-[13px] md:text-sm font-bold text-primary-foreground">Scale Your Vision</h4>
+                    <p className="text-primary-foreground/80 text-[11px] leading-relaxed line-clamp-1">Ready to build your next breakthrough platform?</p>
+                  </div>
+                  <div className="size-8 rounded-full bg-background flex items-center justify-center shrink-0 transition-transform group-hover:translate-x-1">
+                    <ChevronRight className="size-4 text-primary" />
                   </div>
                 </div>
               </Link>
@@ -241,15 +243,15 @@ export default function CaseStudyDetailClient({ slug }: { slug: string }) {
       </section>
 
       {/* Next Project Footer */}
-      <section className="mt-32 pt-24 border-t border-border">
+      <section className="mt-20 sm:mt-32 pt-16 sm:pt-24 border-t border-border">
         <div className="mx-auto max-w-7xl px-6 text-center">
-          <span className="text-[10px] font-black uppercase tracking-[0.3em] text-muted-foreground mb-8 block">Up Next</span>
+          <span className="text-[10px] font-black uppercase tracking-[0.3em] text-muted-foreground mb-6 sm:mb-8 block">Up Next</span>
           <Link href={slug === 'mcdonalds' ? '/work/subway' : '/work/mcdonalds'} className="group">
-             <h2 className="text-5xl md:text-8xl font-bold tracking-tight text-foreground/30 group-hover:text-foreground transition-colors duration-500">
+             <h2 className="text-4xl sm:text-5xl md:text-8xl font-bold tracking-tight text-foreground/30 group-hover:text-foreground transition-colors duration-500">
                {slug === 'mcdonalds' ? 'Subway' : "McDonald's"}
              </h2>
-             <div className="mt-8 inline-flex items-center gap-3 text-primary font-bold group-hover:translate-x-2 transition-transform">
-               View Case Study <ArrowLeft className="size-5 rotate-180" />
+             <div className="mt-6 sm:mt-8 inline-flex items-center gap-3 text-primary font-bold group-hover:translate-x-2 transition-transform">
+               View Case Study <ArrowLeft className="size-4 sm:size-5 rotate-180" />
              </div>
           </Link>
         </div>

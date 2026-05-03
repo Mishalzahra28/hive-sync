@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { notFound } from 'next/navigation';
 
 import CaseStudyDetailClient from '@/components/sections/CaseStudyDetailClient';
 
@@ -37,5 +38,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function CaseStudyPage({ params }: Props) {
   const { slug } = await params;
+
+  if (!caseStudiesData[slug as keyof typeof caseStudiesData]) {
+    notFound();
+  }
+
   return <CaseStudyDetailClient slug={slug} />;
 }

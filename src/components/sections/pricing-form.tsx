@@ -2,11 +2,13 @@
 
 import { zodResolver } from "@hookform/resolvers/zod"
 import { format, parseISO } from "date-fns"
-import { AnimatePresence, motion } from "motion/react"
 import { AlertCircle, CalendarIcon, CheckCircle2, Plus, X } from "lucide-react"
+import { AnimatePresence, motion } from "motion/react"
 import React, { useState } from "react"
 import { Controller, useForm } from "react-hook-form"
 import { toast } from "sonner"
+
+import { submitSalesInquiry } from "@/actions/sales"
 
 import { Button } from "@/components/ui/button"
 import { Calendar } from "@/components/ui/calendar"
@@ -20,8 +22,9 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 import { Textarea } from "@/components/ui/textarea"
+
 import { cn } from "@/lib/utils"
-import { submitSalesInquiry } from "@/actions/sales"
+
 import { salesIntakeSchema, SalesIntakeValues } from "@/schema/sales-intake"
 
 

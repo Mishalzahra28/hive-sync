@@ -6,8 +6,10 @@ import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
 import Logo from "@/components/common/logo";
-import { paths } from "@/constants/paths";
+
 import { cn } from "@/lib/utils";
+
+import { paths } from "@/constants/paths";
 
 import { AppleGlassNav } from "./AppleGlassNav";
 
@@ -36,7 +38,6 @@ export const Navbar = () => {
                 scrolled ? "py-3" : "py-5",
             )}
         >
-            {/* Glass background appears on scroll (desktop + mobile) and when mobile menu opens */}
             <div
                 className={cn(
                     "absolute inset-0 transition-all duration-300 border-b",
@@ -46,7 +47,7 @@ export const Navbar = () => {
                 )}
             />
 
-            <div className="relative w-full max-w-7xl flex items-center justify-between gap-8">
+            <div className="relative w-full max-w-[1500px] flex items-center justify-between gap-8">
                 {/* Logo */}
                 <motion.div
                     initial={{ opacity: 0, x: -20 }}
@@ -78,7 +79,9 @@ export const Navbar = () => {
                 {/* Mobile Menu Toggle */}
                 <button
                     onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                    aria-label="Toggle menu"
+                    aria-label="Toggle mobile menu"
+                    aria-expanded={isMobileMenuOpen}
+                    aria-controls="mobile-menu"
                     className="lg:hidden relative size-11 flex items-center justify-center rounded-2xl bg-foreground/5 border border-border text-foreground transition-all active:scale-95"
                 >
                     <AnimatePresence mode="wait">
@@ -109,6 +112,7 @@ export const Navbar = () => {
             <AnimatePresence>
                 {isMobileMenuOpen && (
                     <motion.div
+                        id="mobile-menu"
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -20 }}

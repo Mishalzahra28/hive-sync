@@ -2,6 +2,7 @@
 
 import { sendSalesInquiryEmail } from "@/lib/email/sales-inquiry";
 import { supabaseAdmin } from "@/lib/supabase/admin";
+
 import { salesIntakeSchema, SalesIntakeValues } from "@/schema/sales-intake";
 
 type SubmitResult =

@@ -13,7 +13,8 @@ const images = [
 
 const Projects = () => {
   return (
-    <section className="relative w-full pb-24 mt-0 md:-mt-12 z-30 overflow-hidden" id="projects">
+    <section className="relative w-full py-24 z-30 overflow-hidden px-6 md:px-12 lg:px-24" id="projects">
+      <div className="max-w-[1440px] mx-auto">
       {/* Row Container - This will overlap the hero arc */}
       <div className="relative flex overflow-x-auto no-scrollbar snap-x snap-mandatory gap-8 px-4 md:px-8 pb-16">
         <div className="flex gap-8 mx-auto">
@@ -35,6 +36,7 @@ const Projects = () => {
         </div>
       </div>
 
+      </div>
     </section>
   )
 }

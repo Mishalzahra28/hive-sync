@@ -1,5 +1,6 @@
-import { appConfig } from '@/config/app';
 import { resend } from '@/lib/email/resend';
+
+import { appConfig } from '@/config/app';
 import type { SalesIntakeValues } from '@/schema/sales-intake';
 
 function escapeHtml(value: string) {

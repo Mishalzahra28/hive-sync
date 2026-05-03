@@ -1,8 +1,9 @@
 "use client"
 
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { motion } from 'motion/react';
 import Image from 'next/image';
-import React, { useEffect,useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { cn } from '@/lib/utils';
 
@@ -75,61 +76,8 @@ const testimonials = [
     testimonial: "I've searched for a reliable IT partner for years. HiveSync is exactly what we needed.",
     by: "Pete, Sales Director at RevenueRockets",
     imgSrc: "https://i.pravatar.cc/150?img=11"
-  },
-  {
-    tempId: 11,
-    testimonial: "The onboarding was seamless. HiveSync got our entire team up to speed in under a week.",
-    by: "Marina, HR Manager at TalentForge",
-    imgSrc: "https://i.pravatar.cc/150?img=12"
-  },
-  {
-    tempId: 12,
-    testimonial: "HiveSync's support is unparalleled. They're always available when something critical comes up.",
-    by: "Olivia, Customer Success Manager at ClientCare",
-    imgSrc: "https://i.pravatar.cc/150?img=13"
-  },
-  {
-    tempId: 13,
-    testimonial: "The efficiency gains since HiveSync rebuilt our ops dashboard are off the charts.",
-    by: "Raj, Operations Manager at StreamlineSolutions",
-    imgSrc: "https://i.pravatar.cc/150?img=14"
-  },
-  {
-    tempId: 14,
-    testimonial: "HiveSync's custom CRM revolutionized how we manage clients. A genuine game-changer.",
-    by: "Lila, Workflow Specialist at ProcessPro",
-    imgSrc: "https://i.pravatar.cc/150?img=15"
-  },
-  {
-    tempId: 15,
-    testimonial: "The scalability of HiveSync's architecture is impressive. It grows with our business seamlessly.",
-    by: "Trevor, Scaling Officer at GrowthGurus",
-    imgSrc: "https://i.pravatar.cc/150?img=16"
-  },
-  {
-    tempId: 16,
-    testimonial: "HiveSync continually suggests improvements we hadn't even thought of. They're always one step ahead.",
-    by: "Naomi, Innovation Lead at FutureTech",
-    imgSrc: "https://i.pravatar.cc/150?img=17"
-  },
-  {
-    tempId: 17,
-    testimonial: "The ROI on our HiveSync engagement is incredible. The project paid for itself in three months.",
-    by: "Victor, Finance Analyst at ProfitPeak",
-    imgSrc: "https://i.pravatar.cc/150?img=18"
-  },
-  {
-    tempId: 18,
-    testimonial: "Their platform is robust yet easy to maintain. The perfect balance of power and simplicity.",
-    by: "Yuki, Tech Lead at BalancedTech",
-    imgSrc: "https://i.pravatar.cc/150?img=19"
-  },
-  {
-    tempId: 19,
-    testimonial: "We've tried many agencies. HiveSync stands out on reliability, communication, and performance.",
-    by: "Zoe, Performance Manager at ReliableSystems",
-    imgSrc: "https://i.pravatar.cc/150?img=20"
   }
+
 ];
 
 interface TestimonialCardProps {
@@ -151,7 +99,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
     <div
       onClick={() => handleMove(position)}
       className={cn(
-        "absolute left-1/2 top-1/2 cursor-pointer border p-8 transition-all duration-500 ease-in-out",
+        "absolute left-1/2 top-1/2 cursor-pointer border p-6 md:p-8 transition-all duration-500 ease-in-out",
         isCenter
           ? "z-10 bg-primary text-primary-foreground border-primary"
           : "z-0 bg-card text-card-foreground border-border shadow-md hover:border-primary/50"
@@ -240,18 +188,32 @@ export const Testimonials: React.FC = () => {
   }, []);
 
   return (
-    <section className="py-16 bg-background" id="testimonials">
+    <section className="py-16 md:py-24 bg-background overflow-hidden" id="testimonials">
       {/* Section header */}
-      <div className="mx-auto max-w-5xl px-6 mb-4 text-center">
-        <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-3">
-          Client Stories
-        </p>
-        <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-          Trusted by teams that ship
-        </h2>
-        <p className="mt-3 text-base text-muted-foreground max-w-xl mx-auto">
-          Don&apos;t take our word for it — here&apos;s what our clients say about working with HiveSync.
-        </p>
+      <div className="mx-auto max-w-[1500px] mb-16 px-5 md:px-10">
+        <motion.div
+          className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-10"
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+        >
+          <div className="max-w-2xl">
+            <div className="inline-flex items-center gap-2 mb-6 px-3 py-1.5 rounded-full border border-primary/20 bg-primary/5">
+              <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
+              <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-primary">Testimonials</p>
+            </div>
+
+            <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-[64px] font-bold tracking-tight leading-[1.1] text-foreground max-w-xl font-syne">
+              Trusted by<br />teams that ship.
+            </h2>
+          </div>
+
+          <div className="lg:max-w-sm">
+            <p className="text-base md:text-[17px] text-muted-foreground leading-relaxed font-inter">
+              Don&apos;t take our word for it — here&apos;s what our clients say about working with HiveSync.
+            </p>
+          </div>
+        </motion.div>
       </div>
 
       {/* Stagger carousel */}

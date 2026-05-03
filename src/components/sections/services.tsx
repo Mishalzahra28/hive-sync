@@ -1,11 +1,12 @@
 "use client"
 
-import { paths } from '@/constants/paths'
-import { BadgeCheck, Bot, ChevronRight, Cloud, Layers, Palette, Smartphone } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
+import { BadgeCheck, Bot, ChevronRight, Cloud, Layers, Palette, Smartphone } from 'lucide-react'
 import { motion } from 'motion/react'
 import Link from 'next/link'
 import React from 'react'
+
+import { paths } from '@/constants/paths'
 
 type Service = {
   title: string
@@ -61,32 +62,38 @@ const services: Service[] = [
 
 export const Services = () => {
   return (
-    <section className="bg-background py-24 px-6 md:px-12 lg:px-24" id="services">
-      <div className="max-w-7xl mx-auto">
+    <section className="bg-background py-16 md:py-24 px-5 md:px-10" id="services">
+      <div className="max-w-[1500px] mx-auto">
 
-        {/* Header */}
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-8 mb-20">
-          <div className="flex-1">
-            <div className="flex items-center gap-2 mb-6">
-              <span className="text-primary font-bold">/</span>
-              <span className="text-[14px] uppercase tracking-wider font-bold text-muted-foreground">What we build</span>
+        {/* Standardized Header */}
+        <motion.div
+          className="mb-16 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-10"
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+        >
+          <div className="max-w-2xl">
+            <div className="inline-flex items-center gap-2 mb-6 px-3 py-1.5 rounded-full border border-primary/20 bg-primary/5">
+              <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
+              <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-primary">Capabilities</p>
             </div>
-            <h2 className="text-5xl md:text-7xl font-bold text-foreground leading-none tracking-tight">
-              Engineered<br />to ship.
+
+            <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-[64px] font-bold tracking-tight leading-[1.1] text-foreground max-w-xl font-syne">
+              Engineered <span className="text-primary">to ship.</span>
             </h2>
           </div>
 
-          <div className="flex-1 max-w-md">
-            <p className="text-muted-foreground text-lg leading-relaxed mb-8">
-              Six core practices. One delivery standard. Hire a single capability or an integrated team — the bar stays the same: shippable software, measurable outcomes, no hand-waving.
+          <div className="lg:max-w-sm">
+            <p className="text-base md:text-[17px] text-muted-foreground leading-relaxed font-inter">
+              Six core practices. One delivery standard. Shippable software, measurable outcomes, no hand-waving.
             </p>
-            <div className="flex gap-8">
-              <Link href={paths.getStarted} className="group flex items-center gap-1 text-primary font-bold hover:text-primary/80 transition-all">
-                Start a project <ChevronRight className="w-4 h-4" />
+            <div className="mt-6">
+              <Link href={paths.getStarted} className="group flex items-center gap-1 text-primary font-bold hover:text-primary/80 transition-all text-sm uppercase tracking-widest">
+                Start a project <ChevronRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
               </Link>
             </div>
           </div>
-        </div>
+        </motion.div>
 
         {/* Uniform Service Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

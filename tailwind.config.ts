@@ -97,8 +97,8 @@ export default {
         'marquee-vertical': 'marquee-vertical var(--duration) linear infinite',
       },
       fontFamily: {
-        geist: 'var(--font-geist-sans)',
-        mono: 'var(--font-geist-mono)',
+        inter: ['var(--font-inter)', 'sans-serif'],
+        syne: ['var(--font-syne)', 'sans-serif'],
       },
     },
   },

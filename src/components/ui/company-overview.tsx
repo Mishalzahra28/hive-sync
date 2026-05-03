@@ -2,15 +2,9 @@
 
 import { Globe, Rocket,ShieldCheck, Target, Users, Zap } from 'lucide-react'
 import { motion } from 'motion/react'
-import { Urbanist } from 'next/font/google'
 import React from 'react'
 
 import { cn } from '@/lib/utils'
-
-const urbanist = Urbanist({
-  weight: ['400', '600', '700', '800'],
-  subsets: ['latin'],
-})
 
 const stats = [
   { label: 'Founded', value: '2021', icon: Rocket },
@@ -66,7 +60,7 @@ export const CompanyOverview: React.FC = () => {
             
             <h2 className={cn(
               "text-4xl md:text-6xl font-extrabold leading-tight mb-8",
-              urbanist.className
+              "font-syne"
             )}>
               Bridging the gap between <span className="text-blue-500">Vision</span> and <span className="text-purple-500">Reality</span>.
             </h2>
@@ -116,7 +110,7 @@ export const CompanyOverview: React.FC = () => {
                     <value.icon className="w-6 h-6 text-white" style={{ color: value.color }} />
                   </div>
                   <div>
-                    <h3 className={cn("text-xl font-bold mb-3", urbanist.className)}>
+                    <h3 className={cn("text-xl font-bold mb-3", "font-syne")}>
                       {value.title}
                     </h3>
                     <p className="text-slate-400 leading-relaxed text-sm">
