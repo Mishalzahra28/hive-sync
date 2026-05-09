@@ -1,12 +1,12 @@
-import { createClient } from '@supabase/supabase-js'
+import { createClient, type SupabaseClient } from '@supabase/supabase-js'
 
 import { env } from '@/env'
 
-let cached: ReturnType<typeof createClient> | null = null
+let cached: SupabaseClient<any> | null = null
 
-export function supabaseAdmin() {
+export function supabaseAdmin(): SupabaseClient<any> {
   if (cached) return cached
-  cached = createClient(env.NEXT_PUBLIC_SUPABASE_URL, env.SUPABASE_SERVICE_ROLE_KEY, {
+  cached = createClient<any>(env.NEXT_PUBLIC_SUPABASE_URL, env.SUPABASE_SERVICE_ROLE_KEY, {
     auth: {
       persistSession: false,
       autoRefreshToken: false,

@@ -22,32 +22,14 @@ export function optional<T>(
   return schema.nullable().optional();
 }
 
-const errorMapMessage = (message: string) => {
-  return { message };
-};
-
 export const requiredString = (name: string): z.ZodString => {
   const errorMessage = `${name} is required`;
-  return z
-    .string({
-      errorMap: () => errorMapMessage(errorMessage),
-    })
-    .min(1, errorMessage);
+  return z.string({ message: errorMessage }).min(1, errorMessage);
 };
 
-export const requiredNumber = (name: string): z.ZodNumber => {
+export const requiredNumber = (name: string) => {
   const errorMessage = `${name} is required`;
   return z.coerce
-    .number({
-      errorMap: () => errorMapMessage(errorMessage),
-    })
+    .number({ message: errorMessage })
     .min(1, `${name} must be greater than 0`);
 };
-
-export function getZodEnum<T extends string>(
-  data: T[],
-): z.ZodEnum<[T, ...T[]]> {
-  return z.enum([data[0], ...data.slice(1)], {
-    invalid_type_error: 'Invalid value',
-  });
-}

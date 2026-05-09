@@ -62,7 +62,7 @@ export function authQuery<T extends ZodSchema | undefined, R>(
 
     if (options.paramsSchema) {
       try {
-        params = options.paramsSchema.parse(params);
+        params = options.paramsSchema.parse(params) as SchemaType<T>;
       } catch (error) {
         if (error instanceof ZodError) {
           throw new Error('Invalid parameters');
