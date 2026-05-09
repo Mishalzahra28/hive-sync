@@ -1,10 +1,10 @@
+import { GoogleAnalytics } from '@next/third-parties/google';
 import type { Metadata, Viewport } from 'next';
 import { Inter, Syne } from 'next/font/google';
 import { Toaster } from 'sonner';
 
 import './globals.css';
 
-import { GoogleAnalytics } from '@next/third-parties/google';
 import { getOrganizationSchema, getWebsiteSchema, JsonLd } from '@/components/common/json-ld';
 import { Footer } from '@/components/layout/footer';
 import { Navbar } from '@/components/layout/navbar';
