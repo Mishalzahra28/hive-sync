@@ -6,6 +6,8 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 
+import { Breadcrumbs } from '../common/breadcrumbs'
+
 const caseStudiesData = {
   'mcdonalds': {
     client: "McDonald's",
@@ -76,6 +78,7 @@ export default function CaseStudyDetailClient({ slug }: { slug: string }) {
           src={study.heroImage} 
           alt={study.title}
           fill
+          sizes="100vw"
           className="object-cover"
           priority
         />
@@ -89,6 +92,13 @@ export default function CaseStudyDetailClient({ slug }: { slug: string }) {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
+              <Breadcrumbs 
+                items={[
+                  { label: 'Work', href: '/#work' },
+                  { label: study.client }
+                ]} 
+              />
+
               <Link
                 href="/#work"
                 className="inline-flex items-center gap-2 text-white/80 hover:text-white mb-6 sm:mb-8 transition-colors group"
@@ -148,7 +158,7 @@ export default function CaseStudyDetailClient({ slug }: { slug: string }) {
                   <div>
                     <div className="flex items-center gap-3 mb-4 sm:mb-6 text-foreground">
                       <Target className="size-5 sm:size-6" style={{ color: study.accent }} />
-                      <h3 className="text-xl sm:text-2xl font-bold m-0">The Challenge</h3>
+                      <h2 className="text-xl sm:text-2xl font-bold m-0">The Challenge</h2>
                     </div>
                     <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
                       {study.challenge}
@@ -157,7 +167,7 @@ export default function CaseStudyDetailClient({ slug }: { slug: string }) {
                   <div>
                     <div className="flex items-center gap-3 mb-4 sm:mb-6 text-foreground">
                       <Zap className="size-5 sm:size-6" style={{ color: study.accent }} />
-                      <h3 className="text-xl sm:text-2xl font-bold m-0">The Hive Solution</h3>
+                      <h2 className="text-xl sm:text-2xl font-bold m-0">The Hive Solution</h2>
                     </div>
                     <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
                       {study.solution}
@@ -172,7 +182,7 @@ export default function CaseStudyDetailClient({ slug }: { slug: string }) {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
               >
-                <h3 className="text-2xl sm:text-3xl font-bold mb-8 sm:mb-10 text-foreground">Success Metrics</h3>
+                <h2 className="text-2xl sm:text-3xl font-bold mb-8 sm:mb-10 text-foreground">Success Metrics</h2>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
                   {study.results.map((res, i) => (
                     <div key={i} className="p-6 sm:p-8 rounded-[24px] sm:rounded-[32px] bg-card border border-border shadow-sm hover:shadow-md transition-shadow">
@@ -193,7 +203,7 @@ export default function CaseStudyDetailClient({ slug }: { slug: string }) {
                 viewport={{ once: true }}
                 className="p-6 sm:p-10 rounded-[32px] sm:rounded-[48px] bg-card border border-border shadow-sm"
               >
-                <h4 className="text-lg font-bold mb-6 sm:mb-8 text-foreground">Project Details</h4>
+                <h3 className="text-lg font-bold mb-6 sm:mb-8 text-foreground">Project Details</h3>
                 <div className="space-y-6 sm:space-y-8">
                   <div>
                     <span className="block text-[10px] font-black uppercase tracking-widest text-muted-foreground mb-2">Technologies</span>
@@ -228,7 +238,7 @@ export default function CaseStudyDetailClient({ slug }: { slug: string }) {
               <Link href="/get-started" className="block p-5 rounded-[24px] bg-gradient-to-br from-primary to-secondary overflow-hidden relative group cursor-pointer shadow-md hover:shadow-lg transition-shadow">
                 <div className="relative z-10 flex items-center justify-between gap-6">
                   <div className="min-w-0">
-                    <h4 className="text-[13px] md:text-sm font-bold text-primary-foreground">Scale Your Vision</h4>
+                    <h3 className="text-[13px] md:text-sm font-bold text-primary-foreground">Scale Your Vision</h3>
                     <p className="text-primary-foreground/80 text-[11px] leading-relaxed line-clamp-1">Ready to build your next breakthrough platform?</p>
                   </div>
                   <div className="size-8 rounded-full bg-background flex items-center justify-center shrink-0 transition-transform group-hover:translate-x-1">

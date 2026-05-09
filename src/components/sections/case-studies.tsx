@@ -1,11 +1,9 @@
-"use client"
-
 import { ArrowUpRight } from 'lucide-react'
-import { motion } from 'motion/react'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 
+import { MotionWrapper } from './client/motion-wrappers'
 
 const caseStudies = [
   {
@@ -30,7 +28,7 @@ export const CaseStudies = () => {
   return (
     <section className="py-16 md:py-24 bg-background px-6 md:px-10" id="work">
       <div className="mx-auto max-w-[1500px]">
-        <motion.div
+        <MotionWrapper
           className="mb-16 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-10"
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -49,15 +47,15 @@ export const CaseStudies = () => {
 
           <div className="lg:max-w-sm">
             <p className="text-base md:text-[17px] text-muted-foreground leading-relaxed font-inter">
-              Real outcomes for Fortune 500 teams, universities, and high-growth startups that trusted us to deliver.
+              Real enterprise software development and AI automation outcomes for Fortune 500 teams and high-growth startups that trusted HiveSync.
             </p>
           </div>
-        </motion.div>
+        </MotionWrapper>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
           {caseStudies.map((study, index) => (
             <Link href={`/work/${study.slug}`} key={study.client}>
-              <motion.div
+              <MotionWrapper
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -106,7 +104,7 @@ export const CaseStudies = () => {
                     </div>
                   </div>
                 </div>
-              </motion.div>
+              </MotionWrapper>
             </Link>
           ))}
         </div>

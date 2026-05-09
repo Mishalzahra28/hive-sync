@@ -22,15 +22,15 @@ export default {
         },
         // Brand system colors — single source of truth
         primary: {
-          DEFAULT: '#3B82F6', // Blue
+          DEFAULT: 'hsl(var(--primary))',
           foreground: 'hsl(var(--primary-foreground))',
         },
         accent: {
-          DEFAULT: '#6366F1', // Mid Blue-Purple
+          DEFAULT: 'hsl(var(--accent))',
           foreground: 'hsl(var(--accent-foreground))',
         },
         secondary: {
-          DEFAULT: '#8B5CF6', // Purple
+          DEFAULT: 'hsl(var(--secondary))',
           foreground: 'hsl(var(--secondary-foreground))',
         },
         muted: {

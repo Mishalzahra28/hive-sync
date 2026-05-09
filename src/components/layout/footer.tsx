@@ -17,7 +17,7 @@ export const Footer = () => {
       {/* Decorative Glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
 
-      <div className="relative bg-card/30 backdrop-blur-2xl border border-border/50 rounded-[40px] p-6 md:p-12 overflow-hidden shadow-2xl">
+      <div className="relative bg-muted/40 backdrop-blur-2xl border border-border rounded-[40px] p-6 md:p-12 overflow-hidden shadow-2xl">
         {/* Abstract Background Detail */}
         <div className="absolute -top-24 -right-24 size-64 bg-primary/5 blur-[100px] rounded-full" />
         <div className="absolute -bottom-24 -left-24 size-64 bg-primary/5 blur-[100px] rounded-full" />
@@ -38,8 +38,8 @@ export const Footer = () => {
             </div>
 
             {/* CTA */}
-            <div className="p-6 rounded-3xl bg-primary/5 border border-primary/10 space-y-4 max-w-sm">
-              <h4 className="text-foreground font-bold font-syne">Ready to ship?</h4>
+            <div className="p-6 rounded-3xl bg-muted/50 border border-border space-y-4 max-w-sm">
+              <h3 className="text-foreground font-bold font-syne">Ready to ship?</h3>
               <p className="text-sm text-muted-foreground font-inter">Let&apos;s turn your vision into shippable software.</p>
               <Link
                 href={paths.getStarted}
@@ -54,9 +54,9 @@ export const Footer = () => {
           <div className="lg:col-span-7 flex flex-wrap gap-x-12 gap-y-12 md:gap-x-16 lg:gap-x-24">
             {/* Services */}
             <div className="space-y-6 min-w-[160px]">
-              <h4 className="uppercase text-xs text-foreground font-black tracking-[0.15em] font-syne">
+              <h3 className="uppercase text-xs text-foreground font-black tracking-[0.15em] font-syne">
                 Services
-              </h4>
+              </h3>
               <nav className="flex flex-col gap-4">
                 {[
                   { label: 'Web Development', href: '#services' },
@@ -78,9 +78,9 @@ export const Footer = () => {
 
             {/* Company */}
             <div className="space-y-6 min-w-[160px]">
-              <h4 className="uppercase text-xs text-foreground font-black tracking-[0.15em] font-syne">
+              <h3 className="uppercase text-xs text-foreground font-black tracking-[0.15em] font-syne">
                 Company
-              </h4>
+              </h3>
               <nav className="flex flex-col gap-4">
                 {[
                   { label: 'About Us', href: '#about' },
@@ -103,30 +103,50 @@ export const Footer = () => {
 
             {/* Support */}
             <div className="space-y-6 min-w-[160px]">
-              <h4 className="uppercase text-xs text-foreground font-black tracking-[0.15em] font-syne">
+              <h3 className="uppercase text-xs text-foreground font-black tracking-[0.15em] font-syne">
                 Connect
-              </h4>
+              </h3>
               <div className="flex flex-col gap-4">
-                <a
-                  href="mailto:hello@hivesync.io"
-                  className="text-muted-foreground text-sm font-medium hover:text-primary transition-colors font-inter truncate"
-                >
-                  hello@hivesync.io
-                </a>
-                <div className="flex gap-3 pt-2">
+                <div className="space-y-1">
+                  <p className="text-[10px] font-black uppercase tracking-widest text-muted-foreground">Email</p>
+                  <a
+                    href="mailto:hello@hivesync.io"
+                    className="text-muted-foreground text-sm font-medium hover:text-primary transition-colors font-inter truncate block"
+                  >
+                    hello@hivesync.io
+                  </a>
+                </div>
+                
+                <div className="space-y-1">
+                  <p className="text-[10px] font-black uppercase tracking-widest text-muted-foreground">Call Us</p>
+                  <a
+                    href="tel:+15551234567"
+                    className="text-muted-foreground text-sm font-medium hover:text-primary transition-colors font-inter block"
+                  >
+                    +1 (555) 123-4567
+                  </a>
+                </div>
+
+                <div className="flex gap-3 pt-4">
                   <a
                     href="https://linkedin.com"
                     target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Follow HiveSync on LinkedIn"
                     className="size-10 rounded-xl bg-foreground/5 flex items-center justify-center text-muted-foreground hover:bg-primary/10 hover:text-primary transition-all border border-border/50"
                   >
                     <Linkedin className="size-5" />
+                    <span className="sr-only">LinkedIn</span>
                   </a>
                   <a
                     href="https://x.com"
                     target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Follow HiveSync on X (Twitter)"
                     className="size-10 rounded-xl bg-foreground/5 flex items-center justify-center text-muted-foreground hover:bg-primary/10 hover:text-primary transition-all border border-border/50"
                   >
                     <Twitter className="size-5" />
+                    <span className="sr-only">X (Twitter)</span>
                   </a>
                 </div>
               </div>

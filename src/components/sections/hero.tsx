@@ -1,10 +1,8 @@
-"use client"
-
-import { motion } from 'motion/react'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 
+import { MotionH1, MotionP, MotionWrapper } from './client/motion-wrappers'
 import DarkVeil from '../ui/DarkVeil'
 import { GridPattern } from '../ui/grid-pattern'
 import { Marquee } from '../ui/marquee'
@@ -42,25 +40,25 @@ export const Hero = () => {
 
       {/* Content */}
       <div className="relative z-10 max-w-[1500px] mx-auto px-5 md:px-10 text-center">
-        <motion.h1
+        <MotionH1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-foreground mb-8 leading-[1.1] tracking-tight"
+          className="text-4xl sm:text-5xl md:text-6xl lg:text-6xl font-bold text-foreground mb-8 leading-[1.1] tracking-tight"
         >
-          We Build What Matters.
-        </motion.h1>
+         Custom Software Development & AI Automation Agency
+        </MotionH1>
 
-        <motion.p
+        <MotionP
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
           className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-12 leading-relaxed"
         >
-          From idea to launch, we design, build, and scale digital products for startups and growing businesses.
-        </motion.p>
+          HiveSync is a premium custom software development company building scalable SaaS platforms, enterprise web applications, mobile apps, and AI-powered software.
+        </MotionP>
 
-        <motion.div
+        <MotionWrapper
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
@@ -95,7 +93,7 @@ export const Hero = () => {
             >
 
               <span className="bg-gradient-to-b dark:from-white dark:to-white/50 from-neutral-950 to-neutral-950/50 bg-clip-text text-[13px] font-bold text-transparent transition-all">
-                Start A Project
+                Start Your Project
               </span>
             </span>
           </Link>
@@ -104,7 +102,7 @@ export const Hero = () => {
             href="#pricing"
             className="flex justify-center gap-4 items-center text-[13px] bg-foreground/5 backdrop-blur-md font-semibold text-foreground hover:text-primary-foreground isolation-auto before:absolute before:w-full before:transition-all before:duration-700 before:-left-full before:hover:left-0 before:rounded-full before:bg-primary before:-z-10 before:aspect-square before:hover:scale-150 before:hover:duration-700 relative z-10 px-6 h-10 overflow-hidden border border-border hover:border-primary rounded-full group transition-all shadow-sm"
           >
-            Explore Options
+           Explore Our Services
             <svg
               className="w-5 h-5 justify-end group-hover:rotate-90 ease-linear duration-300 rounded-full border border-border group-hover:border-primary-foreground p-1 rotate-45 transition-all"
               viewBox="0 0 16 19"
@@ -116,10 +114,10 @@ export const Hero = () => {
               ></path>
             </svg>
           </a>
-        </motion.div>
+        </MotionWrapper>
 
         {/* Logo Marquee Section */}
-        <motion.div
+        <MotionWrapper
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.6, ease: "easeOut" }}
@@ -160,7 +158,7 @@ export const Hero = () => {
               </Marquee>
             </div>
           </div>
-        </motion.div>
+        </MotionWrapper>
       </div>
 
       {/* Bottom Gradient Fade */}

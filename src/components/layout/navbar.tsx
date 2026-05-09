@@ -70,7 +70,7 @@ export const Navbar = () => {
                 >
                     <Link
                         href={paths.getStarted}
-                        className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-primary text-primary-foreground font-bold text-sm hover:bg-primary/90 transition-all active:scale-95 shadow-md"
+                        className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-brand-gradient text-primary-foreground font-bold text-sm hover:shadow-lg hover:shadow-primary/20 transition-all active:scale-95 shadow-md"
                     >
                         Get Started
                     </Link>

@@ -373,12 +373,6 @@ export function SalesIntakeForm({
   const projectType = watch("project_type")
   const budgetSuggestion = BUDGET_MAP[projectType] ?? "$2,500–$20,000 / project"
 
-  const selectedDescriptions: Record<string, string> = {
-    "Website Sprint": 'You selected "Website Sprint". We\'ll scope a fast, focused site delivery with clear milestones.',
-    "Mobile App + UX": 'You selected "Mobile App + UX". Tell us your platform targets and user experience goals.',
-    "AI Workflow + Growth": 'You selected "AI Workflow + Growth". We\'ll map automation opportunities across your stack.',
-    "Custom Project": 'You selected "Custom Project". Share project details and we will prepare a practical delivery plan.',
-  }
 
   const onValid = async (values: SalesIntakeValues) => {
     // Sync the suggested budget if user hasn't overridden it

@@ -1,25 +1,17 @@
-"use client"
-
-import type { LucideIcon } from 'lucide-react'
-import { Code2, Compass, Eye, FlaskConical, Rocket } from 'lucide-react'
-import { motion } from 'motion/react'
-import { Syne_Tactile } from 'next/font/google'
 import React from 'react'
 
 import { GridPattern } from '@/components/ui/grid-pattern'
 
 import { cn } from '@/lib/utils'
 
-const syneTactile = Syne_Tactile({
-  weight: '400',
-  subsets: ['latin'],
-})
+import { MotionWrapper } from './client/motion-wrappers'
+import { ProcessCard } from './client/ProcessClient'
 
 interface Step {
   id: string
   title: string
   description: string
-  Icon: LucideIcon
+  iconName: 'eye' | 'compass' | 'code' | 'flask' | 'rocket'
   cardBg: string
   ruleBg: string
   accent: string
@@ -33,7 +25,7 @@ const steps: Step[] = [
     title: 'Tell Us Your Vision',
     description:
       'Share your idea, goals, and the kind of business you want to build.',
-    Icon: Eye,
+    iconName: 'eye',
     cardBg: '#0F172A',
     ruleBg: '#1E293B',
     accent: '#3B82F6',
@@ -45,7 +37,7 @@ const steps: Step[] = [
     title: 'Plan & Strategize',
     description:
       "We map out the tech, design, and features needed to bring it to life.",
-    Icon: Compass,
+    iconName: 'compass',
     cardBg: '#0F172A',
     ruleBg: '#1E293B',
     accent: '#6366F1',
@@ -57,7 +49,7 @@ const steps: Step[] = [
     title: 'Design & Build',
     description:
       'Our team creates your platform—from UI to backend—fully customized.',
-    Icon: Code2,
+    iconName: 'code',
     cardBg: '#0F172A',
     ruleBg: '#1E293B',
     accent: '#8B5CF6',
@@ -69,7 +61,7 @@ const steps: Step[] = [
     title: 'Test & Refine',
     description:
       'Rigorous QA, performance benchmarks, and your direct feedback sharpen the product.',
-    Icon: FlaskConical,
+    iconName: 'flask',
     cardBg: '#0F172A',
     ruleBg: '#1E293B',
     accent: '#3B82F6',
@@ -81,7 +73,7 @@ const steps: Step[] = [
     title: 'Launch & Grow',
     description:
       'We deploy with zero-downtime pipelines and stay on as your long-term partner.',
-    Icon: Rocket,
+    iconName: 'rocket',
     cardBg: '#0F172A',
     ruleBg: '#1E293B',
     accent: '#6366F1',
@@ -89,76 +81,6 @@ const steps: Step[] = [
     side: 'right',
   },
 ]
-
-const Thumbtack: React.FC<{ color: string }> = ({ color }) => {
-  const uniqueId = React.useId().replace(/:/g, '');
-  return (
-    <svg
-      width="48"
-      height="48"
-      viewBox="0 0 100 100"
-      fill="none"
-      className="drop-shadow-xl overflow-visible"
-    >
-      <defs>
-        <linearGradient id={`grad-${uniqueId}`} x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="white" stopOpacity="0.4" />
-          <stop offset="100%" stopColor={color} />
-        </linearGradient>
-      </defs>
-      {/* Pin Shadow */}
-      <ellipse cx="50" cy="90" rx="15" ry="5" fill="black" fillOpacity="0.3" />
-      {/* Pin Needle */}
-      <path
-        d="M50 40 L50 90"
-        stroke="#94a3b8"
-        strokeWidth="6"
-        strokeLinecap="round"
-      />
-      {/* Pin Head */}
-      <circle cx="50" cy="35" r="28" fill={color} />
-      <circle cx="50" cy="35" r="28" fill={`url(#grad-${uniqueId})`} />
-      <circle cx="42" cy="27" r="8" fill="white" fillOpacity="0.4" />
-    </svg>
-  )
-}
-
-const DesktopCard: React.FC<{ step: Step; index: number }> = ({ step, index: _index }) => {
-  const isLeft = step.side === 'left'
-  return (
-    <motion.div
-      initial={{ opacity: 0, scale: 0.8, x: isLeft ? -48 : 48, rotate: isLeft ? -2 : 2 }}
-      whileInView={{ opacity: 1, scale: 1, x: 0, rotate: isLeft ? -2 : 2 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.7 }}
-      className="relative w-full max-w-[340px] md:max-w-[420px] group pt-8"
-    >
-      <div className="absolute top-2 left-1/2 -translate-x-1/2 z-20">
-        <Thumbtack color={step.accent} />
-      </div>
-
-      <div
-        className="relative rounded-[42px] border-2 border-primary/30 px-6 md:px-8 pt-10 md:pt-12 pb-8 md:pb-10 overflow-hidden bg-gradient-to-br from-white via-blue-50 to-indigo-50 shadow-xl transition-all duration-500"
-      >
-        <div className="relative mb-2 md:mb-4 inline-flex h-[60px] md:h-[93px] items-center">
-          <span
-            className={cn("text-4xl sm:text-5xl md:text-[65px] leading-none relative z-10", syneTactile.className)}
-            style={{ color: step.accent }}
-          >
-            {step.id}
-          </span>
-        </div>
-
-        <h3 className={cn("mb-3 md:mb-4 text-2xl sm:text-3xl md:text-[40px] font-semibold leading-tight md:leading-[48px] tracking-tight text-foreground", "font-syne")}>
-          {step.title}
-        </h3>
-        <p className="text-sm sm:text-base md:text-[20px] md:leading-[28px] font-normal text-muted-foreground">
-          {step.description}
-        </p>
-      </div>
-    </motion.div>
-  )
-}
 
 export const Process = () => {
   return (
@@ -181,7 +103,7 @@ export const Process = () => {
       />
       <div className="relative z-10 mx-auto max-w-[1500px]">
         {/* Standardized Header */}
-        <motion.div
+        <MotionWrapper
           className="mb-16 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-10"
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -194,16 +116,16 @@ export const Process = () => {
             </div>
 
             <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-[64px] font-bold tracking-tight leading-[1.1] text-foreground max-w-xl font-syne">
-              The simple <span className="text-primary">process.</span>
+              Our Development <span className="text-primary">Process.</span>
             </h2>
           </div>
 
           <div className="lg:max-w-sm">
             <p className="text-base md:text-[17px] text-muted-foreground leading-relaxed font-inter">
-              Five clear steps from first conversation to successful launch — and beyond. Precision in execution, clarity in communication.
+              A streamlined approach to custom software engineering, AI workflow automation, and enterprise web application development.
             </p>
           </div>
-        </motion.div>
+        </MotionWrapper>
 
         {/* ── Timeline ── */}
         <div className="relative">
@@ -225,7 +147,7 @@ export const Process = () => {
             </svg>
           </div>
 
-          {steps.map((step, index) => {
+          {steps.map((step) => {
             const isLeft = step.side === 'left'
 
             return (
@@ -235,18 +157,18 @@ export const Process = () => {
               >
                 {/* ── Desktop layout ── */}
                 <div className="hidden md:flex justify-end pr-5">
-                  {isLeft && <DesktopCard step={step} index={index} />}
+                  {isLeft && <ProcessCard step={step} />}
                 </div>
 
                 <div className="hidden md:flex justify-center items-center relative z-10" />
 
                 <div className="hidden md:flex justify-start pl-5">
-                  {!isLeft && <DesktopCard step={step} index={index} />}
+                  {!isLeft && <ProcessCard step={step} />}
                 </div>
 
                 {/* ── Mobile layout (Centered and Curvy) ── */}
                 <div className="md:hidden flex flex-col items-center w-full px-4 relative z-10">
-                  <DesktopCard step={step} index={index} />
+                  <ProcessCard step={step} />
                 </div>
               </div>
             )
