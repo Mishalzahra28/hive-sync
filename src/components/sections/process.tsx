@@ -11,7 +11,7 @@ interface Step {
   id: string
   title: string
   description: string
-  iconName: 'eye' | 'compass' | 'code' | 'flask' | 'rocket'
+  iconName: 'eye' | 'compass' | 'palette' | 'code' | 'flask' | 'rocket'
   cardBg: string
   ruleBg: string
   accent: string
@@ -22,9 +22,8 @@ interface Step {
 const steps: Step[] = [
   {
     id: '01',
-    title: 'Tell Us Your Vision',
-    description:
-      'Share your idea, goals, and the kind of business you want to build.',
+    title: 'Discovery',
+    description: 'Understanding your goals and requirements.',
     iconName: 'eye',
     cardBg: '#0F172A',
     ruleBg: '#1E293B',
@@ -34,9 +33,8 @@ const steps: Step[] = [
   },
   {
     id: '02',
-    title: 'Plan & Strategize',
-    description:
-      "We map out the tech, design, and features needed to bring it to life.",
+    title: 'Planning',
+    description: 'Creating the roadmap and project strategy.',
     iconName: 'compass',
     cardBg: '#0F172A',
     ruleBg: '#1E293B',
@@ -46,10 +44,9 @@ const steps: Step[] = [
   },
   {
     id: '03',
-    title: 'Design & Build',
-    description:
-      'Our team creates your platform—from UI to backend—fully customized.',
-    iconName: 'code',
+    title: 'Design',
+    description: 'Crafting modern and user-friendly experiences.',
+    iconName: 'palette',
     cardBg: '#0F172A',
     ruleBg: '#1E293B',
     accent: '#8B5CF6',
@@ -58,10 +55,9 @@ const steps: Step[] = [
   },
   {
     id: '04',
-    title: 'Test & Refine',
-    description:
-      'Rigorous QA, performance benchmarks, and your direct feedback sharpen the product.',
-    iconName: 'flask',
+    title: 'Development',
+    description: 'Building fast, scalable, and secure solutions.',
+    iconName: 'code',
     cardBg: '#0F172A',
     ruleBg: '#1E293B',
     accent: '#3B82F6',
@@ -70,26 +66,36 @@ const steps: Step[] = [
   },
   {
     id: '05',
-    title: 'Launch & Grow',
-    description:
-      'We deploy with zero-downtime pipelines and stay on as your long-term partner.',
-    iconName: 'rocket',
+    title: 'Testing',
+    description: 'Ensuring performance, quality, and reliability.',
+    iconName: 'flask',
     cardBg: '#0F172A',
     ruleBg: '#1E293B',
     accent: '#6366F1',
     rotation: -2,
     side: 'right',
   },
+  {
+    id: '06',
+    title: 'Launch & Support',
+    description: 'Deploying your product with ongoing support.',
+    iconName: 'rocket',
+    cardBg: '#0F172A',
+    ruleBg: '#1E293B',
+    accent: '#8B5CF6',
+    rotation: 1.5,
+    side: 'left',
+  },
 ]
 
 export const Process = () => {
   return (
-    <section className="relative overflow-hidden py-16 md:py-24 bg-background px-5 md:px-10" id="process">
+    <section className="relative overflow-hidden py-24 md:py-32 bg-gradient-to-b from-background via-primary/70 to-background px-5 md:px-10" id="process">
       {/* Immersive Background Gradients - Scattered across the full section */}
-      <div className="absolute top-0 left-0 w-[800px] h-[600px] bg-primary/5 blur-[150px] rounded-full pointer-events-none -translate-x-1/2 -translate-y-1/2" />
-      <div className="absolute bottom-0 right-0 w-[800px] h-[600px] bg-secondary/5 blur-[150px] rounded-full pointer-events-none translate-x-1/2 translate-y-1/2" />
-      <div className="absolute top-1/2 right-[-10%] w-[600px] h-[600px] bg-primary/5 blur-[130px] rounded-full pointer-events-none" />
-      <div className="absolute bottom-1/4 left-[-5%] w-[500px] h-[500px] bg-secondary/5 blur-[120px] rounded-full pointer-events-none" />
+      <div className="absolute top-0 left-0 w-[800px] h-[600px] bg-primary/30 blur-[150px] rounded-full pointer-events-none -translate-x-1/2 -translate-y-1/2" />
+      <div className="absolute bottom-0 right-0 w-[800px] h-[600px] bg-secondary/30 blur-[150px] rounded-full pointer-events-none translate-x-1/2 translate-y-1/2" />
+      <div className="absolute top-1/2 right-[-10%] w-[600px] h-[600px] bg-primary/30 blur-[130px] rounded-full pointer-events-none" />
+      <div className="absolute bottom-1/4 left-[-5%] w-[500px] h-[500px] bg-secondary/30 blur-[120px] rounded-full pointer-events-none" />
 
       <GridPattern
         width={120}
@@ -98,13 +104,13 @@ export const Process = () => {
         y={-1}
         strokeDasharray="4 4"
         className={cn(
-          "[mask-image:radial-gradient(1500px_circle_at_center,white,transparent)] opacity-60 stroke-foreground/15",
+          "[mask-image:radial-gradient(1500px_circle_at_center,white,transparent)] opacity-100 stroke-foreground/50",
         )}
       />
       <div className="relative z-10 mx-auto max-w-[1500px]">
         {/* Standardized Header */}
         <MotionWrapper
-          className="mb-16 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-10"
+          className="mb-16 flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between"
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -115,14 +121,14 @@ export const Process = () => {
               <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-primary">Process</p>
             </div>
 
-            <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-[64px] font-bold tracking-tight leading-[1.1] text-foreground max-w-xl font-syne">
-              Our Development <span className="text-primary">Process.</span>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-[54px] font-bold tracking-tight leading-[1.1] text-foreground max-w-2xl font-syne">
+              Our Development <span className="text-brand-gradient">Process.</span>
             </h2>
           </div>
 
-          <div className="lg:max-w-sm">
+          <div className="max-w-sm">
             <p className="text-base md:text-[17px] text-muted-foreground leading-relaxed font-inter">
-              A streamlined approach to custom software engineering, AI workflow automation, and enterprise web application development.
+              A simple and efficient approach to building scalable digital products.
             </p>
           </div>
         </MotionWrapper>
@@ -138,7 +144,7 @@ export const Process = () => {
             >
               <path
                 d="M 100 0 C 260 100, 260 150, 100 200 C -60 250, -60 350, 100 400 C 260 450, 260 550, 100 600 C -60 650, -60 750, 100 800"
-                stroke="rgba(59,130,246,0.2)"
+                stroke="rgba(15,23,42,0.4)"
                 strokeWidth="2.5"
                 strokeDasharray="8 12"
                 fill="none"

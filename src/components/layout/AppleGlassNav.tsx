@@ -26,7 +26,7 @@ export const AppleGlassNav = ({ items, className }: NavProps) => {
     const pathname = usePathname();
 
     return (
-        <nav className={cn("flex p-1.5 gap-2 bg-white/70 backdrop-blur-xl border border-border rounded-full shadow-lg ring-1 ring-foreground/5", className)}>
+        <nav className={cn("flex p-1.5 gap-3 bg-white/70 backdrop-blur-xl border border-border rounded-full shadow-lg ring-1 ring-foreground/5", className)}>
             {items.map((item) => {
                 const active = isActiveHref(pathname, item.href);
                 return (
@@ -34,7 +34,7 @@ export const AppleGlassNav = ({ items, className }: NavProps) => {
                         key={item.name}
                         href={item.href}
                         className={cn(
-                            "relative px-4 py-1.5 text-sm font-medium transition-colors duration-300",
+                            "relative px-6 py-1.5 text-sm font-medium transition-colors duration-300",
                             active ? "text-primary-foreground" : "text-muted-foreground hover:text-foreground"
                         )}
                     >

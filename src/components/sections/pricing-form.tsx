@@ -85,8 +85,8 @@ function Field({
   children: React.ReactNode
 }) {
   return (
-    <div className="flex flex-col gap-1.5">
-      <label className="text-[13px] text-muted-foreground">
+    <div className="flex flex-col gap-2">
+      <label className="text-[11px] font-black uppercase tracking-[0.2em] text-muted-foreground ml-1">
         {label}
         {required && <span className="text-primary ml-0.5">*</span>}
       </label>
@@ -109,7 +109,7 @@ function Field({
 }
 
 const inputClass =
-  "h-auto w-full rounded-2xl border-border bg-white/[0.03] px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/60 focus-visible:border-primary/60 focus-visible:bg-white/[0.05] focus-visible:ring-0 focus-visible:ring-offset-0 transition-all duration-300"
+  "h-auto w-full rounded-2xl border-border bg-muted/30 px-5 py-4 text-[15px] text-foreground placeholder:text-muted-foreground/50 focus-visible:border-primary/60 focus-visible:bg-muted/50 focus-visible:ring-0 focus-visible:ring-offset-0 transition-all duration-300 font-inter"
 
 
 function SinglePillGroup({
@@ -336,7 +336,7 @@ function MultiPillGroup({
 
 function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
-    <p className="text-[13px] text-muted-foreground mb-3">{children}</p>
+    <p className="text-[11px] font-black uppercase tracking-[0.2em] text-muted-foreground ml-1 mb-3">{children}</p>
   )
 }
 
@@ -345,10 +345,8 @@ type SubmitState = Awaited<ReturnType<typeof submitSalesInquiry>> | null
 
 export function SalesIntakeForm({
   defaultProjectType = "Custom Project",
-  onBack,
 }: {
   defaultProjectType?: string
-  onBack?: () => void
 }) {
   const [state, setState] = useState<SubmitState>(null)
 
@@ -395,7 +393,7 @@ export function SalesIntakeForm({
   const busy = isSubmitting
 
   return (
-    <div className="flex min-h-screen flex-col bg-background text-foreground pt-24 md:pt-28">
+    <div className="flex min-h-screen flex-col bg-background text-foreground pt-24 pb-24 md:pt-32 md:pb-32">
       <AnimatePresence mode="wait">
         {state?.success ? (
           <motion.div
@@ -426,20 +424,11 @@ export function SalesIntakeForm({
           >
             {/* Heading */}
             <div className="flex flex-col gap-3">
-              {onBack && (
-                <button
-                  type="button"
-                  onClick={onBack}
-                  className="self-start text-[11px] uppercase tracking-widest font-bold text-muted-foreground hover:text-foreground transition-colors"
-                >
-                  ← Back to pricing
-                </button>
-              )}
              
-              <h1 className="text-3xl md:text-4xl font-bold text-foreground tracking-tight">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground tracking-tight font-syne leading-[1.1]">
                 Let&apos;s scope your engagement
               </h1>
-              <p className="text-muted-foreground max-w-2xl">
+              <p className="text-lg text-muted-foreground max-w-2xl font-inter">
                 Tell us about your project and we&apos;ll get back to you with a tailored plan.
               </p>
             </div>
@@ -447,20 +436,20 @@ export function SalesIntakeForm({
             {/* Name + Email */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
               <Field label="Full name" required error={errors.full_name?.message}>
-                <Input {...register("full_name")} placeholder="Your name" className={inputClass} />
+                <Input {...register("full_name")} placeholder="e.g. John Doe" className={inputClass} />
               </Field>
               <Field label="Work email" required error={errors.work_email?.message}>
-                <Input {...register("work_email")} type="email" placeholder="you@company.com" className={inputClass} />
+                <Input {...register("work_email")} type="email" placeholder="e.g. john@company.com" className={inputClass} />
               </Field>
             </div>
 
             {/* Company + Website */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
               <Field label="Company / brand" error={errors.company?.message}>
-                <Input {...register("company")} placeholder="Company name" className={inputClass} />
+                <Input {...register("company")} placeholder="e.g. Acme Corp" className={inputClass} />
               </Field>
               <Field label="Website" error={errors.website?.message}>
-                <Input {...register("website")} placeholder="https://example.com" className={inputClass} />
+                <Input {...register("website")} placeholder="e.g. https://acme.com" className={inputClass} />
               </Field>
             </div>
 
@@ -495,7 +484,7 @@ export function SalesIntakeForm({
                     value={field.value}
                     onChange={field.onChange}
                     addLabel="Add specific requirement"
-                    addPlaceholder="Describe your requirement…"
+                    addPlaceholder="e.g. Describe your requirement…"
                     error={errors.engagement_model?.message}
                   />
                 )}
@@ -545,7 +534,7 @@ export function SalesIntakeForm({
               <Textarea
                 {...register("goals")}
                 rows={5}
-                placeholder="Describe outcomes, priorities, and constraints."
+                placeholder="e.g. Describe outcomes, priorities, and constraints."
                 className={cn(inputClass, "resize-none leading-relaxed")}
               />
             </Field>
@@ -616,9 +605,10 @@ export function SalesIntakeForm({
               type="submit"
               disabled={busy}
               isLoading={busy}
-              className="w-full py-4 rounded-2xl bg-primary hover:bg-primary/90 text-primary-foreground font-bold text-sm uppercase tracking-widest transition-all duration-300 active:scale-[0.98] disabled:opacity-60 disabled:cursor-not-allowed"
+              className="w-full py-4 rounded-full bg-brand-gradient text-primary-foreground font-bold text-sm uppercase tracking-widest shadow-xl hover:shadow-primary/40 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 relative overflow-hidden group"
             >
-              Submit inquiry
+              <span className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <span className="relative z-10">Submit inquiry</span>
             </Button>
           </motion.form>
         )}

@@ -11,10 +11,7 @@ function GetStartedContent() {
   const tier = searchParams.get('tier') ?? undefined;
 
   return (
-    <SalesIntakeForm
-      defaultProjectType={tier}
-      onBack={() => router.back()}
-    />
+    <SalesIntakeForm defaultProjectType={tier} />
   );
 }
 

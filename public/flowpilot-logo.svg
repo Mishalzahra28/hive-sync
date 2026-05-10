@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 120">
+  <g fill="currentColor" transform="translate(10, 10)">
+    <path d="M50 0 C22.4 0 0 22.4 0 50 C0 77.6 22.4 100 50 100 C77.6 100 100 77.6 100 50 C100 22.4 77.6 0 50 0 Z M50 80 C33.4 80 20 66.6 20 50 C20 33.4 33.4 20 50 20 L80 20 L80 50 C80 66.6 66.6 80 50 80 Z" fill="#8B5CF6"/>
+    <path d="M50 20 C33.4 20 20 33.4 20 50 L50 80 C66.6 80 80 66.6 80 50 L50 20 Z" fill="#C4B5FD"/>
+    <text x="120" y="70" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-weight="800" font-size="64" fill="currentColor">FlowPilot</text>
+  </g>
+</svg>

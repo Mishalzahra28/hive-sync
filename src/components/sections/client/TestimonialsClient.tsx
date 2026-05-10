@@ -1,12 +1,9 @@
 "use client"
 
-import { ChevronLeft, ChevronRight } from 'lucide-react'
-import Image from 'next/image'
+import { ChevronLeft, ChevronRight, Star } from 'lucide-react'
 import React, { useEffect, useState } from 'react'
 
 import { cn } from '@/lib/utils'
-
-const SQRT_5000 = Math.sqrt(5000)
 
 interface Testimonial {
   tempId: number
@@ -34,55 +31,56 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
     <div
       onClick={() => handleMove(position)}
       className={cn(
-        "absolute left-1/2 top-1/2 cursor-pointer border p-6 md:p-8 transition-all duration-500 ease-in-out",
+        "absolute left-1/2 top-1/2 cursor-pointer transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)]",
+        "rounded-[2rem] border p-8 sm:p-10 flex flex-col gap-6",
         isCenter
-          ? "z-10 bg-primary text-primary-foreground border-primary"
-          : "z-0 bg-card text-card-foreground border-border shadow-md hover:border-primary/50"
+          ? "z-10 bg-card border-primary/40 shadow-xl shadow-primary/5"
+          : "z-0 bg-card/60 border-border opacity-40 hover:opacity-60"
       )}
       style={{
         width: cardSize,
-        height: cardSize,
-        clipPath: `polygon(50px 0%, calc(100% - 50px) 0%, 100% 50px, 100% 100%, calc(100% - 50px) 100%, 50px 100%, 0 100%, 0 0)`,
         transform: `
           translate(-50%, -50%)
-          translateX(${(cardSize / 1.5) * position}px)
-          translateY(${isCenter ? -65 : position % 2 ? 15 : -15}px)
-          rotate(${isCenter ? 0 : position % 2 ? 2.5 : -2.5}deg)
+          translateX(${(cardSize / 1.4) * position}px)
+          translateY(${isCenter ? -50 : position % 2 ? 20 : -20}px)
+          scale(${isCenter ? 1 : 0.88})
+          rotate(${isCenter ? 0 : position % 2 ? 3 : -3}deg)
         `,
-        boxShadow: isCenter ? "0px 8px 0px 4px hsl(var(--border))" : "0px 0px 0px 0px transparent"
       }}
     >
-      <span
-        className="absolute block origin-top-right rotate-45 bg-border"
-        style={{
-          right: -2,
-          top: 48,
-          width: SQRT_5000,
-          height: 2
-        }}
-      />
-      <Image
-        src={testimonial.imgSrc}
-        alt={`${testimonial.by.split(',')[0]}`}
-        width={48}
-        height={56}
-        className="mb-4 h-14 w-12 bg-muted object-cover object-top"
-        style={{
-          boxShadow: "3px 3px 0px hsl(var(--background))"
-        }}
-      />
-      <h3 className={cn(
-        "text-base sm:text-xl font-medium",
-        isCenter ? "text-primary-foreground" : "text-foreground"
+      {/* Icon Badge */}
+      <div className={cn(
+        "size-12 rounded-2xl flex items-center justify-center transition-colors",
+        isCenter
+          ? "bg-primary text-primary-foreground"
+          : "bg-primary/10 border border-primary/20 text-primary"
       )}>
-        &ldquo;{testimonial.testimonial}&rdquo;
-      </h3>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z" />
+          <path d="M15 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 5v3c0 1 0 1 1 1z" />
+        </svg>
+      </div>
+
+      {/* Quote Text */}
       <p className={cn(
-        "absolute bottom-8 left-8 right-8 mt-2 text-sm italic",
-        isCenter ? "text-primary-foreground/90" : "text-muted-foreground"
+        "text-sm sm:text-[15px] leading-[1.8] font-inter",
+        isCenter ? "text-foreground" : "text-muted-foreground"
       )}>
-        — {testimonial.by}
+        {testimonial.testimonial}
       </p>
+
+      {/* Stars */}
+      <div className="flex gap-1 mt-auto pt-2">
+        {[...Array(5)].map((_, i) => (
+          <Star
+            key={i}
+            className={cn(
+              "size-3.5 fill-current",
+              isCenter ? "text-amber-400" : "text-amber-400/30"
+            )}
+          />
+        ))}
+      </div>
     </div>
   )
 }
@@ -112,7 +110,7 @@ export const TestimonialsClient = ({ initialTestimonials }: { initialTestimonial
   useEffect(() => {
     const updateSize = () => {
       const { matches } = window.matchMedia("(min-width: 640px)")
-      setCardSize(matches ? 365 : 290)
+      setCardSize(matches ? 400 : 300)
     }
     updateSize()
     window.addEventListener("resize", updateSize)
@@ -122,7 +120,7 @@ export const TestimonialsClient = ({ initialTestimonials }: { initialTestimonial
   return (
     <div
       className="relative w-full overflow-hidden"
-      style={{ height: 600 }}
+      style={{ height: 520 }}
     >
       {testimonialsList.map((testimonial, index) => {
         const position = testimonialsList.length % 2
@@ -139,29 +137,29 @@ export const TestimonialsClient = ({ initialTestimonials }: { initialTestimonial
         )
       })}
 
-      {/* Navigation — dark brand theme */}
-      <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 gap-2">
+      {/* Navigation — matches site style */}
+      <div className="absolute bottom-6 left-1/2 flex -translate-x-1/2 gap-3">
         <button
           onClick={() => handleMove(-1)}
           className={cn(
-            "flex h-14 w-14 items-center justify-center text-2xl transition-colors",
-            "bg-card border border-border text-foreground hover:bg-primary hover:text-primary-foreground",
-            "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+            "flex h-12 w-12 items-center justify-center rounded-full transition-all duration-300",
+            "bg-card border border-border text-foreground hover:border-primary/40 hover:text-primary hover:shadow-xl active:scale-95",
+            "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
           )}
           aria-label="Previous testimonial"
         >
-          <ChevronLeft />
+          <ChevronLeft className="size-5" />
         </button>
         <button
           onClick={() => handleMove(1)}
           className={cn(
-            "flex h-14 w-14 items-center justify-center text-2xl transition-colors",
-            "bg-card border border-border text-foreground hover:bg-primary hover:text-primary-foreground",
-            "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+            "flex h-12 w-12 items-center justify-center rounded-full transition-all duration-300",
+            "bg-card border border-border text-foreground hover:border-primary/40 hover:text-primary hover:shadow-xl active:scale-95",
+            "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
           )}
           aria-label="Next testimonial"
         >
-          <ChevronRight />
+          <ChevronRight className="size-5" />
         </button>
       </div>
     </div>

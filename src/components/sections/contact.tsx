@@ -6,7 +6,7 @@ import { MotionWrapper } from "./client/motion-wrappers"
 
 export const Contact = () => {
   return (
-    <section className="relative overflow-hidden py-24 bg-background px-5 md:px-10" id="contact">
+    <section className="relative overflow-hidden py-24 md:py-32 bg-background px-5 md:px-10" id="contact">
       {/* Background Glows */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full pointer-events-none overflow-hidden">
         <div className="absolute top-[20%] -left-[10%] w-[40%] h-[40%] rounded-full bg-primary/5 blur-[120px]" />
@@ -29,7 +29,7 @@ export const Contact = () => {
             </div>
 
             <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight leading-[1.1] text-foreground mb-8 font-syne">
-              Let&apos;s Build Your <span className="text-primary">Next Big Thing.</span>
+              Let&apos;s Build Your <span className="text-brand-gradient">Next Big Thing.</span>
             </h2>
 
             <p className="text-base md:text-[17px] text-muted-foreground leading-relaxed font-inter mb-12 max-w-lg">

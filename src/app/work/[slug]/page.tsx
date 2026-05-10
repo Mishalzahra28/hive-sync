@@ -8,15 +8,20 @@ interface Props {
 }
 
 const caseStudiesData = {
-  'mcdonalds': {
-    client: "McDonald's",
-    title: "Global Compliance & Data Management System",
-    description: "Developing a robust, real-time compliance tracking system for 38,000+ global locations, ensuring data integrity and regulatory adherence across multiple jurisdictions.",
+  'taskhorse': {
+    client: "TaskHorse",
+    title: "On-Demand Service Marketplace Platform",
+    description: "Building a scalable, real-time service marketplace connecting customers with verified service professionals across multiple categories through seamless booking, payments, and live tracking.",
   },
-  'subway': {
-    client: "Subway",
-    title: "Next-Gen CRM & Franchise Management Portal",
-    description: "Reimagining the franchise experience with a data-driven CRM that streamlines operations, boosts loyalty, and provides deep insights into store performance.",
+  'hungerrush': {
+    client: "HungerRush",
+    title: "POS & Restaurant Management Ecosystem",
+    description: "An all-in-one restaurant commerce and operations platform. We engineered the operational engine 'Full Rails' and the automated marketing suite 'HungerRush 360'.",
+  },
+  'flowpilot': {
+    client: "FlowPilot AI",
+    title: "SaaS Platform for Workflow Automation",
+    description: "A modern SaaS platform focused on workflow automation, subscription management, analytics, and seamless collaboration for growing businesses.",
   }
 }
 

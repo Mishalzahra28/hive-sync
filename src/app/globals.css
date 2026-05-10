@@ -55,6 +55,10 @@
   h1, h2, h3, h4, h5, h6 {
     @apply font-syne;
   }
+
+  button, .button, [role="button"], a.inline-flex {
+    @apply font-inter;
+  }
 }
 
 @layer components {
@@ -75,12 +79,29 @@
     scrollbar-width: none;
   }
 
+  .text-brand-gradient {
+    background: linear-gradient(135deg, hsl(221, 83%, 45%) 0%, hsl(226, 70%, 52%) 50%, hsl(262, 70%, 55%) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
   .bg-brand-gradient {
-    background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(226, 70%, 55%) 100%);
+    background: linear-gradient(135deg, hsl(221, 83%, 45%) 0%, hsl(226, 70%, 52%) 50%, hsl(262, 70%, 55%) 100%);
   }
 
   .bg-brand-gradient-hover {
-    background: linear-gradient(135deg, hsl(221, 83%, 50%) 0%, hsl(226, 70%, 60%) 100%);
+    background: linear-gradient(135deg, hsl(221, 83%, 52%) 0%, hsl(226, 70%, 60%) 50%, hsl(262, 70%, 62%) 100%);
+  }
+
+  @keyframes shimmer-slide {
+    0% { transform: translateX(-100%) skewX(-12deg); }
+    100% { transform: translateX(200%) skewX(-12deg); }
+  }
+
+  @keyframes glow-pulse {
+    0%, 100% { box-shadow: 0 0 12px 2px hsl(221 83% 45% / 0.3); }
+    50% { box-shadow: 0 0 24px 6px hsl(262 70% 55% / 0.45); }
   }
 
   @keyframes border-glow-translate {

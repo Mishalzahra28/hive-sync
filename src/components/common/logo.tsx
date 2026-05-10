@@ -24,13 +24,13 @@ const Logo = ({
 
   const img = (
     <Image
-      src="/logo.png"
+      src="/logo.svg"
       alt="Hive Sync"
       height={width * heightMultiplier}
       width={width}
       priority
       className={cn(
-        'h-9 w-auto object-contain drop-shadow-[0_2px_6px_rgba(15,23,42,0.35)]',
+        'h-4 md:h-5 w-auto object-contain drop-shadow-[0_2px_6px_rgba(15,23,42,0.35)]',
         className,
       )}
     />

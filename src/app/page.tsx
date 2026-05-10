@@ -1,5 +1,6 @@
 import { CaseStudies } from '@/components/sections/case-studies';
 import { Contact } from '@/components/sections/contact';
+import { CTA } from '@/components/sections/cta';
 import GrowthBanner from '@/components/sections/growth-banner';
 import { Hero } from '@/components/sections/hero';
 import { Pricing } from '@/components/sections/pricing';
@@ -18,7 +19,7 @@ export default function Home() {
       <CaseStudies />
       <Pricing />
       <Testimonials />
-      <Contact />
+      <CTA />
     </>
   );
 }

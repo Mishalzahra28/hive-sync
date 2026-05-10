@@ -1,140 +1,284 @@
-"use client"
-
-import { motion, useReducedMotion } from 'motion/react'
-import React from 'react'
-
 export default function Loading() {
-  const shouldReduceMotion = useReducedMotion()
-
   return (
-    <div 
-      role="status" 
-      aria-live="polite" 
+    <div
+      role="status"
+      aria-live="polite"
       aria-busy="true"
-      className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-[#020617] overflow-hidden"
+      className="fixed inset-0 z-[100] flex flex-col items-center justify-center overflow-hidden bg-background"
     >
       <span className="sr-only">Loading HiveSync...</span>
 
-      {/* Background Ambient Glows */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-blue-500/10 blur-[120px] rounded-full pointer-events-none" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-purple-500/10 blur-[100px] rounded-full pointer-events-none" />
+      <div className="absolute left-1/2 top-1/2 size-[520px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/10 blur-[120px]" />
+      <div className="absolute left-1/2 top-1/2 size-[340px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand-purple/10 blur-[100px]" />
 
-      <div className="relative flex flex-col items-center">
-        {/* Animated Hexagon Logo */}
-        <div className="relative size-24 mb-12">
-          {/* Outer Pulsing Hexagon */}
-          <motion.div
-            initial={{ opacity: 0.2, scale: 0.8 }}
-            animate={shouldReduceMotion ? { opacity: 0.2 } : { 
-              opacity: [0.1, 0.3, 0.1],
-              scale: [1, 1.2, 1],
-              rotate: [0, 90, 180, 270, 360]
-            }}
-            transition={{ 
-              duration: 4, 
-              repeat: Infinity, 
-              ease: "linear" 
-            }}
-            className="absolute inset-0 border-2 border-blue-500/20 rounded-[20%] blur-[2px]"
-            style={{ clipPath: 'polygon(50% 0%, 95% 25%, 95% 75%, 50% 100%, 5% 75%, 5% 25%)' }}
+      <div className="relative flex flex-col items-center gap-7">
+        <svg className="hive-loader" width={240} height={240} viewBox="0 0 240 240" aria-hidden="true">
+          <circle
+            className="hive-loader__ring hive-loader__ring--a"
+            cx={120}
+            cy={120}
+            r={105}
+            fill="none"
+            strokeWidth={20}
+            strokeDasharray="0 660"
+            strokeDashoffset={-330}
+            strokeLinecap="round"
           />
-
-          {/* Main Logo Hexagon */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.5, rotate: -45 }}
-            animate={{ opacity: 1, scale: 1, rotate: 0 }}
-            transition={{ 
-              duration: 0.8,
-              ease: [0.23, 1, 0.32, 1]
-            }}
-            className="relative w-full h-full"
-          >
-            <svg viewBox="0 0 100 110" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full drop-shadow-[0_0_15px_rgba(59,130,246,0.5)]">
-              <defs>
-                <linearGradient id="loader_gradient" x1="0" y1="0" x2="100" y2="100" gradientUnits="userSpaceOnUse">
-                  <stop stopColor="#3B82F6" />
-                  <stop offset="0.5" stopColor="#6366F1" />
-                  <stop offset="1" stopColor="#8B5CF6" />
-                </linearGradient>
-              </defs>
-              <path 
-                d="M50 5L93.3 30V80L50 105L6.7 80V30L50 5Z" 
-                fill="url(#loader_gradient)" 
-                className="opacity-20"
-              />
-              <motion.path 
-                d="M50 15L80.3 32.5V67.5L50 85L19.7 67.5V32.5L50 15Z" 
-                stroke="url(#loader_gradient)"
-                strokeWidth="2"
-                strokeLinecap="round"
-                initial={{ pathLength: 0 }}
-                animate={shouldReduceMotion ? { pathLength: 1 } : { pathLength: 1 }}
-                transition={shouldReduceMotion ? { duration: 0.5 } : { 
-                  duration: 2,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
-              />
-              <path 
-                d="M50 30L67.3 40V60L50 70L32.7 60V40L50 30Z" 
-                fill="url(#loader_gradient)"
-              />
-            </svg>
-          </motion.div>
-        </div>
-
-        {/* Text Loader */}
-        <div className="flex flex-col items-center gap-3">
-          <motion.div 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.5 }}
-            className="flex items-center gap-2"
-          >
-            <span className="text-blue-500 font-black tracking-widest text-[10px] uppercase">Initializing</span>
-            <span className="flex gap-1" aria-hidden="true">
-              <motion.span 
-                animate={shouldReduceMotion ? { opacity: 1 } : { opacity: [0, 1, 0] }}
-                transition={{ duration: 1.5, repeat: Infinity, delay: 0 }}
-                className="size-1 rounded-full bg-blue-500"
-              />
-              <motion.span 
-                animate={shouldReduceMotion ? { opacity: 1 } : { opacity: [0, 1, 0] }}
-                transition={{ duration: 1.5, repeat: Infinity, delay: 0.2 }}
-                className="size-1 rounded-full bg-blue-500"
-              />
-              <motion.span 
-                animate={shouldReduceMotion ? { opacity: 1 } : { opacity: [0, 1, 0] }}
-                transition={{ duration: 1.5, repeat: Infinity, delay: 0.4 }}
-                className="size-1 rounded-full bg-blue-500"
-              />
-            </span>
-          </motion.div>
-          
-          <motion.p
-            initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.8 }}
-            className="text-[#94A3B8] text-xs font-medium tracking-wide"
-          >
-            Securing Connection
-          </motion.p>
-        </div>
-
-        {/* Progress Bar */}
-        <div className="mt-8 w-48 h-[2px] bg-white/5 rounded-full overflow-hidden relative">
-          <motion.div 
-            initial={{ x: '-100%' }}
-            animate={{ x: '100%' }}
-            transition={shouldReduceMotion ? { duration: 3, repeat: Infinity, ease: "linear" } : { 
-              duration: 1.5, 
-              repeat: Infinity, 
-              ease: "easeInOut" 
-            }}
-            className="absolute inset-0 bg-gradient-to-r from-transparent via-blue-500 to-transparent"
+          <circle
+            className="hive-loader__ring hive-loader__ring--b"
+            cx={120}
+            cy={120}
+            r={35}
+            fill="none"
+            strokeWidth={20}
+            strokeDasharray="0 220"
+            strokeDashoffset={-110}
+            strokeLinecap="round"
           />
-        </div>
+          <circle
+            className="hive-loader__ring hive-loader__ring--c"
+            cx={85}
+            cy={120}
+            r={70}
+            fill="none"
+            strokeWidth={20}
+            strokeDasharray="0 440"
+            strokeLinecap="round"
+          />
+          <circle
+            className="hive-loader__ring hive-loader__ring--d"
+            cx={155}
+            cy={120}
+            r={70}
+            fill="none"
+            strokeWidth={20}
+            strokeDasharray="0 440"
+            strokeLinecap="round"
+          />
+        </svg>
       </div>
+
+      <style>{`
+        .hive-loader {
+          width: 7rem;
+          height: 7rem;
+          overflow: visible;
+          filter: drop-shadow(0 18px 38px hsl(var(--primary) / 0.2));
+        }
+
+        .hive-loader__ring {
+          animation: hive-ring-a 2s linear infinite;
+          transform-origin: 120px 120px;
+        }
+
+        .hive-loader__ring--a {
+          stroke: hsl(var(--primary));
+        }
+
+        .hive-loader__ring--b {
+          animation-name: hive-ring-b;
+          stroke: hsl(226 70% 52%);
+        }
+
+        .hive-loader__ring--c {
+          animation-name: hive-ring-c;
+          stroke: hsl(262 70% 55%);
+        }
+
+        .hive-loader__ring--d {
+          animation-name: hive-ring-d;
+          stroke: hsl(var(--secondary));
+        }
+
+        @media (min-width: 640px) {
+          .hive-loader {
+            width: 8rem;
+            height: 8rem;
+          }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          .hive-loader__ring {
+            animation-duration: 6s;
+          }
+        }
+
+        @keyframes hive-ring-a {
+          from, 4% {
+            stroke-dasharray: 0 660;
+            stroke-width: 20;
+            stroke-dashoffset: -330;
+          }
+
+          12% {
+            stroke-dasharray: 60 600;
+            stroke-width: 30;
+            stroke-dashoffset: -335;
+          }
+
+          32% {
+            stroke-dasharray: 60 600;
+            stroke-width: 30;
+            stroke-dashoffset: -595;
+          }
+
+          40%, 54% {
+            stroke-dasharray: 0 660;
+            stroke-width: 20;
+            stroke-dashoffset: -660;
+          }
+
+          62% {
+            stroke-dasharray: 60 600;
+            stroke-width: 30;
+            stroke-dashoffset: -665;
+          }
+
+          82% {
+            stroke-dasharray: 60 600;
+            stroke-width: 30;
+            stroke-dashoffset: -925;
+          }
+
+          90%, to {
+            stroke-dasharray: 0 660;
+            stroke-width: 20;
+            stroke-dashoffset: -990;
+          }
+        }
+
+        @keyframes hive-ring-b {
+          from, 12% {
+            stroke-dasharray: 0 220;
+            stroke-width: 20;
+            stroke-dashoffset: -110;
+          }
+
+          20% {
+            stroke-dasharray: 20 200;
+            stroke-width: 30;
+            stroke-dashoffset: -115;
+          }
+
+          40% {
+            stroke-dasharray: 20 200;
+            stroke-width: 30;
+            stroke-dashoffset: -195;
+          }
+
+          48%, 62% {
+            stroke-dasharray: 0 220;
+            stroke-width: 20;
+            stroke-dashoffset: -220;
+          }
+
+          70% {
+            stroke-dasharray: 20 200;
+            stroke-width: 30;
+            stroke-dashoffset: -225;
+          }
+
+          90% {
+            stroke-dasharray: 20 200;
+            stroke-width: 30;
+            stroke-dashoffset: -305;
+          }
+
+          98%, to {
+            stroke-dasharray: 0 220;
+            stroke-width: 20;
+            stroke-dashoffset: -330;
+          }
+        }
+
+        @keyframes hive-ring-c {
+          from {
+            stroke-dasharray: 0 440;
+            stroke-width: 20;
+            stroke-dashoffset: 0;
+          }
+
+          8% {
+            stroke-dasharray: 40 400;
+            stroke-width: 30;
+            stroke-dashoffset: -5;
+          }
+
+          28% {
+            stroke-dasharray: 40 400;
+            stroke-width: 30;
+            stroke-dashoffset: -175;
+          }
+
+          36%, 58% {
+            stroke-dasharray: 0 440;
+            stroke-width: 20;
+            stroke-dashoffset: -220;
+          }
+
+          66% {
+            stroke-dasharray: 40 400;
+            stroke-width: 30;
+            stroke-dashoffset: -225;
+          }
+
+          86% {
+            stroke-dasharray: 40 400;
+            stroke-width: 30;
+            stroke-dashoffset: -395;
+          }
+
+          94%, to {
+            stroke-dasharray: 0 440;
+            stroke-width: 20;
+            stroke-dashoffset: -440;
+          }
+        }
+
+        @keyframes hive-ring-d {
+          from, 8% {
+            stroke-dasharray: 0 440;
+            stroke-width: 20;
+            stroke-dashoffset: 0;
+          }
+
+          16% {
+            stroke-dasharray: 40 400;
+            stroke-width: 30;
+            stroke-dashoffset: -5;
+          }
+
+          36% {
+            stroke-dasharray: 40 400;
+            stroke-width: 30;
+            stroke-dashoffset: -175;
+          }
+
+          44%, 50% {
+            stroke-dasharray: 0 440;
+            stroke-width: 20;
+            stroke-dashoffset: -220;
+          }
+
+          58% {
+            stroke-dasharray: 40 400;
+            stroke-width: 30;
+            stroke-dashoffset: -225;
+          }
+
+          78% {
+            stroke-dasharray: 40 400;
+            stroke-width: 30;
+            stroke-dashoffset: -395;
+          }
+
+          86%, to {
+            stroke-dasharray: 0 440;
+            stroke-width: 20;
+            stroke-dashoffset: -440;
+          }
+        }
+      `}</style>
     </div>
   )
 }

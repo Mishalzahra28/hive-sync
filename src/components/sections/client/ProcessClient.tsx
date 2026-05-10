@@ -1,23 +1,15 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Syne_Tactile } from 'next/font/google'
 import React from 'react'
-
 import { cn } from '@/lib/utils'
-
-const syneTactile = Syne_Tactile({
-  weight: '400',
-  subsets: ['latin'],
-})
-
-import { Code2, Compass, Eye, FlaskConical, Rocket } from "lucide-react"
+import { Code2, Compass, Eye, FlaskConical, Palette, Rocket } from "lucide-react"
 
 interface Step {
   id: string
   title: string
   description: string
-  iconName: 'eye' | 'compass' | 'code' | 'flask' | 'rocket'
+  iconName: 'eye' | 'compass' | 'palette' | 'code' | 'flask' | 'rocket'
   accent: string
   side: 'left' | 'right'
 }
@@ -25,6 +17,7 @@ interface Step {
 const ICON_MAP = {
   eye: Eye,
   compass: Compass,
+  palette: Palette,
   code: Code2,
   flask: FlaskConical,
   rocket: Rocket,
@@ -78,12 +71,12 @@ export const ProcessCard = ({ step }: { step: Step }) => {
       </div>
 
       <div
-        className="relative rounded-[42px] border-2 border-primary/30 px-6 md:px-8 pt-10 md:pt-12 pb-8 md:pb-10 overflow-hidden bg-gradient-to-br from-white via-blue-50 to-indigo-50 shadow-xl transition-all duration-500"
+        className="relative rounded-[42px] border border-slate-900/5 px-6 md:px-8 pt-10 md:pt-12 pb-8 md:pb-10 overflow-hidden bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 shadow-2xl transition-all duration-500 group-hover:border-primary/40 group-hover:shadow-primary/10"
       >
         <div className="relative mb-2 md:mb-4 flex items-center justify-between">
           <div className="inline-flex h-[60px] md:h-[93px] items-center">
             <span
-              className={cn("text-4xl sm:text-5xl md:text-[65px] leading-none relative z-10", syneTactile.className)}
+              className="text-4xl sm:text-5xl md:text-[65px] font-bold tracking-tighter leading-none relative z-10 font-syne"
               style={{ color: step.accent }}
             >
               {step.id}
@@ -91,11 +84,11 @@ export const ProcessCard = ({ step }: { step: Step }) => {
           </div>
           {(() => {
             const Icon = ICON_MAP[step.iconName as keyof typeof ICON_MAP] || Eye
-            return <Icon className="size-10 md:size-14 opacity-10" style={{ color: step.accent }} strokeWidth={1} />
+            return <Icon className="size-10 md:size-14 opacity-20" style={{ color: step.accent }} strokeWidth={1} />
           })()}
         </div>
 
-        <h3 className={cn("mb-3 md:mb-4 text-2xl sm:text-3xl md:text-[40px] font-semibold leading-tight md:leading-[48px] tracking-tight text-foreground", "font-syne")}>
+        <h3 className={cn("mb-3 md:mb-4 text-2xl sm:text-3xl md:text-[40px] font-bold leading-tight md:leading-[48px] tracking-tight text-brand-gradient", "font-syne")}>
           {step.title}
         </h3>
         <p className="text-sm sm:text-base md:text-[20px] md:leading-[28px] font-normal text-muted-foreground">

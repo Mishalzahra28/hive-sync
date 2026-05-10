@@ -3,7 +3,7 @@
 import { Menu, X } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 import Logo from "@/components/common/logo";
 
@@ -19,29 +19,22 @@ const NAV_LINKS = [
     { name: "Work", href: paths.caseStudies },
     { name: "Pricing", href: paths.pricing },
     { name: "Careers", href: paths.careers },
+    { name: "Contact", href: paths.contact },
 ];
 
 export const Navbar = () => {
-    const [scrolled, setScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
-    useEffect(() => {
-        const onScroll = () => setScrolled(window.scrollY > 20);
-        window.addEventListener("scroll", onScroll, { passive: true });
-        return () => window.removeEventListener("scroll", onScroll);
-    }, []);
 
     return (
         <header
             className={cn(
-                "fixed top-0 left-0 right-0 z-50 transition-all duration-300 flex justify-center px-4",
-                scrolled ? "py-3" : "py-5",
+                "absolute top-0 left-0 right-0 z-50 flex justify-center px-4 py-5",
             )}
         >
             <div
                 className={cn(
                     "absolute inset-0 transition-all duration-300 border-b",
-                    scrolled || isMobileMenuOpen
+                    isMobileMenuOpen
                         ? "bg-background/80 backdrop-blur-xl border-border opacity-100"
                         : "bg-transparent border-transparent opacity-0",
                 )}
@@ -58,7 +51,7 @@ export const Navbar = () => {
                 </motion.div>
 
                 {/* Desktop Nav */}
-                <div className="hidden lg:flex flex-1 justify-center">
+                <div className="hidden lg:block absolute left-1/2 -translate-x-1/2">
                     <AppleGlassNav items={NAV_LINKS} />
                 </div>
 
@@ -66,13 +59,20 @@ export const Navbar = () => {
                 <motion.div
                     initial={{ opacity: 0, x: 20 }}
                     animate={{ opacity: 1, x: 0 }}
-                    className="hidden lg:flex items-center"
+                    className="hidden lg:flex items-center gap-3"
                 >
                     <Link
-                        href={paths.getStarted}
-                        className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-brand-gradient text-primary-foreground font-bold text-sm hover:shadow-lg hover:shadow-primary/20 transition-all active:scale-95 shadow-md"
+                        href={paths.book}
+                        className="inline-flex items-center justify-center px-5 py-2.5 rounded-full border border-border bg-transparent text-foreground font-bold text-sm hover:bg-muted/50 hover:border-foreground/20 hover:scale-[1.03] active:scale-[0.97] transition-all duration-300"
                     >
-                        Get Started
+                        Book a call
+                    </Link>
+                    <Link
+                        href={paths.getStarted}
+                        className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-brand-gradient text-primary-foreground font-bold text-sm shadow-md hover:shadow-xl hover:shadow-primary/30 hover:scale-[1.03] active:scale-[0.97] transition-all duration-300 relative overflow-hidden group"
+                    >
+                        <span className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                        <span className="relative z-10">Get Started</span>
                     </Link>
                 </motion.div>
 
@@ -139,14 +139,22 @@ export const Navbar = () => {
                                 initial={{ opacity: 0, y: 10 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: NAV_LINKS.length * 0.05 }}
-                                className="mt-3"
+                                className="mt-3 flex flex-col gap-3"
                             >
+                                <Link
+                                    href={paths.book}
+                                    onClick={() => setIsMobileMenuOpen(false)}
+                                    className="flex items-center justify-center w-full px-5 py-3.5 rounded-full border border-border bg-transparent text-foreground font-bold text-sm hover:bg-muted/50 hover:border-foreground/20 hover:scale-[1.02] active:scale-[0.97] transition-all duration-300"
+                                >
+                                    Book a call
+                                </Link>
                                 <Link
                                     href={paths.getStarted}
                                     onClick={() => setIsMobileMenuOpen(false)}
-                                    className="flex items-center justify-center w-full px-5 py-3.5 rounded-xl bg-primary text-primary-foreground font-bold text-sm hover:bg-primary/90 transition-all active:scale-[0.98] shadow-md"
+                                    className="flex items-center justify-center w-full px-5 py-3.5 rounded-full bg-brand-gradient text-primary-foreground font-bold text-sm shadow-md hover:shadow-lg hover:shadow-primary/30 hover:scale-[1.02] active:scale-[0.97] transition-all duration-300 relative overflow-hidden group"
                                 >
-                                    Get Started
+                                    <span className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                                    <span className="relative z-10">Get Started</span>
                                 </Link>
                             </motion.div>
                         </nav>

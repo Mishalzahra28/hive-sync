@@ -93,7 +93,7 @@ export const PricingClient = ({ tiers, resourceSteps, contractLengths }: Pricing
             {workType === 'project' && (
               <motion.div
                 layoutId="work-type-pill"
-                className="absolute inset-0 bg-primary rounded-full shadow-lg"
+                className="absolute inset-0 bg-brand-gradient rounded-full shadow-lg"
                 transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
               />
             )}
@@ -147,13 +147,13 @@ export const PricingClient = ({ tiers, resourceSteps, contractLengths }: Pricing
                       <>
                         <span className="text-[10px] font-black uppercase tracking-widest text-muted-foreground/60 mb-1">Starting from</span>
                         <div className="flex items-baseline gap-1">
-                          <span className="text-2xl md:text-3xl font-bold text-foreground font-syne">{tier.price.replace('Starting from', '').trim()}</span>
+                          <span className="text-2xl md:text-[32px] font-bold leading-tight tracking-normal text-foreground font-inter">{tier.price.replace('Starting from', '').trim()}</span>
                           <span className="text-muted-foreground text-[12px] font-medium font-inter">/project</span>
                         </div>
                       </>
                     ) : (
                       <div className="flex items-baseline gap-1">
-                        <span className="text-2xl md:text-3xl font-bold text-foreground font-syne">{tier.price}</span>
+                        <span className="text-2xl md:text-[32px] font-bold leading-tight tracking-normal text-foreground font-inter">{tier.price}</span>
                       </div>
                     )}
                   </div>
@@ -176,13 +176,14 @@ export const PricingClient = ({ tiers, resourceSteps, contractLengths }: Pricing
                 <Link
                   href={`${paths.getStarted}?tier=${encodeURIComponent(tier.name)}`}
                   className={cn(
-                    "relative z-10 block w-full py-4 rounded-[18px] font-black text-[12px] uppercase tracking-widest text-center transition-all active:scale-[0.97] shadow-lg",
+                    "relative z-10 block w-full py-2.5 rounded-full font-bold text-[14px] uppercase tracking-widest text-center transition-all duration-300 active:scale-[0.97] shadow-lg overflow-hidden group",
                     tier.name === 'Custom Project'
-                      ? "bg-foreground text-background hover:opacity-90"
-                      : "bg-brand-gradient text-primary-foreground hover:shadow-lg hover:shadow-primary/20"
+                      ? "bg-foreground text-background hover:opacity-90 hover:scale-[1.02]"
+                      : "bg-brand-gradient text-primary-foreground hover:shadow-xl hover:shadow-primary/30 hover:scale-[1.02]"
                   )}
                 >
-                  {tier.cta}
+                  <span className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <span className="relative z-10">{tier.cta}</span>
                 </Link>
               </motion.div>
             ))}
@@ -306,7 +307,7 @@ export const PricingClient = ({ tiers, resourceSteps, contractLengths }: Pricing
                         </p>
                       </div>
                       <div className="text-left sm:text-right">
-                        <div className="text-3xl md:text-4xl font-bold text-foreground font-syne">
+                        <div className="text-2xl md:text-[32px] font-bold leading-tight tracking-normal text-foreground font-inter">
                           ${contractLength === 3 ? 45 : contractLength === 6 ? 40 : contractLength === 12 ? 35 : 30}
                           <span className="text-base text-muted-foreground ml-1 font-sans">/hr</span>
                         </div>
@@ -332,9 +333,10 @@ export const PricingClient = ({ tiers, resourceSteps, contractLengths }: Pricing
 
                     <Link
                       href={`${paths.getStarted}?tier=${encodeURIComponent('Full-Stack Developer')}`}
-                      className="block w-full py-3 rounded-[16px] bg-foreground text-background font-black text-[11px] uppercase tracking-widest text-center transition-all hover:opacity-90 active:scale-[0.97] relative z-10 shadow-lg"
+                      className="block w-full py-3 rounded-full bg-brand-gradient text-primary-foreground font-bold text-[11px] uppercase tracking-widest text-center transition-all duration-300 hover:shadow-xl hover:shadow-primary/30 hover:scale-[1.02] active:scale-[0.97] relative z-10 shadow-lg overflow-hidden group"
                     >
-                      Hire Developer Resource
+                      <span className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                      <span className="relative z-10">Hire Developer Resource</span>
                     </Link>
                   </motion.div>
 
@@ -353,7 +355,7 @@ export const PricingClient = ({ tiers, resourceSteps, contractLengths }: Pricing
                         </p>
                       </div>
                       <div className="text-left sm:text-right">
-                        <div className="text-3xl md:text-4xl font-bold text-foreground font-syne">
+                        <div className="text-2xl md:text-[32px] font-bold leading-tight tracking-normal text-foreground font-inter">
                           ${contractLength === 3 ? 30 : contractLength === 6 ? 27 : contractLength === 12 ? 24 : 21}
                           <span className="text-base text-muted-foreground ml-1 font-sans">/hr</span>
                         </div>
@@ -379,9 +381,10 @@ export const PricingClient = ({ tiers, resourceSteps, contractLengths }: Pricing
 
                     <Link
                       href={`${paths.getStarted}?tier=${encodeURIComponent('Product Designer')}`}
-                      className="block w-full py-3 rounded-[16px] bg-gradient-to-r from-secondary to-primary text-primary-foreground font-black text-[11px] uppercase tracking-widest text-center transition-all hover:opacity-90 active:scale-[0.97] relative z-10 shadow-lg"
+                      className="block w-full py-3 rounded-full bg-brand-gradient text-primary-foreground font-bold text-[11px] uppercase tracking-widest text-center transition-all duration-300 hover:shadow-xl hover:shadow-primary/30 hover:scale-[1.02] active:scale-[0.97] relative z-10 shadow-lg overflow-hidden group"
                     >
-                      Hire Designer Resource
+                      <span className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                      <span className="relative z-10">Hire Designer Resource</span>
                     </Link>
                   </motion.div>
                 </div>

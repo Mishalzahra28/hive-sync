@@ -59,14 +59,14 @@ export const ContactClient = () => {
 
         <form onSubmit={handleSubmit(onSubmit)} className="relative z-10 space-y-5">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-            <div className="flex flex-col gap-1.5">
-              <label className="text-[13px] text-muted-foreground">
-                Full Name<span className="text-primary ml-0.5">*</span>
+            <div className="flex flex-col gap-2">
+              <label className="text-[11px] font-black uppercase tracking-[0.2em] text-muted-foreground ml-1">
+                Full name<span className="text-primary ml-0.5">*</span>
               </label>
               <input
                 {...register("name")}
                 type="text"
-                placeholder="John Doe"
+                placeholder="e.g. John Doe"
                 className={cn(inputClass, errors.name && "border-red-400 focus:border-red-400")}
               />
               <AnimatePresence>
@@ -84,14 +84,14 @@ export const ContactClient = () => {
               </AnimatePresence>
             </div>
 
-            <div className="flex flex-col gap-1.5">
-              <label className="text-[13px] text-muted-foreground">
-                Email Address<span className="text-primary ml-0.5">*</span>
+            <div className="flex flex-col gap-2">
+              <label className="text-[11px] font-black uppercase tracking-[0.2em] text-muted-foreground ml-1">
+                Email address<span className="text-primary ml-0.5">*</span>
               </label>
               <input
                 {...register("email")}
                 type="email"
-                placeholder="john@company.com"
+                placeholder="e.g. john@company.com"
                 className={cn(inputClass, errors.email && "border-red-400 focus:border-red-400")}
               />
               <AnimatePresence>
@@ -110,14 +110,14 @@ export const ContactClient = () => {
             </div>
           </div>
 
-          <div className="flex flex-col gap-1.5">
-            <label className="text-[13px] text-muted-foreground">
+          <div className="flex flex-col gap-2">
+            <label className="text-[11px] font-black uppercase tracking-[0.2em] text-muted-foreground ml-1">
               Subject<span className="text-primary ml-0.5">*</span>
             </label>
             <input
               {...register("subject")}
               type="text"
-              placeholder="How can we help?"
+              placeholder="e.g. I need a custom app..."
               className={cn(inputClass, errors.subject && "border-red-400 focus:border-red-400")}
             />
             <AnimatePresence>
@@ -135,14 +135,14 @@ export const ContactClient = () => {
             </AnimatePresence>
           </div>
 
-          <div className="flex flex-col gap-1.5">
-            <label className="text-[13px] text-muted-foreground">
+          <div className="flex flex-col gap-2">
+            <label className="text-[11px] font-black uppercase tracking-[0.2em] text-muted-foreground ml-1">
               Message<span className="text-primary ml-0.5">*</span>
             </label>
             <textarea
               {...register("message")}
               rows={4}
-              placeholder="Tell us about your project..."
+              placeholder="e.g. Tell us about your project..."
               className={cn(inputClass, "resize-none", errors.message && "border-red-400 focus:border-red-400")}
             />
             <AnimatePresence>
@@ -163,8 +163,8 @@ export const ContactClient = () => {
           <button
             type="submit"
             disabled={isSubmitting}
-            className="w-full py-4 rounded-2xl bg-brand-gradient text-primary-foreground font-black text-[13px] uppercase tracking-[0.2em] flex items-center justify-center gap-3 transition-all hover:shadow-lg hover:shadow-primary/20 active:scale-[0.98] disabled:opacity-50 disabled:hover:scale-100 shadow-xl mt-4"
-          >
+            className="relative w-full py-4 rounded-full bg-brand-gradient text-primary-foreground font-black text-[13px] uppercase tracking-[0.2em] flex items-center justify-center gap-3 transition-all duration-300 hover:shadow-xl hover:shadow-primary/30 hover:scale-[1.01] active:scale-[0.98] disabled:opacity-50 disabled:hover:scale-100 disabled:hover:shadow-xl shadow-xl mt-4 overflow-hidden group"
+          ><span className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             {isSubmitting ? (
               <div className="size-5 border-2 border-background/30 border-t-background rounded-full animate-spin" />
             ) : (

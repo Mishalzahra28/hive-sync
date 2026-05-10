@@ -7,6 +7,8 @@ export const paths = {
   pricing: '/#pricing',
   testimonials: '/#testimonials',
   services: '/#services',
+  contact: '/contact',
+  book: '/book',
   auth: {
     login: '/auth/login',
     register: '/auth/register',

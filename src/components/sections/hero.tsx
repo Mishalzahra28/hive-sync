@@ -6,10 +6,11 @@ import { MotionH1, MotionP, MotionWrapper } from './client/motion-wrappers'
 import DarkVeil from '../ui/DarkVeil'
 import { GridPattern } from '../ui/grid-pattern'
 import { Marquee } from '../ui/marquee'
+import { paths } from '@/constants/paths'
 
 export const Hero = () => {
   return (
-    <section className="relative w-full min-h-[650px] flex items-center justify-center overflow-hidden bg-background">
+    <section className="relative w-full min-h-[100svh] flex items-center justify-center overflow-hidden bg-background">
       {/* Background Animation & Patterns */}
       <div className="absolute inset-0 z-0">
         <DarkVeil
@@ -20,11 +21,12 @@ export const Hero = () => {
           warpAmount={0.1}
         />
 
-        {/* All-over Brand Gradient */}
-        <div className="absolute inset-0 opacity-20 pointer-events-none">
-          <div className="absolute top-[-10%] left-[-10%] w-[60%] h-[60%] rounded-full bg-primary blur-[120px] animate-pulse" />
-          <div className="absolute bottom-[-10%] right-[-10%] w-[60%] h-[60%] rounded-full bg-secondary blur-[120px] animate-pulse delay-700" />
-          <div className="absolute top-[20%] right-[10%] w-[40%] h-[40%] rounded-full bg-accent blur-[100px] animate-pulse delay-1000" />
+        {/* Multi-layered Brand Gradient Orbs */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-[-15%] left-[-10%] w-[65%] h-[65%] rounded-full opacity-25 blur-[140px] animate-pulse" style={{ background: 'linear-gradient(135deg, hsl(221, 83%, 45%), hsl(262, 70%, 55%))' }} />
+          <div className="absolute bottom-[-15%] right-[-10%] w-[60%] h-[60%] rounded-full opacity-20 blur-[140px] animate-pulse" style={{ animationDelay: '0.8s', background: 'linear-gradient(225deg, hsl(262, 70%, 55%), hsl(226, 70%, 52%))' }} />
+          <div className="absolute top-[30%] right-[5%] w-[35%] h-[35%] rounded-full opacity-15 blur-[120px] animate-pulse" style={{ animationDelay: '1.6s', background: 'hsl(221, 83%, 50%)' }} />
+          <div className="absolute bottom-[20%] left-[5%] w-[25%] h-[25%] rounded-full opacity-10 blur-[100px] animate-pulse" style={{ animationDelay: '2.4s', background: 'hsl(262, 70%, 60%)' }} />
         </div>
 
         {/* Grid Pattern */}
@@ -34,98 +36,86 @@ export const Hero = () => {
           x={-1}
           y={-1}
           strokeDasharray="4 4"
-          className="opacity-[0.15] [mask-image:radial-gradient(ellipse_at_center,white,transparent)] stroke-foreground/40 fill-foreground/20"
+          className="opacity-[0.12] [mask-image:radial-gradient(ellipse_at_center,white_20%,transparent_70%)] stroke-foreground/30 fill-foreground/10"
         />
       </div>
 
       {/* Content */}
-      <div className="relative z-10 max-w-[1500px] mx-auto px-5 md:px-10 text-center">
-        <MotionH1
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="text-4xl sm:text-5xl md:text-6xl lg:text-6xl font-bold text-foreground mb-8 leading-[1.1] tracking-tight"
-        >
-         Custom Software Development & AI Automation Agency
-        </MotionH1>
-
-        <MotionP
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-          className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-12 leading-relaxed"
-        >
-          HiveSync is a premium custom software development company building scalable SaaS platforms, enterprise web applications, mobile apps, and AI-powered software.
-        </MotionP>
-
-        <MotionWrapper
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4"
-        >
-          {/* Star Glow Strategy Button */}
-          <Link href="get-started" className="group relative dark:bg-neutral-800 bg-neutral-200 rounded-full p-px overflow-hidden transition-all hover:scale-[1.02] active:scale-[0.98] h-10">
-            <span className="absolute inset-0 rounded-full overflow-hidden">
-              <span className="inset-0 absolute pointer-events-none select-none">
-                <span
-                  className="block -translate-x-1/2 -translate-y-1/3 size-24 blur-xl"
-                  style={{ background: 'linear-gradient(135deg, #3B82F6, #6366F1, #8B5CF6)' }}
-                ></span>
-              </span>
-            </span>
-
-            <span
-              className="inset-0 absolute pointer-events-none select-none"
-              style={{ animation: '10s ease-in-out 0s infinite alternate none running border-glow-translate' }}
-            >
-              <span
-                className="block z-0 h-full w-12 blur-xl -translate-x-1/2 rounded-full"
-                style={{
-                  animation: '10s ease-in-out 0s infinite alternate none running border-glow-scale',
-                  background: 'linear-gradient(135deg, #3B82F6, #6366F1, #8B5CF6)'
-                }}
-              ></span>
-            </span>
-
-            <span
-              className="flex items-center justify-center gap-2 relative z-[1] dark:bg-[#020617]/90 bg-white/90 rounded-full px-6 h-full w-full backdrop-blur-xl"
-            >
-
-              <span className="bg-gradient-to-b dark:from-white dark:to-white/50 from-neutral-950 to-neutral-950/50 bg-clip-text text-[13px] font-bold text-transparent transition-all">
-                Start Your Project
-              </span>
-            </span>
-          </Link>
-
-          <a
-            href="#pricing"
-            className="flex justify-center gap-4 items-center text-[13px] bg-foreground/5 backdrop-blur-md font-semibold text-foreground hover:text-primary-foreground isolation-auto before:absolute before:w-full before:transition-all before:duration-700 before:-left-full before:hover:left-0 before:rounded-full before:bg-primary before:-z-10 before:aspect-square before:hover:scale-150 before:hover:duration-700 relative z-10 px-6 h-10 overflow-hidden border border-border hover:border-primary rounded-full group transition-all shadow-sm"
+      <div className="relative z-10 max-w-[1500px] mx-auto px-5 md:px-10 pt-32 pb-24 md:pt-48 md:pb-32 flex flex-col items-center text-center">
+        <div className="flex flex-col items-center gap-12">
+          {/* Main Heading */}
+          <MotionH1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.15, ease: "easeOut" }}
+            className="max-w-5xl text-3xl sm:text-4xl md:text-5xl lg:text-[54px] font-bold text-foreground leading-[1.1] tracking-tight font-syne"
           >
-           Explore Our Services
-            <svg
-              className="w-5 h-5 justify-end group-hover:rotate-90 ease-linear duration-300 rounded-full border border-border group-hover:border-primary-foreground p-1 rotate-45 transition-all"
-              viewBox="0 0 16 19"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M7 18C7 18.5523 7.44772 19 8 19C8.55228 19 9 18.5523 9 18H7ZM8.70711 0.292893C8.31658 -0.0976311 7.68342 -0.0976311 7.29289 0.292893L0.928932 6.65685C0.538408 7.04738 0.538408 7.68054 0.928932 8.07107C1.31946 8.46159 1.95262 8.46159 2.34315 8.07107L8 2.41421L13.6569 8.07107C14.0474 8.46159 14.6805 8.46159 15.0711 8.07107C15.4616 7.68054 15.4616 7.04738 15.0711 6.65685L8.70711 0.292893ZM9 18L9 1H7L7 18H9Z"
-                className="fill-foreground group-hover:fill-primary-foreground transition-colors"
-              ></path>
-            </svg>
-          </a>
-        </MotionWrapper>
+            Custom Software Development & <span className="text-brand-gradient">AI Solutions for Modern Businesses</span>
+          </MotionH1>
 
+          <div className="flex flex-col items-center gap-10">
+            {/* Sub-heading */}
+            <MotionP
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
+              className="text-base sm:text-lg text-muted-foreground leading-relaxed font-inter max-w-2xl font-medium tracking-tight"
+            >
+              We help startups, agencies, and growing businesses build scalable web applications, AI-powered platforms, and digital products that drive real growth.
+            </MotionP>
+
+            {/* CTA Buttons */}
+            <MotionWrapper
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.45, ease: "easeOut" }}
+              className="flex flex-col sm:flex-row items-center gap-4"
+            >
+              {/* Primary CTA — Gradient glow button */}
+              <Link href="get-started" className="group relative rounded-full p-px overflow-hidden transition-all hover:scale-[1.03] active:scale-[0.97] h-12">
+                {/* Animated gradient border */}
+                <span className="absolute inset-0 rounded-full overflow-hidden">
+                  <span className="absolute inset-[-20%] bg-brand-gradient animate-spin" style={{ animationDuration: '4s' }} />
+                </span>
+
+                <span
+                  className="flex items-center justify-center gap-2 relative z-[1] dark:bg-[#020617]/90 bg-white/90 rounded-full px-8 h-full w-full backdrop-blur-xl"
+                >
+                  <span className="text-brand-gradient text-sm font-bold transition-all">
+                    Start Your Project
+                  </span>
+                  <svg className="w-4 h-4 text-primary group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+                  </svg>
+                </span>
+              </Link>
+
+              {/* Secondary CTA — Booking */}
+              <Link
+                href={paths.book}
+                className="flex justify-center gap-3 items-center text-sm font-bold text-foreground hover:text-primary-foreground relative z-10 px-8 h-12 overflow-hidden border border-border hover:border-transparent rounded-full group transition-all duration-300 shadow-sm before:absolute before:inset-0 before:bg-primary before:opacity-0 before:transition-opacity before:duration-300 hover:before:opacity-100 hover:shadow-lg hover:shadow-primary/25 active:scale-[0.97] bg-foreground/5 backdrop-blur-md"
+              >
+                <span className="relative z-10">Book a Free Consultation</span>
+                <svg
+                  className="relative z-10 w-4 h-4 transition-transform group-hover:translate-x-0.5"
+                  fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5" />
+                </svg>
+              </Link>
+            </MotionWrapper>
+          </div>
+        </div>
         {/* Logo Marquee Section */}
         <MotionWrapper
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.6, ease: "easeOut" }}
-          className="mt-10 flex flex-col items-center"
+          transition={{ duration: 1, delay: 0.75, ease: "easeOut" }}
+          className="mt-20 flex flex-col items-center"
         >
           <div className="relative group p-[1px] rounded-full overflow-hidden">
             {/* Animated Border Gradient */}
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 via-white/10 to-blue-500/20 opacity-50 group-hover:opacity-100 transition-opacity" />
+            <div className="absolute inset-0 opacity-40 group-hover:opacity-80 transition-opacity duration-500" style={{ background: 'linear-gradient(90deg, transparent, hsl(221, 83%, 45% / 0.3), hsl(262, 70%, 55% / 0.3), transparent)' }} />
 
             <div className="relative flex items-center gap-8 px-8 py-4 rounded-full bg-card/80 backdrop-blur-3xl border border-border shadow-2xl overflow-hidden max-w-[90vw] sm:max-w-3xl">
               <span className="text-[10px] font-black uppercase tracking-[0.3em] text-muted-foreground whitespace-nowrap border-r border-border pr-8">Stacks</span>
@@ -162,7 +152,7 @@ export const Hero = () => {
       </div>
 
       {/* Bottom Gradient Fade */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent z-0" />
+      <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-background via-background/50 to-transparent z-0" />
     </section>
   )
 }

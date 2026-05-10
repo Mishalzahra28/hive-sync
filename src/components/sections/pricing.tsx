@@ -1,6 +1,8 @@
+import Link from 'next/link'
 import React from 'react'
 
 import { MotionWrapper } from './client/motion-wrappers'
+import { paths } from '@/constants/paths'
 import { PricingClient } from './client/PricingClient'
 
 interface PricingTier {
@@ -103,7 +105,7 @@ const contractLengths = [
 
 export const Pricing = () => {
   return (
-    <section className="relative overflow-hidden py-16 md:py-24 bg-background px-5 md:px-10" id="pricing">
+    <section className="relative overflow-hidden py-24 md:py-32 bg-background px-5 md:px-10" id="pricing">
       {/* Background Glows */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full pointer-events-none overflow-hidden">
         <div className="absolute -top-[10%] left-[10%] w-[50%] h-[50%] rounded-full bg-primary/10 blur-[120px]" />
@@ -112,7 +114,7 @@ export const Pricing = () => {
 
       <div className="relative z-10 mx-auto max-w-[1500px]">
         <MotionWrapper
-          className="mb-16 md:mb-20 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-10"
+          className="mb-16 md:mb-20 flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between"
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -123,15 +125,22 @@ export const Pricing = () => {
               <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-primary">Pricing</p>
             </div>
 
-            <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-[64px] font-bold tracking-tight leading-[1.1] text-foreground max-w-xl font-syne">
-              Transparent Pricing, Zero <span className="text-primary">Surprises.</span>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-[54px] font-bold tracking-tight leading-[1.1] text-foreground max-w-2xl font-syne">
+              Flexible Pricing for Every <span className="text-brand-gradient">Business</span>
             </h2>
           </div>
 
-          <div className="lg:max-w-sm">
+          <div className="flex max-w-sm flex-col items-start gap-6">
             <p className="text-sm md:text-[15px] text-muted-foreground leading-relaxed font-inter">
-              Two ways to work with HiveSync: dedicated software development teams for ongoing velocity, or fixed-scope SaaS and AI automation projects that demand clear milestones.
+              Choose a plan that fits your needs from startups to enterprise-level solutions.
             </p>
+            <Link
+              href={paths.book}
+              className="inline-flex items-center justify-center px-6 py-2.5 rounded-full bg-brand-gradient text-primary-foreground font-bold text-[13px] shadow-md hover:shadow-xl hover:shadow-primary/30 hover:scale-[1.03] active:scale-[0.97] transition-all duration-300 relative overflow-hidden group"
+            >
+              <span className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <span className="relative z-10">Book a Free Consultation</span>
+            </Link>
           </div>
         </MotionWrapper>
 

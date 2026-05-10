@@ -3,11 +3,11 @@ import { Metadata } from 'next';
 import { env } from '@/env';
 
 export const appConfig = {
-  title: 'HiveSync | Custom Software Development Company & AI Automation Agency',
+  title: 'HiveSync | Custom Software Development & AI Solutions for Modern Businesses',
   description:
-    'HiveSync is a custom software development company and AI automation agency specializing in enterprise web application development, SaaS product development services, cloud infrastructure solutions, and digital transformation services.',
+    'We help startups, agencies, and growing businesses build scalable web applications, AI-powered platforms, mobile apps, and digital products that drive real business growth.',
 
-  logo: '/logo/main.png',
+  logo: '/logo.svg',
   defaultLocale: 'en-US',
   defaultCurrency: 'USD',
   defaultCountryCode: 'US',
@@ -41,7 +41,7 @@ export default function getMetadata(
       "HiveSync software agency",
       "custom software development company",
       "enterprise web application development",
-      "AI automation agency",
+      "AI solutions for modern businesses",
       "SaaS product development services",
       "cloud infrastructure solutions",
       "DevOps consulting company",

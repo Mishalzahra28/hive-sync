@@ -72,13 +72,13 @@ const ICON_MAP = {
 
 export const Services = () => {
   return (
-    <section className="bg-background py-16 md:py-24 px-5 md:px-10" id="services">
+    <section className="bg-background py-24 md:py-32 px-5 md:px-10" id="services">
       <JsonLd data={getServiceSchema(services)} />
       <div className="max-w-[1500px] mx-auto">
 
         {/* Standardized Header */}
         <MotionWrapper
-          className="mb-16 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-10"
+          className="mb-16 flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between"
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -86,23 +86,21 @@ export const Services = () => {
           <div className="max-w-2xl">
             <div className="inline-flex items-center gap-2 mb-6 px-3 py-1.5 rounded-full border border-primary/20 bg-primary/5">
               <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
-              <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-primary">Capabilities</p>
+              <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-primary">Services</p>
             </div>
 
-            <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-[64px] font-bold tracking-tight leading-[1.1] text-foreground max-w-xl font-syne">
-              Custom Software <span className="text-primary">& AI Solutions.</span>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-[54px] font-bold tracking-tight leading-[1.1] text-foreground max-w-2xl font-syne">
+              Software Services <br /><span className="text-brand-gradient">That Scale .</span>
             </h2>
           </div>
 
-          <div className="lg:max-w-sm">
+          <div className="flex max-w-sm flex-col items-start gap-6">
             <p className="text-base md:text-[17px] text-muted-foreground leading-relaxed font-inter">
-              Partner with HiveSync for enterprise web applications, scalable SaaS products, and custom AI integrations engineered to accelerate your growth.
+              We build scalable web apps, AI solutions, mobile apps, and modern digital products.
             </p>
-            <div className="mt-6">
-              <Link href={paths.getStarted} className="group flex items-center gap-1 text-primary font-bold hover:text-primary/80 transition-all text-sm uppercase tracking-widest">
-                Start a project <ChevronRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-              </Link>
-            </div>
+            <Link href={paths.getStarted} className="group flex items-center gap-1 text-primary font-bold hover:text-primary/80 transition-all text-sm uppercase tracking-widest">
+              Start a project <ChevronRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+            </Link>
           </div>
         </MotionWrapper>
 
@@ -117,16 +115,26 @@ export const Services = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.08, duration: 0.5 }}
                 viewport={{ once: true }}
-                className="group relative flex flex-col gap-6 p-8 rounded-[2rem] bg-card border border-border hover:border-primary/40 hover:shadow-xl transition-all duration-300"
+                className="group relative flex flex-col gap-6 p-8 rounded-[2rem] transition-all duration-500 overflow-hidden shadow-[0_18px_60px_hsl(var(--primary)/0.08)] hover:-translate-y-1 hover:shadow-[0_24px_80px_hsl(var(--primary)/0.16)]"
               >
+                {/* Gradient Border Background */}
+                <div className="absolute -inset-px rounded-[2rem] bg-brand-gradient opacity-80 transition-all duration-500 group-hover:opacity-100 z-0" />
+                <div className="absolute -inset-px rounded-[2rem] bg-brand-gradient opacity-0 blur-xl transition-opacity duration-500 group-hover:opacity-25 z-0" />
+                <div className="absolute inset-[2px] rounded-[calc(2rem-2px)] bg-card z-0" />
+
+                {/* Shimmer Effect */}
+                <div className="absolute inset-0 pointer-events-none overflow-hidden rounded-[2rem] z-0">
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover:animate-[shimmer-slide_1.5s_infinite]" />
+                </div>
+
                 {/* Icon */}
-                <div className="size-12 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                <div className="relative z-10 size-12 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300 shadow-sm group-hover:shadow-primary/20">
                   <Icon className="size-5" strokeWidth={1.75} />
                 </div>
 
                 {/* Title + Description */}
-                <div className="flex flex-col gap-3">
-                  <h3 className="text-xl font-bold text-foreground tracking-tight">
+                <div className="relative z-10 flex flex-col gap-3">
+                  <h3 className="text-xl font-bold text-foreground tracking-tight group-hover:text-primary transition-colors duration-300">
                     {service.title}
                   </h3>
                   <p className="text-sm text-muted-foreground leading-relaxed">
@@ -135,11 +143,11 @@ export const Services = () => {
                 </div>
 
                 {/* Labels */}
-                <div className="flex flex-wrap gap-2 mt-auto pt-2">
+                <div className="relative z-10 flex flex-wrap gap-2 mt-auto pt-2">
                   {service.labels.map((label) => (
                     <span
                       key={label}
-                      className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground bg-muted border border-border rounded-full px-2.5 py-1"
+                      className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground bg-muted/50 border border-border rounded-full px-2.5 py-1 group-hover:border-primary/20 transition-colors"
                     >
                       {label}
                     </span>

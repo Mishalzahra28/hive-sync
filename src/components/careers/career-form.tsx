@@ -1,19 +1,16 @@
 "use client"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { AlertCircle,CheckCircle2, FileText, Upload, X } from "lucide-react"
-import { AnimatePresence,motion } from "motion/react"
+import { AlertCircle, CheckCircle2, FileText, Upload, X } from "lucide-react"
+import { AnimatePresence, motion } from "motion/react"
 import React, { useRef, useState } from "react"
 import { useForm } from "react-hook-form"
 import { toast } from "sonner"
 
 import { submitCareerApplication } from "@/actions/careers"
-
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-
 import { cn } from "@/lib/utils"
-
 import { careerFormSchema, CareerFormValues } from "@/schema/careers"
 
 function Field({
@@ -26,8 +23,8 @@ function Field({
   children: React.ReactNode
 }) {
   return (
-    <div className="flex flex-col gap-1.5">
-      <label className="text-[11px] font-bold uppercase tracking-[0.15em] text-muted-foreground">
+    <div className="flex flex-col gap-2">
+      <label className="text-[11px] font-black uppercase tracking-[0.2em] text-muted-foreground ml-1">
         {label}
       </label>
       {children}
@@ -37,9 +34,9 @@ function Field({
             initial={{ opacity: 0, y: -4 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -4 }}
-            className="flex items-center gap-1.5 text-[11px] text-red-400 font-medium"
+            className="flex items-center gap-1.5 text-[11px] text-red-400 font-bold ml-1"
           >
-            <AlertCircle className="w-3 h-3 flex-shrink-0" />
+            <AlertCircle className="w-3.5 h-3.5 flex-shrink-0" />
             {error}
           </motion.p>
         )}
@@ -49,8 +46,7 @@ function Field({
 }
 
 const inputClass =
-  "h-auto w-full rounded-2xl border-border bg-white/[0.03] px-4 py-3.5 text-sm text-foreground placeholder:text-slate-700 focus-visible:border-primary/60 focus-visible:bg-white/[0.05] focus-visible:ring-0 focus-visible:ring-offset-0 transition-all duration-300"
-
+  "h-auto w-full rounded-2xl border-border bg-muted/30 px-5 py-4 text-[15px] text-foreground placeholder:text-muted-foreground/50 focus-visible:border-primary/60 focus-visible:bg-muted/50 focus-visible:ring-0 focus-visible:ring-offset-0 transition-all duration-300 font-inter"
 
 function CVDropzone({
   file,
@@ -83,7 +79,7 @@ function CVDropzone({
           ? "border-primary bg-primary/5"
           : file
           ? "border-primary/40 bg-primary/5 cursor-default"
-          : "border-border hover:border-primary/40 hover:bg-white/[0.02]"
+          : "border-border hover:border-primary/40 hover:bg-muted/50"
       )}
     >
       <input
@@ -97,31 +93,31 @@ function CVDropzone({
           if (f) onChange(f)
         }}
       />
-      <div className="flex items-center gap-4 px-5 py-4">
+      <div className="flex items-center gap-5 px-6 py-5">
         <div className={cn(
-          "w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 transition-colors",
-          file ? "bg-primary/20" : "bg-white/5"
+          "size-12 rounded-xl flex items-center justify-center flex-shrink-0 transition-all duration-300",
+          file ? "bg-primary text-primary-foreground shadow-lg" : "bg-muted border border-border"
         )}>
           {file ? (
-            <FileText className="w-5 h-5 text-primary" />
+            <FileText className="size-6" />
           ) : (
-            <Upload className="w-5 h-5 text-slate-600" />
+            <Upload className="size-6 text-muted-foreground" />
           )}
         </div>
         <div className="flex-1 min-w-0">
           {file ? (
             <>
-              <p className="text-sm font-semibold text-foreground truncate">{file.name}</p>
-              <p className="text-[11px] text-slate-500">
-                {(file.size / 1024 / 1024).toFixed(2)} MB · PDF
+              <p className="text-[15px] font-bold text-foreground truncate font-syne">{file.name}</p>
+              <p className="text-[12px] text-muted-foreground font-medium">
+                {(file.size / 1024 / 1024).toFixed(2)} MB · PDF Document
               </p>
             </>
           ) : (
             <>
-              <p className="text-sm font-semibold text-muted-foreground">
-                Upload your CV <span className="text-slate-600 font-normal">(optional)</span>
+              <p className="text-[15px] font-bold text-foreground font-syne">
+                Upload your CV <span className="text-muted-foreground font-normal text-sm">(optional)</span>
               </p>
-              <p className="text-[11px] text-slate-600">PDF only · max 5MB · drag & drop or click</p>
+              <p className="text-[12px] text-muted-foreground font-medium">PDF only · max 5MB · drag & drop</p>
             </>
           )}
         </div>
@@ -129,9 +125,9 @@ function CVDropzone({
           <button
             type="button"
             onClick={(e) => { e.stopPropagation(); onClear() }}
-            className="w-7 h-7 rounded-full bg-white/5 hover:bg-red-500/20 flex items-center justify-center transition-colors flex-shrink-0"
+            className="size-8 rounded-full bg-muted border border-border hover:bg-red-500/10 hover:border-red-500/30 flex items-center justify-center transition-all duration-300 flex-shrink-0 group/clear"
           >
-            <X className="w-3.5 h-3.5 text-muted-foreground hover:text-red-400" />
+            <X className="size-4 text-muted-foreground group-hover/clear:text-red-500 transition-colors" />
           </button>
         )}
       </div>
@@ -139,11 +135,8 @@ function CVDropzone({
   )
 }
 
-
 type SubmitState = Awaited<ReturnType<typeof submitCareerApplication>> | null
 
-// className is forwarded from the parent card so the form participates in the
-// flex-1 height contract that keeps the form card and NoOpenRoles card equal.
 export function CareerForm({ className }: { className?: string }) {
   const [cvFile, setCvFile] = useState<File | null>(null)
   const [state, setState] = useState<SubmitState>(null)
@@ -181,82 +174,76 @@ export function CareerForm({ className }: { className?: string }) {
   const busy = isSubmitting
 
   return (
-    // flex flex-col + className (flex-1 from parent) make the form stretch to
-    // fill the card, so the success state can center itself without collapsing.
     <form
       onSubmit={handleSubmit(onValid)}
-      className={cn("flex flex-col", className)}
+      className={cn("flex flex-col h-full", className)}
     >
       <AnimatePresence mode="wait">
         {state?.success ? (
-          // flex-1 + justify-center: success state fills the card height and
-          // centres its content — no py-12 that would let the card shrink.
           <motion.div
             key="success"
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="flex flex-1 flex-col items-center justify-center gap-4 text-center"
+            className="flex flex-1 flex-col items-center justify-center gap-6 text-center"
           >
-            <div className="w-16 h-16 rounded-full bg-primary/10 border border-primary/30 flex items-center justify-center">
-              <CheckCircle2 className="w-8 h-8 text-primary" />
+            <div className="size-20 rounded-full bg-primary/10 border border-primary/30 flex items-center justify-center shadow-xl">
+              <CheckCircle2 className="size-10 text-primary" />
             </div>
-            <div>
-              <p className="text-lg font-bold text-foreground mb-1">{state.message}</p>
-              <p className="text-sm text-slate-500">Keep an eye on your inbox — good things are coming.</p>
+            <div className="space-y-2">
+              <p className="text-2xl font-bold text-foreground font-syne">{state.message}</p>
+              <p className="text-muted-foreground font-inter max-w-xs mx-auto">
+                Keep an eye on your inbox — our talent team will be in touch soon.
+              </p>
             </div>
           </motion.div>
         ) : (
-          <motion.div key="form" className="flex flex-col gap-5">
-            {/* Name row */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-              <Field label="First Name" error={errors.first_name?.message}>
+          <motion.div key="form" className="flex flex-col gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <Field label="First name" error={errors.first_name?.message}>
                 <Input
                   {...register("first_name")}
-                  placeholder="Ada"
+                  placeholder="e.g. John"
                   className={inputClass}
                 />
               </Field>
-              <Field label="Last Name" error={errors.last_name?.message}>
+              <Field label="Last name" error={errors.last_name?.message}>
                 <Input
                   {...register("last_name")}
-                  placeholder="Lovelace"
+                  placeholder="e.g. Doe"
                   className={inputClass}
                 />
               </Field>
             </div>
 
-            {/* Email + Phone */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-              <Field label="Email Address" error={errors.email?.message}>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <Field label="Email address" error={errors.email?.message}>
                 <Input
                   {...register("email")}
                   type="email"
-                  placeholder="ada@example.com"
+                  placeholder="e.g. john@company.com"
                   className={inputClass}
                 />
               </Field>
-              <Field label="Phone Number" error={errors.phone_number?.message}>
+              <Field label="Phone number" error={errors.phone_number?.message}>
                 <Input
                   {...register("phone_number")}
                   type="tel"
-                  placeholder="+1 555 000 0000"
+                  placeholder="e.g. +1 (555) 000-0000"
                   className={inputClass}
                 />
               </Field>
             </div>
 
-            {/* Message */}
-            <Field label="Cover Message" error={errors.message?.message}>
+            <Field label="Cover message" error={errors.message?.message}>
               <Textarea
                 {...register("message")}
                 rows={4}
-                placeholder="Tell us what makes you a great fit — your stack, your mindset, what excites you..."
-                className={cn(inputClass, "resize-none leading-relaxed")}
+                placeholder="e.g. Tell us about your background..."
+                className={cn(inputClass, "resize-none leading-relaxed h-32")}
               />
             </Field>
 
-            {/* CV Upload */}
-            <Field label="CV / Résumé">
+            <Field label="CV / resume">
               <CVDropzone
                 file={cvFile}
                 onChange={setCvFile}
@@ -264,17 +251,16 @@ export function CareerForm({ className }: { className?: string }) {
               />
             </Field>
 
-            {/* Submit */}
             <Button
               type="submit"
               disabled={busy}
               isLoading={busy}
-              className="group relative w-full py-4 rounded-2xl bg-primary hover:bg-primary/90 disabled:opacity-60 disabled:cursor-not-allowed text-white font-bold text-sm uppercase tracking-widest transition-all duration-300 active:scale-[0.98] overflow-hidden"
+              className="group relative w-full py-4 rounded-full bg-brand-gradient text-primary-foreground font-bold text-[13px] uppercase tracking-[0.2em] shadow-xl hover:shadow-primary/40 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 overflow-hidden mt-2"
             >
-              <span className={cn("flex items-center justify-center gap-2 transition-opacity", busy && "opacity-0")}>
+              <span className={cn("relative z-10 flex items-center justify-center gap-2 transition-opacity", busy && "opacity-0")}>
                 Send Application
               </span>
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-r from-transparent via-white/10 to-transparent -skew-x-12 translate-x-[-100%] group-hover:translate-x-[200%] transition-transform duration-700" />
+              <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </Button>
           </motion.div>
         )}
