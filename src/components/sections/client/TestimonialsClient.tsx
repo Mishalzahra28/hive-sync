@@ -7,6 +7,8 @@ import { cn } from '@/lib/utils'
 
 interface Testimonial {
   tempId: number
+  /** 1–5 scale, testimonials use ~3.8–4.5 for a believable spread */
+  rating: number
   testimonial: string
   by: string
   imgSrc: string
@@ -19,6 +21,26 @@ interface TestimonialCardProps {
   cardSize: number
 }
 
+function StarSlot({
+  fill,
+  filledClassName,
+  emptyClassName
+}: {
+  fill: number
+  filledClassName: string
+  emptyClassName: string
+}) {
+  const pct = Math.min(1, Math.max(0, fill)) * 100
+  return (
+    <span className="relative inline-flex size-3.5 shrink-0">
+      <Star className={cn("size-3.5", emptyClassName)} aria-hidden />
+      <span className="absolute left-0 top-0 overflow-hidden" style={{ width: `${pct}%` }} aria-hidden>
+        <Star className={cn("size-3.5 fill-current", filledClassName)} />
+      </span>
+    </span>
+  )
+}
+
 const TestimonialCard: React.FC<TestimonialCardProps> = ({
   position,
   testimonial,
@@ -26,6 +48,9 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
   cardSize
 }) => {
   const isCenter = position === 0
+  const rating = testimonial.rating
+  const filledStar = isCenter ? "text-amber-400" : "text-amber-400/30"
+  const emptyStar = isCenter ? "text-muted-foreground/25" : "text-muted-foreground/15"
 
   return (
     <div
@@ -69,17 +94,29 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
         {testimonial.testimonial}
       </p>
 
-      {/* Stars */}
-      <div className="flex gap-1 mt-auto pt-2">
-        {[...Array(5)].map((_, i) => (
-          <Star
-            key={i}
-            className={cn(
-              "size-3.5 fill-current",
-              isCenter ? "text-amber-400" : "text-amber-400/30"
-            )}
-          />
-        ))}
+      {/* Stars — fractional display from rating */}
+      <div
+        className="flex flex-wrap items-center gap-2 mt-auto pt-2"
+        aria-label={`${rating.toFixed(1)} out of 5 stars`}
+      >
+        <div className="flex gap-0.5">
+          {[0, 1, 2, 3, 4].map((i) => (
+            <StarSlot
+              key={i}
+              fill={Math.min(1, Math.max(0, rating - i))}
+              filledClassName={filledStar}
+              emptyClassName={emptyStar}
+            />
+          ))}
+        </div>
+        <span
+          className={cn(
+            "text-xs tabular-nums font-medium font-inter",
+            isCenter ? "text-muted-foreground" : "text-muted-foreground/50"
+          )}
+        >
+          {rating.toFixed(1)}
+        </span>
       </div>
     </div>
   )

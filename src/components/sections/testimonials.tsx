@@ -5,48 +5,56 @@ import { TestimonialsClient } from './client/TestimonialsClient'
 const testimonials = [
   {
     tempId: 1,
+    rating: 4.2,
     testimonial: "They delivered a high-quality web app on time. The performance and design exceeded our expectations.",
     by: "Client Review 1",
     imgSrc: ""
   },
   {
     tempId: 2,
+    rating: 3.9,
     testimonial: "Professional team with great communication. Our SaaS platform is now scalable and stable.",
     by: "Client Review 2",
     imgSrc: ""
   },
   {
     tempId: 3,
+    rating: 4.4,
     testimonial: "Excellent experience from start to finish. The AI automation they built saved us so much time.",
     by: "Client Review 3",
     imgSrc: ""
   },
   {
     tempId: 4,
+    rating: 4.0,
     testimonial: "Clean design, smooth functionality, and fast delivery. Highly recommended for software development.",
     by: "Client Review 4",
     imgSrc: ""
   },
   {
     tempId: 5,
+    rating: 3.8,
     testimonial: "HiveSync transformed our manual processes into a streamlined digital workflow. Their expertise is unmatched.",
     by: "Client Review 5",
     imgSrc: ""
   },
   {
     tempId: 6,
+    rating: 4.5,
     testimonial: "The best software partner we've ever worked with. They truly understand business needs and translate them into code.",
     by: "Client Review 6",
     imgSrc: ""
   },
   {
     tempId: 7,
+    rating: 4.1,
     testimonial: "Reliable, fast, and creative. They didn't just build what we asked; they built what we needed.",
     by: "Client Review 7",
     imgSrc: ""
   },
   {
     tempId: 8,
+    rating: 4.3,
     testimonial: "A game-changer for our fintech startup. Secure, scalable, and beautifully designed architecture.",
     by: "Client Review 8",
     imgSrc: ""
