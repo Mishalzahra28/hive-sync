@@ -1,6 +1,7 @@
 "use client"
 
 import { MotionWrapper } from '@/components/sections/client/motion-wrappers'
+import { env } from '@/env'
 
 export default function BookPage() {
   return (
@@ -31,7 +32,7 @@ export default function BookPage() {
         >
           {/* Calendly Inline Widget */}
           <iframe
-            src="https://calendly.com/hivesync?hide_gdpr_banner=1&hide_event_type_details=1&background_color=ffffff&text_color=0f172a&primary_color=2563eb"
+            src={env.NEXT_PUBLIC_CALENDLY_URL}
             width="100%"
             height="100%"
           ></iframe>
